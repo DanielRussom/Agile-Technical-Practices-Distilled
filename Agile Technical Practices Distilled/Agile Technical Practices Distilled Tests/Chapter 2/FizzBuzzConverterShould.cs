@@ -37,5 +37,17 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_2
 
             Assert.AreEqual(result, "Fizz");
         }
+
+        [TestMethod]
+        [DataRow(5)]
+        [DataRow(10)]
+        [DataRow(20)]
+        [DataRow(25)]
+        public void Return_buzz(int input)
+        {
+            var result = UnderTest.Convert(input);
+
+            Assert.AreEqual(result, "Buzz");
+        }
     }
 }
