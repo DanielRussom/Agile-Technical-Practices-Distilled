@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Agile_Technical_Practices_Distilled.Chapter_2
+﻿namespace Agile_Technical_Practices_Distilled.Chapter_2
 {
     public class FizzBuzzConverter
     {
@@ -13,14 +11,21 @@ namespace Agile_Technical_Practices_Distilled.Chapter_2
 
         public string Convert(int input)
         {
-            if (input % 5 == 0) 
-            { 
-                return Buzz; 
-            }
+            var result = string.Empty;
 
             if (input % 3 == 0)
             {
-                return Fizz;
+                result += Fizz;
+            }
+
+            if (input % 5 == 0) 
+            {
+                result += Buzz; 
+            }
+
+            if (result.Length < 1)
+            {
+                return result;
             }
 
             return input.ToString();
