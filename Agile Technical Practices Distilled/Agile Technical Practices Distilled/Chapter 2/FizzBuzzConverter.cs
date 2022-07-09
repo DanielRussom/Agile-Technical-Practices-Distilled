@@ -23,7 +23,7 @@
                 result += Buzz; 
             }
 
-            if (result.Length < 1)
+            if (result.Length > 1)
             {
                 return result;
             }
