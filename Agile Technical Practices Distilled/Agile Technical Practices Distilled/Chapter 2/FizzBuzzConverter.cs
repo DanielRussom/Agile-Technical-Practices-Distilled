@@ -13,14 +13,14 @@
         {
             var result = string.Empty;
 
-            if (input % 3 == 0)
+            if (DivisibleBy(input, 3))
             {
                 result += Fizz;
             }
 
-            if (input % 5 == 0) 
+            if (DivisibleBy(input, 5))
             {
-                result += Buzz; 
+                result += Buzz;
             }
 
             if (result.Length > 1)
@@ -29,6 +29,11 @@
             }
 
             return input.ToString();
+        }
+
+        private static bool DivisibleBy(int input, int value)
+        {
+            return input % value == 0;
         }
     }
 }
