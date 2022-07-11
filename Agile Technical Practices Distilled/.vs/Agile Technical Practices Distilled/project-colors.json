@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "6e4b5468-47a9-46ff-93c4-d677b6af9379": {
+      "ProjectGuid": "6e4b5468-47a9-46ff-93c4-d677b6af9379",
+      "DisplayName": "Agile Technical Practices Distilled",
+      "ColorIndex": 0
+    },
+    "b6e41d66-944a-4587-bb59-d58b0bf0d437": {
+      "ProjectGuid": "b6e41d66-944a-4587-bb59-d58b0bf0d437",
+      "DisplayName": "Agile Technical Practices Distilled.Tests",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

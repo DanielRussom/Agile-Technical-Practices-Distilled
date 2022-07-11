@@ -11,21 +11,19 @@
 
         public string Convert(int input)
         {
-            var result = string.Empty;
+            if (DivisibleBy(input, 15))
+            {
+                return Fizz + Buzz;
+            }
 
             if (DivisibleBy(input, 3))
             {
-                result += Fizz;
+                return Fizz;
             }
 
             if (DivisibleBy(input, 5))
             {
-                result += Buzz;
-            }
-
-            if (result.Length > 1)
-            {
-                return result;
+                return Buzz;
             }
 
             return input.ToString();
