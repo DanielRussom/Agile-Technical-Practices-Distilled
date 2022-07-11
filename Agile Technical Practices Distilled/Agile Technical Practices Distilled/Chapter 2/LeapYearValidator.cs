@@ -8,7 +8,7 @@
 
         public bool Validate(int input)
         {
-            if (input == 2004)
+            if (input % 4 == 0)
             {
                 return true;
             }
