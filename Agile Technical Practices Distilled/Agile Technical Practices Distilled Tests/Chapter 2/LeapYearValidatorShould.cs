@@ -34,7 +34,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_2
         }
 
         [TestMethod]
-        public void Return_false_for_1900()
+        public void Return_false_for_multiples_of_100_and_not_400()
         {
             var result = UnderTest.Validate(1900);
             Assert.IsFalse(result);

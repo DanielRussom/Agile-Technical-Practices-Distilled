@@ -8,17 +8,22 @@
 
         public bool Validate(int input)
         {
-            if (input % 100 == 0)
+            if (IsDivisibleBy(input, 100))
             {
                 return false;
             }
 
-            if (input % 4 == 0)
+            if (IsDivisibleBy(input, 4))
             {
                 return true;
             }
 
             return false;
+        }
+
+        private static bool IsDivisibleBy(int input, int divider)
+        {
+            return input % divider == 0;
         }
     }
 }
