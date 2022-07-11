@@ -18,12 +18,7 @@
                 return false;
             }
 
-            if (IsDivisibleBy(input, 4))
-            {
-                return true;
-            }
-
-            return false;
+            return IsDivisibleBy(input, 4);
         }
 
         private static bool IsDivisibleBy(int input, int divider)
