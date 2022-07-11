@@ -8,6 +8,11 @@
 
         public bool Validate(int input)
         {
+            if (IsDivisibleBy(input, 400))
+            {
+                return true;
+            }
+
             if (IsDivisibleBy(input, 100))
             {
                 return false;

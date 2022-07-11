@@ -34,10 +34,20 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_2
         }
 
         [TestMethod]
-        public void Return_false_for_multiples_of_100_and_not_400()
+        [DataRow(1900)]
+        [DataRow(2100)]
+        [DataRow(2300)]
+        public void Return_false_for_multiples_of_100_and_not_400(int input)
         {
-            var result = UnderTest.Validate(1900);
+            var result = UnderTest.Validate(input);
             Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void Return_true_for_multiples_of_400()
+        {
+            var result = UnderTest.Validate(2000);
+            Assert.IsTrue(result);
         }
     }
 }
