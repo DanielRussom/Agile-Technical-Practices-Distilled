@@ -14,9 +14,12 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_2
         }
 
         [TestMethod]
-        public void Return_false_for_2001()
+        [DataRow(2001)]
+        [DataRow(2003)]
+
+        public void Return_false_for_non_multiples_of_4(int input)
         {
-            var result = UnderTest.Validate(2001);
+            var result = UnderTest.Validate(input);
             Assert.IsFalse(result);
         }
 
@@ -28,6 +31,13 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_2
         {
             var result = UnderTest.Validate(input);
             Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void Return_false_for_1900()
+        {
+            var result = UnderTest.Validate(1900);
+            Assert.IsFalse(result);
         }
     }
 }
