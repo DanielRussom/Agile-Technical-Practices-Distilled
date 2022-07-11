@@ -14,40 +14,21 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_2
         }
 
         [TestMethod]
-        [DataRow(2001)]
-        [DataRow(2003)]
+        [DataRow(2001, false)]
+        [DataRow(2003, false)]
+        [DataRow(2004, true)]
+        [DataRow(2008, true)]
+        [DataRow(2012, true)]
+        [DataRow(1900, false)]
+        [DataRow(2100, false)]
+        [DataRow(2300, false)]
+        [DataRow(2000, true)]
+        [DataRow(2400, true)]
 
-        public void Return_false_for_non_multiples_of_4(int input)
+        public void Validate_year(int input, bool expected)
         {
             var result = UnderTest.Validate(input);
-            Assert.IsFalse(result);
-        }
-
-        [TestMethod]
-        [DataRow (2004)]
-        [DataRow (2008)]
-        [DataRow (2012)]
-        public void Return_true_for_multiples_of_4(int input)
-        {
-            var result = UnderTest.Validate(input);
-            Assert.IsTrue(result);
-        }
-
-        [TestMethod]
-        [DataRow(1900)]
-        [DataRow(2100)]
-        [DataRow(2300)]
-        public void Return_false_for_multiples_of_100_and_not_400(int input)
-        {
-            var result = UnderTest.Validate(input);
-            Assert.IsFalse(result);
-        }
-
-        [TestMethod]
-        public void Return_true_for_multiples_of_400()
-        {
-            var result = UnderTest.Validate(2000);
-            Assert.IsTrue(result);
+            Assert.AreEqual(result, expected);
         }
     }
 }
