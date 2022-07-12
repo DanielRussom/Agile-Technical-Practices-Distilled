@@ -2,9 +2,6 @@
 {
     public class FibonacciGenerator
     {
-        private int previousNumber = 0;
-        private int currentNumber = 1;
-
         public FibonacciGenerator()
         {
         }
@@ -13,22 +10,15 @@
         {
             if (position == 1)
             {
-                return previousNumber;
+                return 0;
             }
 
-            CalculateNumber(position);
-
-            return currentNumber;
-        }
-
-        private void CalculateNumber(int position)
-        {
-            for (int i = 3; i <= position; i++)
+            if (position == 2)
             {
-                var newNumber = currentNumber + previousNumber;
-                previousNumber = currentNumber;
-                currentNumber = newNumber;
+                return 1;
             }
+
+            return Generate(position - 1) + Generate(position);
         }
     }
 }
