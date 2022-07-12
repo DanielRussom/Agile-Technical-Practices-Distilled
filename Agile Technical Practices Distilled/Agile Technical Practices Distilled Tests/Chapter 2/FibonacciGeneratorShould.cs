@@ -5,13 +5,15 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_2
     public class FibonacciGeneratorShould
     {
         [TestMethod]
-        public void Generate_0()
+        [DataRow (1, 0)]
+        [DataRow (2, 1)]
+        public void Generate_nth_fibonacci_number(int input, int expected)
         {
             var UnderTest = new FibonacciGenerator();
 
-            var result = UnderTest.Generate(1);
+            var result = UnderTest.Generate(input);
 
-            Assert.AreEqual(0, result);
+            Assert.AreEqual(expected, result);
         }
     }
 }

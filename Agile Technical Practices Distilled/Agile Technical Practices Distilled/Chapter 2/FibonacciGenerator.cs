@@ -6,8 +6,12 @@
         {
         }
 
-        public int Generate(int input)
+        public int Generate(int position)
         {
+            if(position == 2) {
+                return 1;
+            }
+
             return 0;
         }
     }
