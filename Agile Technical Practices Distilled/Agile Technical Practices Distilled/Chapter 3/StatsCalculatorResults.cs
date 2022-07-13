@@ -3,5 +3,6 @@
     public class StatsCalculatorResults
     {
         public int MinimumValue { get; set; }
+        public int MaximumValue { get; set; }
     }
 }

@@ -10,12 +10,19 @@
         {
             var minimumValue = GetMinimumValue(input);
 
-            return new StatsCalculatorResults { MinimumValue = minimumValue };
+            var maximumValue = 1;
+
+            return BuildResults(minimumValue, maximumValue);
         }
 
         private static int GetMinimumValue(List<int> input)
         {
             return input.Min();
+        }
+
+        private static StatsCalculatorResults BuildResults(int minimumValue, int maximumValue)
+        {
+            return new StatsCalculatorResults { MinimumValue = minimumValue, MaximumValue = maximumValue };
         }
     }
 }
