@@ -45,13 +45,23 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_3
         }
 
         [TestMethod]
-        public void MyTestMethod()
+        public void Set_maximum_value_to_1()
         {
             var input = new List<int> { 1 };
 
             var result = UnderTest.Calculate(input);
 
             Assert.AreEqual(1, result.MaximumValue);
+        }
+
+        [TestMethod]
+        public void Set_maximum_value_to_5()
+        {
+            var input = new List<int> { 1, 5 };
+
+            var result = UnderTest.Calculate(input);
+
+            Assert.AreEqual(5, result.MaximumValue);
         }
     }
 }

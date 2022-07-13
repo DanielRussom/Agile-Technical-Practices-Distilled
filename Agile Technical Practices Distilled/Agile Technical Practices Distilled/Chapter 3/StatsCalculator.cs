@@ -10,7 +10,7 @@
         {
             var minimumValue = GetMinimumValue(input);
 
-            var maximumValue = 1;
+            var maximumValue = input.Max();
 
             return BuildResults(minimumValue, maximumValue);
         }
