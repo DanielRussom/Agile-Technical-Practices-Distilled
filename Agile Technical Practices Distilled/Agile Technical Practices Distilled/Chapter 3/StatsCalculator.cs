@@ -10,7 +10,7 @@
         {
             var minimumValue = GetMinimumValue(input);
 
-            var maximumValue = input.Max();
+            var maximumValue = GetMaximumValue(input);
 
             return BuildResults(minimumValue, maximumValue);
         }
@@ -18,6 +18,11 @@
         private static int GetMinimumValue(List<int> input)
         {
             return input.Min();
+        }
+
+        private static int GetMaximumValue(List<int> input)
+        {
+            return input.Max();
         }
 
         private static StatsCalculatorResults BuildResults(int minimumValue, int maximumValue)
