@@ -8,12 +8,7 @@
 
         public StatsCalculatorResults Calculate(List<int> input)
         {
-            var minimumValue = 0;
-
-            if (input.Contains(1))
-            {
-                minimumValue = 1;
-            }
+            var minimumValue = input.Min();
 
             return new StatsCalculatorResults { MinimumValue = minimumValue };
         }
