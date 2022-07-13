@@ -11,7 +11,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_3
         public void Set_minimum_value_to_0()
         {
             var UnderTest = new StatsCalculator();
-            var input = new List<int> { 0, 1};
+            var input = new List<int> { 0, 1 };
 
             var result = UnderTest.Calculate(input);
 
@@ -27,6 +27,17 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_3
             var result = UnderTest.Calculate(input);
 
             Assert.AreEqual(1, result.MinimumValue);
+        }
+
+        [TestMethod]
+        public void Set_minimum_value_to_negative_1()
+        {
+            var UnderTest = new StatsCalculator();
+            var input = new List<int> { -1, 0, 10 };
+
+            var result = UnderTest.Calculate(input);
+
+            Assert.AreEqual(-1, result.MinimumValue);
         }
     }
 }
