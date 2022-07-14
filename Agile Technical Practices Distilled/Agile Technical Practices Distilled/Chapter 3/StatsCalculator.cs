@@ -2,10 +2,6 @@
 {
     public class StatsCalculator
     {
-        private int minimumValue;
-        private int maximumValue;
-        private int elementCount;
-
         public StatsCalculator()
         {
         }
@@ -18,7 +14,9 @@
 
                 MaximumValue = GetMaximumValue(input),
 
-                ElementCount = GetElementCount(input)
+                ElementCount = GetElementCount(input),
+
+                AverageValue = 1
             };
 
             return result;
