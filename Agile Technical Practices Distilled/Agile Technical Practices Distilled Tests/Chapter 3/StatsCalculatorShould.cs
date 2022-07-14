@@ -67,6 +67,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_3
         [TestMethod]
         [DataRow(1)]
         [DataRow(2)]
+        [DataRow(5)]
         public void Set_element_count_to_number_of_elements(int elementCount)
         {
             var input = new List<int>();
