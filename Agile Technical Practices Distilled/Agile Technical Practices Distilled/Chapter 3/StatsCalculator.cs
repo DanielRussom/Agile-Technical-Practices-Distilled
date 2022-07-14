@@ -12,7 +12,9 @@
 
             var maximumValue = GetMaximumValue(input);
 
-            return BuildResults(minimumValue, maximumValue);
+            var elementCount = input.Count;
+
+            return BuildResults(minimumValue, maximumValue, elementCount);
         }
 
         private static int GetMinimumValue(List<int> input)
@@ -25,9 +27,9 @@
             return input.Max();
         }
 
-        private static StatsCalculatorResults BuildResults(int minimumValue, int maximumValue)
+        private static StatsCalculatorResults BuildResults(int minimumValue, int maximumValue, int elementCount)
         {
-            return new StatsCalculatorResults { MinimumValue = minimumValue, MaximumValue = maximumValue, ElementCount = 1 };
+            return new StatsCalculatorResults { MinimumValue = minimumValue, MaximumValue = maximumValue, ElementCount = elementCount };
         }
     }
 }

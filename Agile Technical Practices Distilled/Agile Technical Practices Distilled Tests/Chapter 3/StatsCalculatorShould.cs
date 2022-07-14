@@ -65,13 +65,19 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_3
         }
 
         [TestMethod]
-        public void Set_element_count_to_1()
+        [DataRow(1)]
+        [DataRow(2)]
+        public void Set_element_count_to_number_of_elements(int elementCount)
         {
-            var input = new List<int> { 1 };
+            var input = new List<int>();
+            for(int i = 0; i < elementCount; i++)
+            {
+                input.Add(i);
+            }
 
             var result = UnderTest.Calculate(input);
 
-            Assert.AreEqual(1, result.ElementCount);
+            Assert.AreEqual(elementCount, result.ElementCount);
         }
     }
 }
