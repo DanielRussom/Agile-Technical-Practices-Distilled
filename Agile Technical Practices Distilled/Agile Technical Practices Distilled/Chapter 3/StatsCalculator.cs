@@ -2,19 +2,25 @@
 {
     public class StatsCalculator
     {
+        private int minimumValue;
+        private int maximumValue;
+        private int elementCount;
+
         public StatsCalculator()
         {
         }
 
         public StatsCalculatorResults Calculate(List<int> input)
         {
-            var minimumValue = GetMinimumValue(input);
+            var result = new StatsCalculatorResults();
 
-            var maximumValue = GetMaximumValue(input);
+            minimumValue = GetMinimumValue(input);
 
-            var elementCount = input.Count;
+            maximumValue = GetMaximumValue(input);
 
-            return BuildResults(minimumValue, maximumValue, elementCount);
+            elementCount = GetElementCount(input);
+
+            return BuildResults();
         }
 
         private static int GetMinimumValue(List<int> input)
@@ -27,7 +33,12 @@
             return input.Max();
         }
 
-        private static StatsCalculatorResults BuildResults(int minimumValue, int maximumValue, int elementCount)
+        private static int GetElementCount(List<int> input)
+        {
+            return input.Count;
+        }
+
+        private StatsCalculatorResults BuildResults()
         {
             return new StatsCalculatorResults { MinimumValue = minimumValue, MaximumValue = maximumValue, ElementCount = elementCount };
         }
