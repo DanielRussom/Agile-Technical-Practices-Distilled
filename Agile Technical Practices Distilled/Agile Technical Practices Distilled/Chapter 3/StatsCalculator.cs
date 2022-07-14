@@ -2,10 +2,6 @@
 {
     public class StatsCalculator
     {
-        public StatsCalculator()
-        {
-        }
-
         public StatsCalculatorResults Calculate(List<int> input)
         {
             var result = new StatsCalculatorResults
