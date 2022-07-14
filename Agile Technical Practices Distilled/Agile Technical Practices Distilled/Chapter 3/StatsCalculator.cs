@@ -27,7 +27,7 @@
 
         private static StatsCalculatorResults BuildResults(int minimumValue, int maximumValue)
         {
-            return new StatsCalculatorResults { MinimumValue = minimumValue, MaximumValue = maximumValue };
+            return new StatsCalculatorResults { MinimumValue = minimumValue, MaximumValue = maximumValue, ElementCount = 1 };
         }
     }
 }

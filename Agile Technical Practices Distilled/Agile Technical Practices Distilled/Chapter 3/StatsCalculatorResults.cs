@@ -4,5 +4,6 @@
     {
         public int MinimumValue { get; set; }
         public int MaximumValue { get; set; }
+        public int ElementCount { get; set; }
     }
 }
