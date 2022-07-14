@@ -16,7 +16,7 @@
 
                 ElementCount = GetElementCount(input),
 
-                AverageValue = input.Sum()/input.Count
+                AverageValue = GetAverageValue(input)
             };
 
             return result;
@@ -35,6 +35,11 @@
         private static int GetElementCount(List<int> input)
         {
             return input.Count;
+        }
+
+        private static int GetAverageValue(List<int> input)
+        {
+            return input.Sum() / input.Count;
         }
     }
 }
