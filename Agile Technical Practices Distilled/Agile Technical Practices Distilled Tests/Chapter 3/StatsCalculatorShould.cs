@@ -90,5 +90,15 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_3
 
             Assert.AreEqual(1, result.AverageValue);
         }
+
+        [TestMethod]
+        public void Set_average_value_to_2()
+        {
+            var input = new List<int> { 1, 3 };
+
+            var result = UnderTest.Calculate(input);
+
+            Assert.AreEqual(2, result.AverageValue);
+        }
     }
 }

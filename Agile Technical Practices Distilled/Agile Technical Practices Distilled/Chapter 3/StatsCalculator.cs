@@ -16,7 +16,7 @@
 
                 ElementCount = GetElementCount(input),
 
-                AverageValue = 1
+                AverageValue = input.Sum()/input.Count
             };
 
             return result;
