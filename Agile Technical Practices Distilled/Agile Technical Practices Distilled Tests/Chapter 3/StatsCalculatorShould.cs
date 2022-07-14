@@ -110,5 +110,18 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_3
 
             Assert.AreEqual(0, result.AverageValue);
         }
+
+        [TestMethod]
+        public void Meet_example_scenario_requirements()
+        {
+            var input = new List<int> { 6, 9, 15, -2, 92, 11 };
+
+            var result = UnderTest.Calculate(input);
+
+            Assert.AreEqual(-2, result.MinimumValue);
+            Assert.AreEqual(92, result.MaximumValue);
+            Assert.AreEqual(6, result.ElementCount);
+            Assert.AreEqual(21, result.AverageValue);
+        }
     }
 }
