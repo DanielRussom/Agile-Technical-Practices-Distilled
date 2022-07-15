@@ -10,19 +10,9 @@
         {
             var generatedAnagrams = new List<string>();
 
-            if (input.Equals("ab"))
+            if(input.Length > 1)
             {
-                generatedAnagrams.Add("ba");
-            }
-
-            if (input.Equals("cd"))
-            {
-                generatedAnagrams.Add("dc");
-            }
-
-            if (input.Equals("ef"))
-            {
-                generatedAnagrams.Add("fe");
+                generatedAnagrams.Add(input[1].ToString() + input[0].ToString());
             }
 
             generatedAnagrams.Add(input);
