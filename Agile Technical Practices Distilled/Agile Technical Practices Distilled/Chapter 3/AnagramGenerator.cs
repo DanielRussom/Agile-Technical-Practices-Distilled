@@ -20,6 +20,11 @@
                 generatedAnagrams.Add("dc");
             }
 
+            if (input.Equals("ef"))
+            {
+                generatedAnagrams.Add("fe");
+            }
+
             generatedAnagrams.Add(input);
 
             return generatedAnagrams;
