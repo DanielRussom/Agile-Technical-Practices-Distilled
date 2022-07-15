@@ -16,6 +16,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_3
         [TestMethod]
         [DataRow ("a")]
         [DataRow ("b")]
+        [DataRow ("c")]
         public void Generate_one_anagram_matching_the_input(string input)
         {
             var result = UnderTest.Generate(input);

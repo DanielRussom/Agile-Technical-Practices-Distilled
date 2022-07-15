@@ -8,12 +8,16 @@
 
         public List<string> Generate(string input)
         {
+            var generatedAnagrams = new List<string>();
+
             if (input.Equals("ab"))
             {
-                return new List<string> { "ab", "ba" };
+                generatedAnagrams.Add("ba");
             }
 
-            return new List<string> { input };
+            generatedAnagrams.Add(input);
+
+            return generatedAnagrams;
         }
     }
 }
