@@ -26,7 +26,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_3
         }
                 
         [TestMethod]
-        public void Generate_two_anagrams()
+        public void Generate_two_anagrams_for_ab()
         {
             var input = "ab";
 
@@ -35,6 +35,18 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_3
             Assert.AreEqual(2, result.Count);
             Assert.IsTrue(result.Contains("ab"));
             Assert.IsTrue(result.Contains("ba"));
+        }
+
+        [TestMethod]
+        public void Generate_two_anagrams_for_cd()
+        {
+            var input = "cd";
+
+            var result = UnderTest.Generate(input);
+
+            Assert.AreEqual(2, result.Count);
+            Assert.IsTrue(result.Contains("cd"));
+            Assert.IsTrue(result.Contains("dc"));
         }
     }
 }

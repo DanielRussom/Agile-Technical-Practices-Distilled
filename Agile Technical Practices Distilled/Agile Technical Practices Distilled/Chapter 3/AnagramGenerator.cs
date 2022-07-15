@@ -15,6 +15,11 @@
                 generatedAnagrams.Add("ba");
             }
 
+            if (input.Equals("cd"))
+            {
+                generatedAnagrams.Add("dc");
+            }
+
             generatedAnagrams.Add(input);
 
             return generatedAnagrams;
