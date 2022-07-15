@@ -14,16 +14,16 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_3
         }
 
         [TestMethod]
-        public void Generate_one_anagram()
+        [DataRow ("a")]
+        [DataRow ("b")]
+        public void Generate_one_anagram_matching_the_input(string input)
         {
-            var input = "a";
-
             var result = UnderTest.Generate(input);
 
             Assert.AreEqual(1, result.Count);
-            Assert.AreEqual("a", result[0]);
+            Assert.AreEqual(input, result[0]);
         }
-
+                
         [TestMethod]
         public void Generate_two_anagrams()
         {

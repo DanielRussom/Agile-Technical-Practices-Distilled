@@ -13,7 +13,7 @@
                 return new List<string> { "ab", "ba" };
             }
 
-            return new List<string> { "a" };
+            return new List<string> { input };
         }
     }
 }
