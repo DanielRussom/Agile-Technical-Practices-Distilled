@@ -14,7 +14,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_3
         }
 
         [TestMethod]
-        public void Generate_a_single_entry_list()
+        public void Generate_one_anagram()
         {
             var input = "a";
 
@@ -22,6 +22,18 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_3
 
             Assert.AreEqual(1, result.Count);
             Assert.AreEqual("a", result[0]);
+        }
+
+        [TestMethod]
+        public void Generate_two_anagrams()
+        {
+            var input = "ab";
+
+            var result = UnderTest.Generate(input);
+
+            Assert.AreEqual(2, result.Count);
+            Assert.IsTrue(result.Contains("ab"));
+            Assert.IsTrue(result.Contains("ba"));
         }
     }
 }
