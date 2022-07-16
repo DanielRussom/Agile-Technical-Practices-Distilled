@@ -14,7 +14,10 @@
 
             for (int i = 0; i < input.Length; i++)
             {
-                generatedAnagrams.AddRange(GetSubstringAnagrams(i, input));
+                var substringAnagrams = GetSubstringAnagrams(i, input);
+                var uniqueSubstringAnagrams = substringAnagrams.Where(x => !generatedAnagrams.Contains(x));
+
+                generatedAnagrams.AddRange(uniqueSubstringAnagrams);
             }
 
             return generatedAnagrams;

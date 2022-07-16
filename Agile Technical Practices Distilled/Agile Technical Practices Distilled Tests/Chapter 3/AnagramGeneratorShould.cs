@@ -76,5 +76,18 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_3
             Assert.IsTrue(result.Contains("cab"));
             Assert.IsTrue(result.Contains("cba"));
         }
+
+        [TestMethod]
+        public void Generate_anagrams_for_dad_without_duplicates()
+        {
+            var input = "dad";
+
+            var result = UnderTest.Generate(input);
+
+            Assert.AreEqual(3, result.Count);
+            Assert.IsTrue(result.Contains("dad"));
+            Assert.IsTrue(result.Contains("dda"));
+            Assert.IsTrue(result.Contains("add"));
+        }
     }
 }
