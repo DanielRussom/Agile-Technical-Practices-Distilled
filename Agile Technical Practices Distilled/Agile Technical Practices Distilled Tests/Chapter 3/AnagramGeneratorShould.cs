@@ -60,5 +60,21 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_3
             Assert.IsTrue(result.Contains("ef"));
             Assert.IsTrue(result.Contains("fe"));
         }
+
+        [TestMethod]
+        public void Generate_anagrams_for_abc()
+        {
+            var input = "abc";
+
+            var result = UnderTest.Generate(input);
+
+            Assert.AreEqual(6, result.Count);
+            Assert.IsTrue(result.Contains("abc"));
+            Assert.IsTrue(result.Contains("acb"));
+            Assert.IsTrue(result.Contains("bac"));
+            Assert.IsTrue(result.Contains("bca"));
+            Assert.IsTrue(result.Contains("cab"));
+            Assert.IsTrue(result.Contains("cba"));
+        }
     }
 }
