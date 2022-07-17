@@ -18,8 +18,9 @@
                 result += "V";
             }
 
-            for (int i = 1; i <= input; i++)
+            while (input > 0)
             {
+                input -= 1;
                 result += "I";
             }
 
