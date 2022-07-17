@@ -15,5 +15,15 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_4
 
             Assert.AreEqual("I", result);
         }
+
+        [TestMethod]
+        public void Convert_2_to_II()
+        {
+            var UnderTest = new RomanNumeralConverterV1();
+
+            var result = UnderTest.Convert(2);
+
+            Assert.AreEqual("II", result);
+        }
     }
 }
