@@ -10,9 +10,11 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_4
         [DataRow (1, "I")]
         [DataRow (2, "II")]
         [DataRow (3, "III")]
+        [DataRow (4, "IV")]
         [DataRow (5, "V")]
         [DataRow (6, "VI")]
         [DataRow (10, "X")]
+        [DataRow (17, "XVII")]
         public void Convert_integer_to_expected_roman_numeral(int input, string expected)
         {
             var UnderTest = new RomanNumeralConverterV1();

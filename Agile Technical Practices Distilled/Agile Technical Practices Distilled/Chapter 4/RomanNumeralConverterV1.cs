@@ -18,6 +18,12 @@
                 result += "V";
             }
 
+            if (input == 4)
+            {
+                input -= 4;
+                result += "IV";
+            }
+
             while (input > 0)
             {
                 input -= 1;
