@@ -6,6 +6,11 @@
         {
             var result = string.Empty;
 
+            if(input == 5)
+            {
+                return "V";
+            }
+
             for(int i = 1; i <= input; i++)
             {
                 result += "I";
