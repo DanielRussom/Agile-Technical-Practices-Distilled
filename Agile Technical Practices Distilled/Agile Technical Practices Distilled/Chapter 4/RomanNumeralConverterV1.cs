@@ -6,28 +6,15 @@
         {
             var result = string.Empty;
 
-            if (input >= 10)
-            {
-                input -= 10;
-                result += "X";
-            }
+            var romanNumerals = Enum.GetValues(typeof(RomanNumeralsEnumV1)).Cast<RomanNumeralsEnumV1>().Reverse();
 
-            if (input >= 5)
+            foreach (var numeral in romanNumerals)
             {
-                input -= 5;
-                result += "V";
-            }
-
-            if (input == 4)
-            {
-                input -= 4;
-                result += "IV";
-            }
-
-            while (input > 0)
-            {
-                input -= 1;
-                result += "I";
+                while (input >= (int)numeral)
+                {
+                    input -= (int)numeral;
+                    result += numeral;
+                }
             }
 
             return result;
