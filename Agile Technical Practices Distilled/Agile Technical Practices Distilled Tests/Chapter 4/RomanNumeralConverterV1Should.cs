@@ -17,6 +17,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_4
         [DataRow (10, "X")]
         [DataRow (17, "XVII")]
         [DataRow (36, "XXXVI")]
+        [DataRow (49, "XLIX")]
 
         public void Convert_integer_to_expected_roman_numeral(int input, string expected)
         {
