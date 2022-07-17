@@ -6,12 +6,19 @@
         {
             var result = string.Empty;
 
-            if(input == 5)
+            if (input >= 10)
             {
-                return "V";
+                input -= 10;
+                result += "X";
             }
 
-            for(int i = 1; i <= input; i++)
+            if (input >= 5)
+            {
+                input -= 5;
+                result += "V";
+            }
+
+            for (int i = 1; i <= input; i++)
             {
                 result += "I";
             }
