@@ -25,6 +25,9 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_4
         [DataRow (500, "D")]
         [DataRow (900, "CM")]
         [DataRow (1000, "M")]
+        [DataRow (846, "DCCCXLVI")]
+        [DataRow (1999, "MCMXCIX")]
+        [DataRow (2008, "MMVIII")]
 
         public void Convert_integer_to_expected_roman_numeral(int input, string expected)
         {
