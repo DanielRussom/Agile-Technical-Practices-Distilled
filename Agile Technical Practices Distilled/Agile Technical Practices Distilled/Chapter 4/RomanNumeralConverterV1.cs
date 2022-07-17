@@ -4,17 +4,14 @@
     {
         public string Convert(int input)
         {
-            if(input == 3)
+            var result = string.Empty;
+
+            for(int i = 1; i <= input; i++)
             {
-                return "III";
+                result += "I";
             }
 
-            if(input == 2)
-            {
-                return "II";
-            }
-
-            return "I";
+            return result;
         }
     }
 }
