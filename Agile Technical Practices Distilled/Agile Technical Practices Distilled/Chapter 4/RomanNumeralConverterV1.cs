@@ -5,8 +5,7 @@
         public string Convert(int input)
         {
             var result = string.Empty;
-
-            var romanNumerals = Enum.GetValues(typeof(RomanNumeralsEnumV1)).Cast<RomanNumeralsEnumV1>().Reverse();
+            var romanNumerals = GetDescendingRomanNumerals();
 
             foreach (var numeral in romanNumerals)
             {
@@ -18,6 +17,11 @@
             }
 
             return result;
+        }
+
+        private static IEnumerable<RomanNumeralsEnumV1> GetDescendingRomanNumerals()
+        {
+            return Enum.GetValues(typeof(RomanNumeralsEnumV1)).Cast<RomanNumeralsEnumV1>().Reverse();
         }
     }
 }
