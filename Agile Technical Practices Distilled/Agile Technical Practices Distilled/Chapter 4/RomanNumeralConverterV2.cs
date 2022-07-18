@@ -4,12 +4,15 @@
     {
         public string Convert(int input)
         {
-            if(input == 2)
-            {
-                return "II";
-            }
+            var result = string.Empty;
 
-            return "I";
+            while(input > 0)
+            {
+                result += "I";
+                input--;
+            }
+            
+            return result;
         }
     }
 }
