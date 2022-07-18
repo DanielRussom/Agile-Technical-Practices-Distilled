@@ -7,13 +7,16 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_4
     public class RomanNumeralConverterV2Should
     {
         [TestMethod]
-        public void Convert_1_into_I()
+        [DataRow(1, "I")]
+        [DataRow(2, "II")]
+        [DataRow(3, "III")]
+        public void Convert_1_into_I(int input, string expected)
         {
             var UnderTest = new RomanNumeralConverterV2();
 
-            var result = UnderTest.Convert(1);
+            var result = UnderTest.Convert(input);
 
-            Assert.AreEqual("I", result);
+            Assert.AreEqual(expected, result);
         }
     }
 }
