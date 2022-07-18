@@ -10,6 +10,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_4
         [DataRow(1, "I")]
         [DataRow(2, "II")]
         [DataRow(3, "III")]
+        [DataRow(4, "IV")]
         public void Convert_arabic_number_into_expected_roman_numeral(int input, string expected)
         {
             var UnderTest = new RomanNumeralConverterV2();
