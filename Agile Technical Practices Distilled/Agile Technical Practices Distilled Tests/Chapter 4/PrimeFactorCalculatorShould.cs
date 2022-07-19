@@ -14,21 +14,16 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_4
         }
 
         [TestMethod]
-        public void Convert_1_to_a_list_with_1()
+        [DataRow (1)]
+        [DataRow (2)]
+        [DataRow (3)]
+        [DataRow (5)]
+        public void Convert_prime_numbers_to_a_list(int input)
         {
-            var result = UnderTest.Calculate(1);
+            var result = UnderTest.Calculate(input);
 
             Assert.AreEqual(1, result.Count);
-            Assert.IsTrue(result.Contains(1));
-        }
-
-        [TestMethod]
-        public void Convert_2_to_a_list_with_2()
-        {
-            var result = UnderTest.Calculate(2);
-
-            Assert.AreEqual(1, result.Count);
-            Assert.IsTrue(result.Contains(2));
+            Assert.IsTrue(result.Contains(input));
         }
     }
 }
