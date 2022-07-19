@@ -6,7 +6,7 @@
         {
             var primeFactors = new List<int>();
 
-            if(input % 2 == 0)
+            while(input % 2 == 0)
             {
                 primeFactors.Add(2);
                 input /= 2;

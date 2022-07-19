@@ -18,6 +18,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_4
         [DataRow (2)]
         [DataRow (3)]
         [DataRow (5)]
+        [DataRow (7)]
         public void Convert_prime_numbers_to_a_list(int input)
         {
             var expected = new List<int> { input };
@@ -40,6 +41,15 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_4
         {
             var expected = new List<int> { 2, 3 };
             var result = UnderTest.Calculate(6);
+
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void Convert_8_to_a_list_of_three_2s()
+        {
+            var expected = new List<int> { 2, 2, 2 };
+            var result = UnderTest.Calculate(8);
 
             CollectionAssert.AreEqual(expected, result);
         }
