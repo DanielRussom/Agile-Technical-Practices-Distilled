@@ -53,5 +53,14 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_4
 
             CollectionAssert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void Convert_9_to_a_list_of_three_3s()
+        {
+            var expected = new List<int> { 3, 3 };
+            var result = UnderTest.Calculate(9);
+
+            CollectionAssert.AreEqual(expected, result);
+        }
     }
 }

@@ -6,13 +6,20 @@
         {
             var primeFactors = new List<int>();
 
-            while(input % 2 == 0)
+            var divisor = 2;
+
+            while (input > 1)
             {
-                primeFactors.Add(2);
-                input /= 2;
+                while (input % divisor == 0)
+                {
+                    primeFactors.Add(divisor);
+                    input /= divisor;
+                }
+
+                divisor++;
             }
 
-            if(input > 1)
+            if (input > 1)
             {
                 primeFactors.Add(input);
             }
