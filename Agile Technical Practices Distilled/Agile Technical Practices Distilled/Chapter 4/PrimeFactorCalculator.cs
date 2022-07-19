@@ -4,6 +4,11 @@
     {
         public IList<int> Calculate(int input)
         {
+            if(input > 1)
+            {
+                return new List<int> { 2 };
+            }
+
             return new List<int> { 1 };
         }
     }
