@@ -62,5 +62,50 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_4
 
             CollectionAssert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void Convert_12_to_a_list_of_primes()
+        {
+            var expected = new List<int> { 2, 2, 3 };
+            var result = UnderTest.Calculate(12);
+
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void Convert_15_to_a_list_of_primes()
+        {
+            var expected = new List<int> { 3, 5 };
+            var result = UnderTest.Calculate(15);
+
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void Convert_120_to_a_list_of_primes()
+        {
+            var expected = new List<int> { 2, 2, 2, 3, 5 };
+            var result = UnderTest.Calculate(120);
+
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void Convert_128_to_a_list_of_primes()
+        {
+            var expected = new List<int> { 2, 2, 2, 2, 2, 2, 2 };
+            var result = UnderTest.Calculate(128);
+
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void Convert_97_to_a_list_of_primes()
+        {
+            var expected = new List<int> { 97 };
+            var result = UnderTest.Calculate(97);
+
+            CollectionAssert.AreEqual(expected, result);
+        }
     }
 }
