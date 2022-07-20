@@ -19,6 +19,8 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_4
         [DataRow("NOT FALSE AND TRUE", true)]
         [DataRow("NOT FALSE AND NOT FALSE", true)]
         [DataRow("TRUE OR FALSE", true)]
+        [DataRow("FALSE OR FALSE", false)]
+        [DataRow("FALSE OR NOT FALSE", true)]
         public void Calculate_expected_result(string input, bool expected)
         {
             var UnderTest = new BooleanCalculator();
