@@ -6,6 +6,11 @@
         {
             var words = input.Split(' ');
 
+            if (words.Length > 1 && words[1].Equals("AND"))
+            {
+                return bool.Parse(words[0]) && bool.Parse(words[2]);
+            }
+
             if (words[0].Equals("NOT"))
             {
                 return !bool.Parse(words[1]);
