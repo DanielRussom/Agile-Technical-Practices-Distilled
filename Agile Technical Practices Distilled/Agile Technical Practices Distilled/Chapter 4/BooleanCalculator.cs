@@ -4,14 +4,13 @@
     {
         public bool Calculate(string input)
         {
-            var words = input.Split(' ');
-
-            if (words.Length > 1 && words[1].Equals("AND"))
+            if (input.Contains("AND"))
             {
-                var andConditions = input.Split("AND ");
-                return bool.Parse(words[0]) && Calculate(andConditions[1]);
+                var andConditions = input.Split(" AND ");
+                return Calculate(andConditions[0]) && Calculate(andConditions[1]);
             }
 
+            var words = input.Split(' ');
             if (words[0].Equals("NOT"))
             {
                 return !bool.Parse(words[1]);
