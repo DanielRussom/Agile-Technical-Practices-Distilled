@@ -7,13 +7,27 @@
             if (input.Contains("AND"))
             {
                 var andConditions = input.Split(" AND ");
-                return Calculate(andConditions[0]) && Calculate(andConditions[1]);
+                var result = Calculate(andConditions[0]);
+
+                for(int i = 1; i < andConditions.Length; i++)
+                {
+                    result = result && Calculate(andConditions[i]);
+                }
+
+                return result;
             }
 
             if (input.Contains("OR"))
             {
                 var orConditions = input.Split(" OR ");
-                return Calculate(orConditions[0]) || Calculate(orConditions[1]);
+                var result = Calculate(orConditions[0]);
+
+                for (int i = 1; i < orConditions.Length; i++)
+                {
+                    result = result || Calculate(orConditions[i]);
+                }
+
+                return result;
             }
 
             var words = input.Split(' ');
