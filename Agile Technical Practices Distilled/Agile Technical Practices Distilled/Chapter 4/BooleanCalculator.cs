@@ -4,6 +4,16 @@
     {
         public bool Calculate(string input)
         {
+            if (input.Contains("("))
+            {
+                var parenthesesConditions = input.Split('(', ')');
+                var result = Calculate(parenthesesConditions[1]);
+
+                parenthesesConditions[1] = result.ToString();
+
+                input = String.Join("", parenthesesConditions);
+            }
+
             if (input.Contains("AND"))
             {
                 var andConditions = input.Split(" AND ");
