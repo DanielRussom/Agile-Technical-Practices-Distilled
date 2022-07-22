@@ -2,51 +2,72 @@
 {
     public class BooleanCalculator
     {
+        private readonly char[] PARENTHESES = { '(', ')' };
+        private const string AND_COMMAND = "AND";
+        private const string OR_COMMAND = "OR";
+        private const string NOT_COMMAND = "NOT";
+
         public bool Calculate(string input)
         {
-            if (input.Contains("("))
+            if (input.Contains(PARENTHESES[0]))
             {
-                var parenthesesConditions = input.Split('(', ')');
-                var result = Calculate(parenthesesConditions[1]);
-
-                parenthesesConditions[1] = result.ToString();
-
-                input = String.Join("", parenthesesConditions);
+                input = GetConvertedParenthesesLogic(input);
             }
 
-            if (input.Contains("AND"))
+            if (input.Contains(AND_COMMAND))
             {
-                var andConditions = input.Split(" AND ");
-                var result = Calculate(andConditions[0]);
-
-                for(int i = 1; i < andConditions.Length; i++)
-                {
-                    result = result && Calculate(andConditions[i]);
-                }
-
-                return result;
+                return CalculateAndLogic(input);
             }
 
-            if (input.Contains("OR"))
+            if (input.Contains(OR_COMMAND))
             {
-                var orConditions = input.Split(" OR ");
-                var result = Calculate(orConditions[0]);
-
-                for (int i = 1; i < orConditions.Length; i++)
-                {
-                    result = result || Calculate(orConditions[i]);
-                }
-
-                return result;
+                return CalculateOrLogic(input);
             }
 
-            var words = input.Split(' ');
-            if (words[0].Equals("NOT"))
+            if (input.StartsWith(NOT_COMMAND))
             {
-                return !bool.Parse(words[1]);
+                var value = input.Substring(NOT_COMMAND.Length + 1);
+                return !bool.Parse(value);
             }
 
             return bool.Parse(input);
+        }
+
+        private string GetConvertedParenthesesLogic(string input)
+        {
+            var parenthesesConditions = input.Split(PARENTHESES);
+            var result = Calculate(parenthesesConditions[1]);
+
+            parenthesesConditions[1] = result.ToString();
+
+            input = string.Join(string.Empty, parenthesesConditions);
+            return input;
+        }
+
+        private bool CalculateAndLogic(string input)
+        {
+            var andConditions = input.Split($" {AND_COMMAND} ");
+            var result = Calculate(andConditions[0]);
+
+            for (int i = 1; i < andConditions.Length; i++)
+            {
+                result = result && Calculate(andConditions[i]);
+            }
+
+            return result;
+        }
+
+        private bool CalculateOrLogic(string input)
+        {
+            var orConditions = input.Split($" {OR_COMMAND} ");
+            var result = Calculate(orConditions[0]);
+
+            for (int i = 1; i < orConditions.Length; i++)
+            {
+                result = result || Calculate(orConditions[i]);
+            }
+
+            return result;
         }
     }
 }
