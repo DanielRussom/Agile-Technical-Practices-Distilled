@@ -19,8 +19,4 @@
     <ProjectReference Include="..\Agile Technical Practices Distilled\Agile Technical Practices Distilled.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Chapter 5\" />
-  </ItemGroup>
-
 </Project>
