@@ -11,7 +11,7 @@
 
         public void Play(int xCoord, int yCoord)
         {
-            board[1, 1] = 'X';
+            board[xCoord, yCoord] = 'X';
         }
 
         public char[,] GetBoard()

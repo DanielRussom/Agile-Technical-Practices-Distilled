@@ -19,7 +19,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5
         private void AssertActualMatchesExpectedBoard()
         {
             var result = UnderTest.GetBoard();
-            CollectionAssert.AreEquivalent(ExpectedBoard, result);
+            CollectionAssert.AreEqual(ExpectedBoard, result);
         }
 
         [TestMethod]
@@ -38,8 +38,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5
 
             UnderTest.Play(xCoord, yCoord);
 
-            var result = UnderTest.GetBoard();
-            CollectionAssert.AreEquivalent(ExpectedBoard, result);
+            AssertActualMatchesExpectedBoard();
         }
     }
 }
