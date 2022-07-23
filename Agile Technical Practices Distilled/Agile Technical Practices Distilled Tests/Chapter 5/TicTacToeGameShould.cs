@@ -16,20 +16,27 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5
             ExpectedBoard = new char[3, 3];
         }
 
-        [TestMethod]
-        public void Start_with_an_empty_board()
+        private void AssertActualMatchesExpectedBoard()
         {
             var result = UnderTest.GetBoard();
-
             CollectionAssert.AreEquivalent(ExpectedBoard, result);
         }
 
         [TestMethod]
-        public void Mark_the_middle_position_with_X()
+        public void Start_with_an_empty_board()
         {
-            ExpectedBoard[1, 1] = 'X';
+            AssertActualMatchesExpectedBoard();
+        }
 
-            UnderTest.Play(1, 1);
+        [TestMethod]
+        [DataRow (1, 1)]
+        [DataRow (2, 0)]
+        [DataRow (0, 0)]
+        public void Mark_the_correct_position_with_X(int xCoord, int yCoord)
+        {
+            ExpectedBoard[xCoord, yCoord] = 'X';
+
+            UnderTest.Play(xCoord, yCoord);
 
             var result = UnderTest.GetBoard();
             CollectionAssert.AreEquivalent(ExpectedBoard, result);
