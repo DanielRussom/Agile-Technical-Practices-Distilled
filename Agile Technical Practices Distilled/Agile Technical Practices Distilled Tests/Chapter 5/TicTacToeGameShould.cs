@@ -36,7 +36,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5
         {
             ExpectedBoard[xCoord, yCoord] = 'X';
 
-            UnderTest.Play(xCoord, yCoord);
+            UnderTest.Play(new BoardPosition { XCoordinate = xCoord, YCoordinate = yCoord });
 
             AssertActualMatchesExpectedBoard();
         }
@@ -49,8 +49,8 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5
             ExpectedBoard[0, 0] = 'X';
             ExpectedBoard[xCoord, yCoord] = 'O';
 
-            UnderTest.Play(0, 0);
-            UnderTest.Play(xCoord, yCoord);
+            UnderTest.Play(new BoardPosition { XCoordinate = 0, YCoordinate = 0 });
+            UnderTest.Play(new BoardPosition { XCoordinate = xCoord, YCoordinate = yCoord });
 
             AssertActualMatchesExpectedBoard();
         }
@@ -63,10 +63,10 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5
             ExpectedBoard[1, 0] = 'X';
             ExpectedBoard[1, 1] = 'O';
 
-            UnderTest.Play(0, 0);
-            UnderTest.Play(0, 1);
-            UnderTest.Play(1, 0);
-            UnderTest.Play(1, 1);
+            UnderTest.Play(new BoardPosition { XCoordinate = 0, YCoordinate = 0 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 0, YCoordinate = 1 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 1, YCoordinate = 0 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 1, YCoordinate = 1 });
 
             AssertActualMatchesExpectedBoard();
         }
@@ -78,16 +78,16 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5
         {
             ExpectedBoard[xCoord, yCoord] = 'X';
 
-            UnderTest.Play(xCoord, yCoord);
+            UnderTest.Play(new BoardPosition { XCoordinate = xCoord, YCoordinate = yCoord });
 
-            Assert.ThrowsException<InvalidMoveException>(() => UnderTest.Play(xCoord, yCoord));
+            Assert.ThrowsException<InvalidMoveException>(() => UnderTest.Play(new BoardPosition { XCoordinate = xCoord, YCoordinate = yCoord }));
             AssertActualMatchesExpectedBoard();
         }
 
         [TestMethod]
         public void Not_allow_3_3_to_be_played()
         {
-            Assert.ThrowsException<InvalidMoveException>(() => UnderTest.Play(3, 3));
+            Assert.ThrowsException<InvalidMoveException>(() => UnderTest.Play(new BoardPosition { XCoordinate = 3, YCoordinate = 3 }));
             AssertActualMatchesExpectedBoard();
         }
     }

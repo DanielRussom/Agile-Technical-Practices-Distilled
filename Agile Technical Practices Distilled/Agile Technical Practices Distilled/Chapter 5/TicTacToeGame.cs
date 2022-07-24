@@ -13,23 +13,28 @@
             turnNumber = 0;
         }
 
-        public void Play(int xCoord, int yCoord)
+        public void Play(BoardPosition position)
         {
-            if(xCoord > 2 || yCoord > 2)
-            {
-                throw new InvalidMoveException($"Position {xCoord},{yCoord} is not valid.");
-            }
-
-            if(board[xCoord, yCoord] != default)
-            {
-                throw new InvalidMoveException($"Position {xCoord},{yCoord} has already been played.");
-            }
+            ValidateMove(position);
 
             var nextPlayer = GetNextPlayer();
 
-            board[xCoord, yCoord] = nextPlayer;
+            board[position.XCoordinate, position.YCoordinate] = nextPlayer;
 
             turnNumber++;
+        }
+
+        private void ValidateMove(BoardPosition position)
+        {
+            if (position.XCoordinate > 2 || position.YCoordinate > 2)
+            {
+                throw new InvalidMoveException($"Position {position.XCoordinate},{position.YCoordinate} is not valid.");
+            }
+
+            if (board[position.XCoordinate, position.YCoordinate] != default)
+            {
+                throw new InvalidMoveException($"Position {position.XCoordinate},{position.YCoordinate} has already been played.");
+            }
         }
 
         private char GetNextPlayer()

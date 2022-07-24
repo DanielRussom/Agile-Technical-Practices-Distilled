@@ -8,4 +8,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Chapter 5\TicTacToeGame.cs~RF22fb5bc7.TMP" />
+  </ItemGroup>
+
 </Project>
