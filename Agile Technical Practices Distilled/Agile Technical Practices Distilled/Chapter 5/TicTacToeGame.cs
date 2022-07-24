@@ -3,15 +3,22 @@
     public class TicTacToeGame
     {
         private char[,] board;
+        private char nextPlayer;
 
         public TicTacToeGame()
         {
             board = new char[3, 3];
+            nextPlayer = 'X';
         }
 
         public void Play(int xCoord, int yCoord)
         {
-            board[xCoord, yCoord] = 'X';
+            board[xCoord, yCoord] = nextPlayer;
+
+            if(nextPlayer == 'X')
+            {
+                nextPlayer = 'O';
+            }
         }
 
         public char[,] GetBoard()

@@ -40,5 +40,18 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5
 
             AssertActualMatchesExpectedBoard();
         }
+
+        [TestMethod]
+        public void Mark_the_board_with_O_the_second_turn()
+        {
+            ExpectedBoard[0, 0] = 'X';
+            ExpectedBoard[0, 1] = 'O';
+
+
+            UnderTest.Play(0, 0);
+            UnderTest.Play(0, 1);
+
+            AssertActualMatchesExpectedBoard();
+        }
     }
 }
