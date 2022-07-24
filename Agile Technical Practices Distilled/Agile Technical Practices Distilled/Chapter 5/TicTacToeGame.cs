@@ -26,7 +26,7 @@
 
         private void ValidateMove(BoardPosition position)
         {
-            if (position.XCoordinate > 2 || position.YCoordinate > 2)
+            if (position.XCoordinate < 0 || position.XCoordinate > 2 || position.YCoordinate < 0 || position.YCoordinate > 2)
             {
                 throw new InvalidMoveException($"Position {position.XCoordinate},{position.YCoordinate} is not valid.");
             }

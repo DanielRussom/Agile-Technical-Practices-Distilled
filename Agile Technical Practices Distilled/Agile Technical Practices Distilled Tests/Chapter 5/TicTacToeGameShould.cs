@@ -85,9 +85,11 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5
         }
 
         [TestMethod]
-        public void Not_allow_3_3_to_be_played()
+        [DataRow(3, 3)]
+        [DataRow(-1, -1)]
+        public void Not_allow_out_of_bounds_positions_to_be_played(int xCoord, int yCoord)
         {
-            Assert.ThrowsException<InvalidMoveException>(() => UnderTest.Play(new BoardPosition { XCoordinate = 3, YCoordinate = 3 }));
+            Assert.ThrowsException<InvalidMoveException>(() => UnderTest.Play(new BoardPosition { XCoordinate = xCoord, YCoordinate = yCoord }));
             AssertActualMatchesExpectedBoard();
         }
     }
