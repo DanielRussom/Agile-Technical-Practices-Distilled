@@ -2,27 +2,29 @@
 {
     public class TicTacToeGame
     {
-        private char[,] board;
-        private char nextPlayer;
+        private readonly char[,] board;
+        private List<char> playerList;
+        private int turnNumber;
 
         public TicTacToeGame()
         {
             board = new char[3, 3];
-            nextPlayer = 'X';
+            playerList = new List<char> { 'X', 'O' };
+            turnNumber = 0;
         }
 
         public void Play(int xCoord, int yCoord)
         {
+            var nextPlayer = GetNextPlayer();
+
             board[xCoord, yCoord] = nextPlayer;
 
-            if(nextPlayer == 'X')
-            {
-                nextPlayer = 'O';
-            } 
-            else if (nextPlayer == 'O')
-            {
-                nextPlayer = 'X';
-            }
+            turnNumber++;
+        }
+
+        private char GetNextPlayer()
+        {
+            return playerList[turnNumber % 2];
         }
 
         public char[,] GetBoard()
