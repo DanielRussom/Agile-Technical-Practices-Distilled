@@ -70,5 +70,16 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5
 
             AssertActualMatchesExpectedBoard();
         }
+
+        [TestMethod]
+        public void Not_allow_the_same_position_to_be_played_twice()
+        {
+            ExpectedBoard[0, 0] = 'X';
+
+            UnderTest.Play(0, 0);
+
+            Assert.ThrowsException<InvalidMoveException>(() => UnderTest.Play(0, 0));
+            AssertActualMatchesExpectedBoard();
+        }
     }
 }

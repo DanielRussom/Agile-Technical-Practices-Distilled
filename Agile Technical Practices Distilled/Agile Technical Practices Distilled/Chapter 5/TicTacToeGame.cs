@@ -15,6 +15,11 @@
 
         public void Play(int xCoord, int yCoord)
         {
+            if(board[xCoord, yCoord] != default)
+            {
+                throw new InvalidMoveException($"Position {xCoord},{yCoord} has already been played.");
+            }
+
             var nextPlayer = GetNextPlayer();
 
             board[xCoord, yCoord] = nextPlayer;
