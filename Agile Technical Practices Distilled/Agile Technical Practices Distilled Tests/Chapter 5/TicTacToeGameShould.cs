@@ -72,13 +72,22 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5
         }
 
         [TestMethod]
-        public void Not_allow_the_same_position_to_be_played_twice()
+        [DataRow(0, 0)]
+        [DataRow(1, 2)]
+        public void Not_allow_the_same_position_to_be_played_twice(int xCoord, int yCoord)
         {
-            ExpectedBoard[0, 0] = 'X';
+            ExpectedBoard[xCoord, yCoord] = 'X';
 
-            UnderTest.Play(0, 0);
+            UnderTest.Play(xCoord, yCoord);
 
-            Assert.ThrowsException<InvalidMoveException>(() => UnderTest.Play(0, 0));
+            Assert.ThrowsException<InvalidMoveException>(() => UnderTest.Play(xCoord, yCoord));
+            AssertActualMatchesExpectedBoard();
+        }
+
+        [TestMethod]
+        public void Not_allow_3_3_to_be_played()
+        {
+            Assert.ThrowsException<InvalidMoveException>(() => UnderTest.Play(3, 3));
             AssertActualMatchesExpectedBoard();
         }
     }

@@ -15,6 +15,11 @@
 
         public void Play(int xCoord, int yCoord)
         {
+            if(xCoord > 2 || yCoord > 2)
+            {
+                throw new InvalidMoveException($"Position {xCoord},{yCoord} is not valid.");
+            }
+
             if(board[xCoord, yCoord] != default)
             {
                 throw new InvalidMoveException($"Position {xCoord},{yCoord} has already been played.");
