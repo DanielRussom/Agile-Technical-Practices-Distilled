@@ -18,6 +18,10 @@
             if(nextPlayer == 'X')
             {
                 nextPlayer = 'O';
+            } 
+            else if (nextPlayer == 'O')
+            {
+                nextPlayer = 'X';
             }
         }
 

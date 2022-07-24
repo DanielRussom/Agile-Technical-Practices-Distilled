@@ -42,14 +42,37 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5
         }
 
         [TestMethod]
-        public void Mark_the_board_with_O_the_second_turn()
+        [DataRow(0, 1)]
+        [DataRow(2, 0)]
+        public void Mark_the_board_with_O_the_second_turn(int xCoord, int yCoord)
         {
             ExpectedBoard[0, 0] = 'X';
-            ExpectedBoard[0, 1] = 'O';
+            ExpectedBoard[xCoord, yCoord] = 'O';
 
 
             UnderTest.Play(0, 0);
-            UnderTest.Play(0, 1);
+            UnderTest.Play(xCoord, yCoord);
+
+            AssertActualMatchesExpectedBoard();
+        }
+
+        [TestMethod]
+        public void Iterate_between_X_and_O_for_each_turn()
+        {
+
+            ExpectedBoard[0, 0] = 'X';
+            ExpectedBoard[0, 1] = 'O';
+            ExpectedBoard[1, 0] = 'X';
+            ExpectedBoard[1, 1] = 'O';
+
+
+            for (int x = 0; x < 2; x++)
+            {
+                for(int y = 0; y < 2; y++)
+                {
+                    UnderTest.Play(x, y);
+                }
+            }
 
             AssertActualMatchesExpectedBoard();
         }
