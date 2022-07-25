@@ -21,15 +21,7 @@
 
             board[position.XCoordinate, position.YCoordinate] = currentPlayer;
 
-            var hasWon = true;
-
-            for (int i = 0; i < 3; i++)
-            {
-                if(board[i, position.YCoordinate] != currentPlayer)
-                {
-                    hasWon = false;
-                }
-            }
+            var hasWon = CheckWinConditions(position, currentPlayer);
 
             if (hasWon)
             {
@@ -40,6 +32,29 @@
             turnNumber++;
 
             return string.Empty;
+        }
+
+        private bool CheckWinConditions(BoardPosition position, char currentPlayer)
+        {
+            var hasVerticalWon = true;
+            var hasHorizontalWon = true;
+            for (int i = 0; i < 3; i++)
+            {
+                if (board[position.XCoordinate, i] != currentPlayer)
+                {
+                    hasVerticalWon = false;
+                }
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (board[i, position.YCoordinate] != currentPlayer)
+                {
+                    hasHorizontalWon = false;
+                }
+            }
+
+            return hasVerticalWon || hasHorizontalWon;
         }
 
         private void ValidateMove(BoardPosition position)
