@@ -13,15 +13,33 @@
             turnNumber = 0;
         }
 
-        public void Play(BoardPosition position)
+        public string Play(BoardPosition position)
         {
             ValidateMove(position);
 
-            var nextPlayer = GetNextPlayer();
+            var currentPlayer = GetCurrentPlayer();
 
-            board[position.XCoordinate, position.YCoordinate] = nextPlayer;
+            board[position.XCoordinate, position.YCoordinate] = currentPlayer;
+
+            var hasWon = true;
+
+            for (int i = 0; i < 3; i++)
+            {
+                if(board[i, position.YCoordinate] != currentPlayer)
+                {
+                    hasWon = false;
+                }
+            }
+
+            if (hasWon)
+            {
+                return $"Player {currentPlayer} wins!";
+            }
+
 
             turnNumber++;
+
+            return string.Empty;
         }
 
         private void ValidateMove(BoardPosition position)
@@ -37,7 +55,7 @@
             }
         }
 
-        private char GetNextPlayer()
+        private char GetCurrentPlayer()
         {
             return playerList[turnNumber % 2];
         }

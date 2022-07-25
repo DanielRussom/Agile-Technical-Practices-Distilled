@@ -92,5 +92,17 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5
             Assert.ThrowsException<InvalidMoveException>(() => UnderTest.Play(new BoardPosition { XCoordinate = xCoord, YCoordinate = yCoord }));
             AssertActualMatchesExpectedBoard();
         }
+
+        [TestMethod]
+        public void Win_the_game_for_a_horizontal_X_line()
+        {
+            UnderTest.Play(new BoardPosition { XCoordinate = 0, YCoordinate = 0 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 0, YCoordinate = 1 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 1, YCoordinate = 0 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 1, YCoordinate = 1 });
+            var result = UnderTest.Play(new BoardPosition { XCoordinate = 2, YCoordinate = 0 });
+
+            Assert.AreEqual("Player X wins!", result);
+        }
     }
 }
