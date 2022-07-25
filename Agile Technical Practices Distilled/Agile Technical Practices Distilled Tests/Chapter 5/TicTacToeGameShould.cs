@@ -104,5 +104,18 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5
 
             Assert.AreEqual("Player X wins!", result);
         }
+
+        [TestMethod]
+        public void Win_the_game_for_a_horizontal_O_line()
+        {
+            UnderTest.Play(new BoardPosition { XCoordinate = 0, YCoordinate = 0 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 0, YCoordinate = 2 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 1, YCoordinate = 1 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 1, YCoordinate = 2 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 1, YCoordinate = 0 });
+            var result = UnderTest.Play(new BoardPosition { XCoordinate = 2, YCoordinate = 2 });
+
+            Assert.AreEqual("Player O wins!", result);
+        }
     }
 }
