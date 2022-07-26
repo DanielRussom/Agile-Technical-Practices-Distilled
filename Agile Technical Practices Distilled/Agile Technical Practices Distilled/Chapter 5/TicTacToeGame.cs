@@ -13,6 +13,11 @@
             turnNumber = 0;
         }
 
+        public char[,] GetBoard()
+        {
+            return board;
+        }
+
         public string Play(BoardPosition position)
         {
             ValidateMove(position);
@@ -34,29 +39,6 @@
             return string.Empty;
         }
 
-        private bool CheckWinConditions(BoardPosition position, char currentPlayer)
-        {
-            var hasVerticalWon = true;
-            var hasHorizontalWon = true;
-            for (int i = 0; i < 3; i++)
-            {
-                if (board[position.XCoordinate, i] != currentPlayer)
-                {
-                    hasVerticalWon = false;
-                }
-            }
-
-            for (int i = 0; i < 3; i++)
-            {
-                if (board[i, position.YCoordinate] != currentPlayer)
-                {
-                    hasHorizontalWon = false;
-                }
-            }
-
-            return hasVerticalWon || hasHorizontalWon;
-        }
-
         private void ValidateMove(BoardPosition position)
         {
             if (position.XCoordinate < 0 || position.XCoordinate > 2 || position.YCoordinate < 0 || position.YCoordinate > 2)
@@ -75,9 +57,33 @@
             return playerList[turnNumber % 2];
         }
 
-        public char[,] GetBoard()
+        private bool CheckWinConditions(BoardPosition position, char currentPlayer)
         {
-            return board;
+            var hasVerticalWon = true;
+            var hasHorizontalWon = true;
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (board[position.XCoordinate, i] != currentPlayer)
+                {
+                    hasVerticalWon = false;
+                }
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (board[i, position.YCoordinate] != currentPlayer)
+                {
+                    hasHorizontalWon = false;
+                }
+            }
+
+            if(board[0, 0] == currentPlayer && board[1, 1] == currentPlayer && board[2, 2] == currentPlayer)
+            {
+                return true;
+            }
+
+            return hasVerticalWon || hasHorizontalWon;
         }
     }
 }
