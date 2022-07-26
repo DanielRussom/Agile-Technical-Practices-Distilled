@@ -83,6 +83,11 @@
                 return true;
             }
 
+            if (board[2, 0] == currentPlayer && board[1, 1] == currentPlayer && board[0, 2] == currentPlayer)
+            {
+                return true;
+            }
+
             return hasVerticalWon || hasHorizontalWon;
         }
     }
