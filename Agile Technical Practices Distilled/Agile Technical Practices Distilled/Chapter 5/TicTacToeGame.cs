@@ -5,6 +5,7 @@
         private readonly char[,] board;
         private List<char> playerList;
         private int turnNumber;
+        private bool isGameComplete;
 
         private const int BOARD_SIZE = 3;
 
@@ -13,6 +14,7 @@
             board = new char[BOARD_SIZE, BOARD_SIZE];
             playerList = new List<char> { 'X', 'O' };
             turnNumber = 0;
+            isGameComplete = false;
         }
 
         public char[,] GetBoard()
@@ -32,6 +34,7 @@
 
             if (hasWon)
             {
+                isGameComplete = true;
                 return $"Player {currentPlayer} wins!";
             }
 
@@ -39,6 +42,7 @@
 
             if(turnNumber >= BOARD_SIZE * BOARD_SIZE)
             {
+                isGameComplete = true;
                 return $"It's a draw!";
             }
 
@@ -47,6 +51,11 @@
 
         private void ValidateMove(BoardPosition position)
         {
+            if (isGameComplete)
+            {
+                throw new InvalidMoveException($"Game is already over.");
+            }
+
             if (CoordinateOutOfRange(position.XCoordinate) || CoordinateOutOfRange(position.YCoordinate))
             {
                 throw new InvalidMoveException($"Position {position.XCoordinate},{position.YCoordinate} is not valid.");

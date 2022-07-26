@@ -176,5 +176,17 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5
             Assert.AreEqual("It's a draw!", result); 
             AssertActualMatchesExpectedBoard();
         }
+
+        [TestMethod]
+        public void Prevent_moves_after_game_has_been_won()
+        {
+            UnderTest.Play(new BoardPosition { XCoordinate = 0, YCoordinate = 0 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 0, YCoordinate = 1 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 1, YCoordinate = 0 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 1, YCoordinate = 1 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 2, YCoordinate = 0 });
+            
+            Assert.ThrowsException<InvalidMoveException>(() => UnderTest.Play(new BoardPosition { XCoordinate = 2, YCoordinate = 2 }));
+        }
     }
 }
