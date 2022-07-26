@@ -6,9 +6,11 @@
         private List<char> playerList;
         private int turnNumber;
 
+        private const int BOARD_SIZE = 3;
+
         public TicTacToeGame()
         {
-            board = new char[3, 3];
+            board = new char[BOARD_SIZE, BOARD_SIZE];
             playerList = new List<char> { 'X', 'O' };
             turnNumber = 0;
         }
@@ -35,7 +37,7 @@
 
             turnNumber++;
 
-            if(turnNumber > 8)
+            if(turnNumber >= BOARD_SIZE * BOARD_SIZE)
             {
                 return $"It's a draw!";
             }
@@ -45,7 +47,7 @@
 
         private void ValidateMove(BoardPosition position)
         {
-            if (position.XCoordinate < 0 || position.XCoordinate > 2 || position.YCoordinate < 0 || position.YCoordinate > 2)
+            if (CoordinateOutOfRange(position.XCoordinate) || CoordinateOutOfRange(position.YCoordinate))
             {
                 throw new InvalidMoveException($"Position {position.XCoordinate},{position.YCoordinate} is not valid.");
             }
@@ -56,12 +58,32 @@
             }
         }
 
+        private static bool CoordinateOutOfRange(int coord)
+        {
+            return coord < 0 || coord > 2;
+        }
+
         private char GetCurrentPlayer()
         {
             return playerList[turnNumber % 2];
         }
 
         private bool CheckWinConditions(BoardPosition position, char currentPlayer)
+        {
+            if (board[0, 0] == currentPlayer && board[1, 1] == currentPlayer && board[2, 2] == currentPlayer)
+            {
+                return true;
+            }
+
+            if (board[2, 0] == currentPlayer && board[1, 1] == currentPlayer && board[0, 2] == currentPlayer)
+            {
+                return true;
+            }
+
+            return CheckHorizontalAndVerticalWinConditions(position, currentPlayer);
+        }
+
+        private bool CheckHorizontalAndVerticalWinConditions(BoardPosition position, char currentPlayer)
         {
             var hasVerticalWon = true;
             var hasHorizontalWon = true;
@@ -72,24 +94,11 @@
                 {
                     hasVerticalWon = false;
                 }
-            }
 
-            for (int i = 0; i < 3; i++)
-            {
                 if (board[i, position.YCoordinate] != currentPlayer)
                 {
                     hasHorizontalWon = false;
                 }
-            }
-
-            if(board[0, 0] == currentPlayer && board[1, 1] == currentPlayer && board[2, 2] == currentPlayer)
-            {
-                return true;
-            }
-
-            if (board[2, 0] == currentPlayer && board[1, 1] == currentPlayer && board[0, 2] == currentPlayer)
-            {
-                return true;
             }
 
             return hasVerticalWon || hasHorizontalWon;
