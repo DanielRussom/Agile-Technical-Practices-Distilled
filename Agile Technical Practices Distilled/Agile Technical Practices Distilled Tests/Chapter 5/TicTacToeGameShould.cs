@@ -153,5 +153,28 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5
 
             Assert.AreEqual("Player X wins!", result);
         }
+
+        [TestMethod]
+        public void Draw_the_game_when_all_spaces_are_filled_and_there_are_no_winners()
+        {
+            ExpectedBoard = new char[3, 3] {   
+                { 'X', 'O', 'X' },
+                { 'O', 'X', 'X' },
+                { 'O', 'X', 'O' }
+            };
+
+            UnderTest.Play(new BoardPosition { XCoordinate = 0, YCoordinate = 0 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 0, YCoordinate = 1 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 0, YCoordinate = 2 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 1, YCoordinate = 0 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 1, YCoordinate = 1 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 2, YCoordinate = 0 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 1, YCoordinate = 2 });
+            UnderTest.Play(new BoardPosition { XCoordinate = 2, YCoordinate = 2 });
+            var result = UnderTest.Play(new BoardPosition { XCoordinate = 2, YCoordinate = 1 });
+
+            Assert.AreEqual("It's a draw!", result); 
+            AssertActualMatchesExpectedBoard();
+        }
     }
 }

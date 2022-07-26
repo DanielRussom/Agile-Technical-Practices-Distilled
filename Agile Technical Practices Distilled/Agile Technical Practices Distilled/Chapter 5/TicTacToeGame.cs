@@ -33,8 +33,12 @@
                 return $"Player {currentPlayer} wins!";
             }
 
-
             turnNumber++;
+
+            if(turnNumber > 8)
+            {
+                return $"It's a draw!";
+            }
 
             return string.Empty;
         }
