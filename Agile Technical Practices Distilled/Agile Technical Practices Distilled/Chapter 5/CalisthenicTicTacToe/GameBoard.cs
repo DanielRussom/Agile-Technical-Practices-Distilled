@@ -22,15 +22,20 @@
                 return false;
             }
 
+            return GetEqualityOfRows(toCompare);
+        }
+
+        private bool GetEqualityOfRows(List<List<char>> toCompare)
+        {
+            var rowEquality = new List<bool>();
 
             for (int row = 0; row < BoardPositions.Count; row++)
             {
-                if (!BoardPositions[row].SequenceEqual(toCompare[row])){
-                    return false;
-                }
+                var areRowsEqual = BoardPositions[row].SequenceEqual(toCompare[row]);
+                rowEquality.Add(areRowsEqual);
             }
 
-            return true;
+            return rowEquality.All(x => x == true);
         }
     }
 }
