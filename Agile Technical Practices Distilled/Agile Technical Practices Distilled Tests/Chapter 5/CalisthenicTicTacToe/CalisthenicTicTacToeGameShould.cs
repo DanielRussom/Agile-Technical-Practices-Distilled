@@ -7,18 +7,24 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.CalisthenicTicTacT
     [TestClass]
     public class CalisthenicTicTacToeGameShould
     {
-        [TestMethod]
-        public void Start_with_an_empty_board()
+        private List<List<char>> ExpectedBoard;
+        private CalisthenicTicTacToeGame UnderTest;
+
+        public CalisthenicTicTacToeGameShould()
         {
-            var UnderTest = new CalisthenicTicTacToeGame();
-            var expectedBoard = new List<List<char>>
+            UnderTest = new CalisthenicTicTacToeGame();
+            ExpectedBoard = new List<List<char>>
             {
                 new List<char>{' ', ' ', ' '},
                 new List<char>{' ', ' ', ' '},
                 new List<char>{' ', ' ', ' '}
             };
+        }
 
-            var result = UnderTest.IsBoardEqualTo(expectedBoard);
+        [TestMethod]
+        public void Start_with_an_empty_board()
+        {
+            var result = UnderTest.IsBoardEqualTo(ExpectedBoard);
             Assert.IsTrue(result);
         }
 
@@ -26,16 +32,11 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.CalisthenicTicTacT
         public void Set_X_at_position_0_0()
         {
             var UnderTest = new CalisthenicTicTacToeGame();
-            var expectedBoard = new List<List<char>>
-            {
-                new List<char>{'X', ' ', ' '},
-                new List<char>{' ', ' ', ' '},
-                new List<char>{' ', ' ', ' '}
-            };
+            ExpectedBoard[0][0] = 'X';
 
-            UnderTest.Play(0, 0);
+            UnderTest.Play(new BoardPosition { X = 0, Y = 0 });
 
-            var result = UnderTest.IsBoardEqualTo(expectedBoard);
+            var result = UnderTest.IsBoardEqualTo(ExpectedBoard);
             Assert.IsTrue(result);
         }
     }

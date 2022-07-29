@@ -7,15 +7,21 @@
         public GameBoard()
         {
             BoardPositions = new List<List<char>>
-            {   GetEmptyRow(),
-                GetEmptyRow(),
-                GetEmptyRow()
+            {   
+                new List<char> { ' ', ' ', ' ' },
+                new List<char> { ' ', ' ', ' ' },
+                new List<char> { ' ', ' ', ' ' }
             };
         }
 
         private static List<char> GetEmptyRow()
         {
-            return new List<char> { ' ', ' ', ' ' };
+            return 
+        }
+
+        internal void SetMove(BoardPosition position)
+        {
+            BoardPositions[position.X][position.Y] = 'X';
         }
 
         public bool Equals(List<List<char>> toCompare)
@@ -26,11 +32,6 @@
             }
 
             return GetEqualityOfRows(toCompare);
-        }
-
-        internal void SetMove(int x, int y)
-        {
-            BoardPositions[x][y] = 'X';
         }
 
         private bool GetEqualityOfRows(List<List<char>> toCompare)

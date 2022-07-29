@@ -14,9 +14,9 @@
             return Board.Equals(toCompare);
         }
 
-        public void Play(int x, int y)
+        public void Play(BoardPosition position)
         {
-            Board.SetMove(x, y);
+            Board.SetMove(position);
         }
     }
 }
