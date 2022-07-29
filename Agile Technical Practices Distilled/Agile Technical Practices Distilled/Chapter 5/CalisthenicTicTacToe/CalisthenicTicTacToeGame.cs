@@ -13,5 +13,10 @@
         {
             return Board.Equals(toCompare);
         }
+
+        public void Play(int x, int y)
+        {
+            Board.SetMove(x, y);
+        }
     }
 }
