@@ -14,11 +14,6 @@
             };
         }
 
-        private static List<char> GetEmptyRow()
-        {
-            return 
-        }
-
         internal void SetMove(BoardPosition position)
         {
             BoardPositions[position.X][position.Y] = 'X';

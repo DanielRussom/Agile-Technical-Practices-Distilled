@@ -29,12 +29,15 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.CalisthenicTicTacT
         }
 
         [TestMethod]
-        public void Set_X_at_position_0_0()
+        [DataRow(0, 0)]
+        [DataRow(1, 2)]
+        [DataRow(2, 2)]
+        public void Set_X_at_expected_position(int x, int y)
         {
             var UnderTest = new CalisthenicTicTacToeGame();
-            ExpectedBoard[0][0] = 'X';
+            ExpectedBoard[x][y] = 'X';
 
-            UnderTest.Play(new BoardPosition { X = 0, Y = 0 });
+            UnderTest.Play(new BoardPosition { X = x, Y = y });
 
             var result = UnderTest.IsBoardEqualTo(ExpectedBoard);
             Assert.IsTrue(result);
