@@ -3,6 +3,7 @@
     public class CalisthenicTicTacToeGame
     {
         private GameBoard Board;
+        private int TurnNumber;
 
         public CalisthenicTicTacToeGame()
         {
@@ -16,7 +17,21 @@
 
         public void Play(BoardPosition position)
         {
+            position.Player = GetPlayer();
+
             Board.SetMove(position);
+
+            TurnNumber++;
+        }
+
+        private char GetPlayer()
+        {
+            if (TurnNumber % 2 == 1)
+            {
+                return 'O';
+            }
+
+            return 'X';
         }
     }
 }

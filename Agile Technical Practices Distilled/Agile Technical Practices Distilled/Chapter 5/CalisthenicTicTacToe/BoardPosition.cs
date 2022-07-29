@@ -5,5 +5,7 @@
         public int X;
 
         public int Y;
+
+        public char Player;
     }
 }

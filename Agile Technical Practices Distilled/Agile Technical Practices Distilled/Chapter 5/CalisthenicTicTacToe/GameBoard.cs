@@ -3,7 +3,6 @@
     public class GameBoard
     {
         private List<List<char>> BoardPositions;
-        private int TurnNumber;
 
         public GameBoard()
         {
@@ -17,16 +16,7 @@
 
         internal void SetMove(BoardPosition position)
         {
-            var nextPlayer = 'X';
-
-            if(TurnNumber % 2 == 1)
-            {
-                nextPlayer = 'O';
-            }
-
-            BoardPositions[position.X][position.Y] = nextPlayer;
-
-            TurnNumber++;
+            BoardPositions[position.X][position.Y] = position.Player;
         }
 
         public bool Equals(List<List<char>> toCompare)
