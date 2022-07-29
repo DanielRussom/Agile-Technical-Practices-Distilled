@@ -2,9 +2,9 @@
 {
     public class BoardPosition
     {
-        public int X;
+        public int XPosition;
 
-        public int Y;
+        public int YPosition;
 
         public char Player;
     }

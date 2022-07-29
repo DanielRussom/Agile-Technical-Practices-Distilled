@@ -16,7 +16,7 @@
 
         internal void SetMove(BoardPosition position)
         {
-            BoardPositions[position.X][position.Y] = position.Player;
+            BoardPositions[position.XPosition][position.YPosition] = position.Player;
         }
 
         public bool Equals(List<List<char>> toCompare)
