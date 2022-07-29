@@ -48,7 +48,6 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.CalisthenicTicTacT
         [DataRow(0, 1)]
         public void Set_O_on_the_second_turn(int x, int y)
         {
-            var UnderTest = new CalisthenicTicTacToeGame();
             ExpectedBoard[0][0] = 'X';
             ExpectedBoard[x][y] = 'O';
 
@@ -57,6 +56,17 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.CalisthenicTicTacT
 
             var result = UnderTest.IsBoardEqualTo(ExpectedBoard);
             Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void Not_allow_the_same_position_to_be_played_twice()
+        {
+            ExpectedBoard[0][0] = 'X';
+
+            UnderTest.Play(new BoardPosition { XPosition = 0, YPosition = 0 });
+            
+            Assert.ThrowsException<InvalidMoveException>(() => UnderTest.Play(new BoardPosition { XPosition = 0, YPosition = 0 }));
+            Assert.IsTrue(UnderTest.IsBoardEqualTo(ExpectedBoard));
         }
     }
 }

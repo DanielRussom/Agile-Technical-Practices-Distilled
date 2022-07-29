@@ -16,6 +16,11 @@
 
         internal void SetMove(BoardPosition position)
         {
+            if(BoardPositions[position.XPosition][position.YPosition] != ' ')
+            {
+                throw new InvalidMoveException($"Position {position.XPosition},{position.YPosition} has already been played.");
+            }
+
             BoardPositions[position.XPosition][position.YPosition] = position.Player;
         }
 
