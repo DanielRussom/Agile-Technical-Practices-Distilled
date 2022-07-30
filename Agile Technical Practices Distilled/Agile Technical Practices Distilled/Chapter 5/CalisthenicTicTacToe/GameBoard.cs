@@ -3,6 +3,7 @@
     public class GameBoard
     {
         private List<List<char>> BoardPositions;
+        private bool IsGameOver;
 
         public GameBoard()
         {
@@ -22,6 +23,18 @@
             }
 
             BoardPositions[position.XPosition][position.YPosition] = position.Player;
+
+            SetWinState(position);
+        }
+
+        internal bool GetWinState(BoardPosition position)
+        {
+            if (BoardPositions[position.XPosition].All(x => x == position.Player))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public bool Equals(List<List<char>> toCompare)

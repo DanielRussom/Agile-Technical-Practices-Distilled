@@ -15,13 +15,20 @@
             return Board.Equals(toCompare);
         }
 
-        public void Play(BoardPosition position)
+        public string Play(BoardPosition position)
         {
             position.Player = GetPlayer();
 
             Board.SetMove(position);
 
             TurnNumber++;
+
+            if (Board.CheckWinState(position))
+            {
+                return $"Player {position.Player} wins!";
+            }
+
+            return string.Empty;
         }
 
         private char GetPlayer()
