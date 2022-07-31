@@ -23,11 +23,9 @@
             }
 
             BoardPositions[position.XPosition][position.YPosition] = position.Player;
-
-            SetWinState(position);
         }
 
-        internal bool GetWinState(BoardPosition position)
+        internal bool CheckWinState(BoardPosition position)
         {
             if (BoardPositions[position.XPosition].All(x => x == position.Player))
             {
