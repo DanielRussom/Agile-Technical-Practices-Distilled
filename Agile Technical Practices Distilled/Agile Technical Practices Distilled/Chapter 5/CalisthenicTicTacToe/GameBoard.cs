@@ -3,7 +3,6 @@
     public class GameBoard
     {
         private List<List<char>> BoardPositions;
-        private bool IsGameOver;
 
         public GameBoard()
         {

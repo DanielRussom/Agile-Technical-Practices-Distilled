@@ -43,7 +43,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.CalisthenicTicTacT
 
             var result = UnderTest.Play(new BoardPosition { XPosition = x, YPosition = y });
 
-            Assert.AreEqual(string.Empty, result);
+            Assert.AreEqual(string.Empty, result.Message);
             AssertExpectedBoardIsCorrect();
         }
 
@@ -59,7 +59,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.CalisthenicTicTacT
             UnderTest.Play(new BoardPosition { XPosition = 0, YPosition = 0 });
             var result = UnderTest.Play(new BoardPosition { XPosition = x, YPosition = y });
 
-            Assert.AreEqual(string.Empty, result);
+            Assert.AreEqual(string.Empty, result.Message);
             AssertExpectedBoardIsCorrect();
         }
 
@@ -82,7 +82,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.CalisthenicTicTacT
             UnderTest.Play(new BoardPosition { XPosition = 0, YPosition = 1 });
             UnderTest.Play(new BoardPosition { XPosition = 2, YPosition = 2 });
             var result = UnderTest.Play(new BoardPosition { XPosition = 0, YPosition = 2 });
-            Assert.AreEqual("Player X wins!", result);
+            Assert.AreEqual("Player X wins!", result.Message);
         }
     }
 }

@@ -15,8 +15,10 @@
             return Board.Equals(toCompare);
         }
 
-        public string Play(BoardPosition position)
+        public GameResult Play(BoardPosition position)
         {
+            var returnMessage = string.Empty;
+
             position.Player = GetPlayer();
 
             Board.SetMove(position);
@@ -25,10 +27,10 @@
 
             if (Board.CheckWinState(position))
             {
-                return $"Player {position.Player} wins!";
+                returnMessage = $"Player {position.Player} wins!";
             }
 
-            return string.Empty;
+            return new GameResult(returnMessage);
         }
 
         private char GetPlayer()
