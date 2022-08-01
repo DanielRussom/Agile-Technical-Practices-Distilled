@@ -31,9 +31,14 @@
                 return true;
             }
 
-            var isRowMatched = CheckRowMatches(position);
+            if (CheckRowMatches(position))
+            {
+                return true;
+            }
 
-            return isRowMatched;
+            var isDiagonalMatched = CheckDiagonalMatches(position);
+
+            return isDiagonalMatched;
         }
 
         private bool CheckRowMatches(BoardPosition position)
@@ -46,6 +51,18 @@
             };
 
             return verticalRow.All(x => x == position.Player);
+        }
+
+        private bool CheckDiagonalMatches(BoardPosition position)
+        {
+            var diagonal = new List<char> {
+                BoardPositions[0][0],
+                BoardPositions[1][1],
+                BoardPositions[2][2]
+            };
+
+            return diagonal.All(x => x == position.Player);
+
         }
 
         public bool Equals(List<List<char>> toCompare)
