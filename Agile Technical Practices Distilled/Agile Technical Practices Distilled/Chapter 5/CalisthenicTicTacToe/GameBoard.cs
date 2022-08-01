@@ -31,12 +31,21 @@
                 return true;
             }
 
-            if(BoardPositions[0][position.YPosition] == position.Player && BoardPositions[1][position.YPosition] == position.Player && BoardPositions[2][position.YPosition] == position.Player)
-            {
-                return true;
-            }
+            var isRowMatched = CheckRowMatches(position);
 
-            return false;
+            return isRowMatched;
+        }
+
+        private bool CheckRowMatches(BoardPosition position)
+        {
+            var yCoord = position.YPosition;
+            var verticalRow = new List<char> { 
+                BoardPositions[0][yCoord], 
+                BoardPositions[1][yCoord], 
+                BoardPositions[2][yCoord] 
+            };
+
+            return verticalRow.All(x => x == position.Player);
         }
 
         public bool Equals(List<List<char>> toCompare)
