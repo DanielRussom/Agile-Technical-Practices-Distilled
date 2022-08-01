@@ -31,6 +31,11 @@
                 return true;
             }
 
+            if(BoardPositions[0][position.YPosition] == position.Player && BoardPositions[1][position.YPosition] == position.Player && BoardPositions[2][position.YPosition] == position.Player)
+            {
+                return true;
+            }
+
             return false;
         }
 
