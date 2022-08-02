@@ -25,7 +25,7 @@
 
             TurnNumber++;
 
-            if (Board.CheckWinState(position))
+            if (Board.CheckWinState())
             {
                 returnMessage = $"Player {position.Player} wins!";
             }

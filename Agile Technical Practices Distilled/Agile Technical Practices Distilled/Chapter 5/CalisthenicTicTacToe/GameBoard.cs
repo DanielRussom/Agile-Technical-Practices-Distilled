@@ -4,6 +4,8 @@
     {
         private List<List<char>> BoardPositions;
 
+        private BoardPosition LastMove;
+
         public GameBoard()
         {
             BoardPositions = new List<List<char>>
@@ -21,39 +23,46 @@
                 throw new InvalidMoveException($"Position {position.XPosition},{position.YPosition} has already been played.");
             }
 
-            BoardPositions[position.XPosition][position.YPosition] = position.Player;
+            LastMove = position;
+
+            BoardPositions[LastMove.XPosition][LastMove.YPosition] = LastMove.Player;
         }
 
-        internal bool CheckWinState(BoardPosition position)
+        internal bool CheckWinState()
         {
-            if (BoardPositions[position.XPosition].All(x => x == position.Player))
+            if (RowMatchesPlayer(BoardPositions[LastMove.XPosition]))
             {
                 return true;
             }
 
-            if (CheckRowMatches(position))
+            if (CheckYAxisMatches())
             {
                 return true;
             }
 
-            var isDiagonalMatched = CheckDiagonalMatches(position);
+            var isDiagonalMatched = CheckDiagonalMatches();
 
             return isDiagonalMatched;
         }
 
-        private bool CheckRowMatches(BoardPosition position)
+        private bool RowMatchesPlayer(List<char> row)
         {
-            var yCoord = position.YPosition;
+            return row.All(x => x == LastMove.Player);
+        }
+
+        private bool CheckYAxisMatches()
+        {
+            var yCoord = LastMove.YPosition;
             var verticalRow = new List<char> { 
                 BoardPositions[0][yCoord], 
                 BoardPositions[1][yCoord], 
                 BoardPositions[2][yCoord] 
             };
 
-            return verticalRow.All(x => x == position.Player);
+            return RowMatchesPlayer(verticalRow);
         }
 
-        private bool CheckDiagonalMatches(BoardPosition position)
+        private bool CheckDiagonalMatches()
         {
             var diagonalDown = new List<char> {
                 BoardPositions[0][0],
@@ -67,8 +76,7 @@
                 BoardPositions[0][2]
             };
 
-            return diagonalDown.All(x => x == position.Player) || diagonalUp.All(x => x == position.Player);
-
+            return RowMatchesPlayer(diagonalDown) || RowMatchesPlayer(diagonalUp);
         }
 
         public bool Equals(List<List<char>> toCompare)
