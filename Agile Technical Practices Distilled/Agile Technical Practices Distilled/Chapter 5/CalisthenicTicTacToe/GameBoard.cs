@@ -55,13 +55,19 @@
 
         private bool CheckDiagonalMatches(BoardPosition position)
         {
-            var diagonal = new List<char> {
+            var diagonalDown = new List<char> {
                 BoardPositions[0][0],
                 BoardPositions[1][1],
                 BoardPositions[2][2]
             };
 
-            return diagonal.All(x => x == position.Player);
+            var diagonalUp = new List<char> {
+                BoardPositions[2][0],
+                BoardPositions[1][1],
+                BoardPositions[0][2]
+            };
+
+            return diagonalDown.All(x => x == position.Player) || diagonalUp.All(x => x == position.Player);
 
         }
 

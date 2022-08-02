@@ -111,5 +111,17 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.CalisthenicTicTacT
 
             Assert.AreEqual("Player X wins!", result.Message);
         }
+
+        [TestMethod]
+        public void Win_the_game_for_a_diagonal_up_row()
+        {
+            UnderTest.Play(new BoardPosition { XPosition = 2, YPosition = 0 });
+            UnderTest.Play(new BoardPosition { XPosition = 0, YPosition = 1 });
+            UnderTest.Play(new BoardPosition { XPosition = 1, YPosition = 1 });
+            UnderTest.Play(new BoardPosition { XPosition = 2, YPosition = 1 });
+            var result = UnderTest.Play(new BoardPosition { XPosition = 0, YPosition = 2 });
+
+            Assert.AreEqual("Player X wins!", result.Message);
+        }
     }
 }
