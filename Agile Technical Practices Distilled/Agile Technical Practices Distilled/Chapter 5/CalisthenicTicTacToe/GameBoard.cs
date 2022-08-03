@@ -4,7 +4,7 @@
     {
         private List<List<char>> BoardPositions;
 
-        private BoardPosition LastMove;
+        private BoardPosition LastMove = new();
 
         public GameBoard()
         {
