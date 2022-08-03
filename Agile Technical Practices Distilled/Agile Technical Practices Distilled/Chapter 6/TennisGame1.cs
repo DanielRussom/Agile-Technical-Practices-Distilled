@@ -1,4 +1,4 @@
-namespace Tennis
+namespace Agile_Technical_Practices_Distilled.Chapter_6
 {
     public class TennisGame1 : ITennisGame
     {
@@ -16,7 +16,6 @@ namespace Tennis
         public string GetScore()
         {
             string score = "";
-            var tempScore = 0;
             if (m_score1 == m_score2)
             {
                 switch (m_score1)
@@ -48,8 +47,15 @@ namespace Tennis
             {
                 for (var i = 1; i < 3; i++)
                 {
-                    if (i == 1) tempScore = m_score1;
-                    else { score += "-"; tempScore = m_score2; }
+                    var tempScore = 0;
+
+                    if (i == 1) { 
+                        tempScore = m_score1; 
+                    } else { 
+                        score += "-"; 
+                        tempScore = m_score2; 
+                    }
+
                     switch (tempScore)
                     {
                         case 0:

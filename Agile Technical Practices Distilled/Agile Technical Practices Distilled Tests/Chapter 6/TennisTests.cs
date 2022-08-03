@@ -1,9 +1,10 @@
+using Agile_Technical_Practices_Distilled.Chapter_6;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Tennis.Tests
+namespace Agile_Technical_Practices_Distilled.Tests.Chapter_6
 {
     public class TestDataGenerator : IEnumerable<object[]>
     {
