@@ -23,26 +23,13 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             {
                 return GetTiedScore();
             }
-            
+
             if (EitherScoreIsAboveThree())
             {
                 return GetAdvantageScore();
             }
 
-            var score = String.Empty;
-            for (var i = 1; i < 3; i++)
-            {
-                var tempScore = player1Score;
-
-                if (i != 1)
-                {
-                    score += "-";
-                    tempScore = player2Score;
-                }
-
-                score += GetSinglePlayerScore(tempScore);
-            }
-            return score;
+            return GetMatchScore();
         }
 
         private bool IsScoreTied()
@@ -60,6 +47,23 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             var score = GetSinglePlayerScore(player1Score);
 
             return $"{score}-All";
+        }
+
+        private string GetSinglePlayerScore(int score)
+        {
+            switch (score)
+            {
+                case 0:
+                    return "Love";
+                case 1:
+                    return "Fifteen";
+                case 2:
+                    return "Thirty";
+                case 3:
+                    return "Forty";
+                default:
+                    return string.Empty;
+            }
         }
 
         private bool EitherScoreIsAboveThree()
@@ -85,21 +89,23 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             return $"Win for {playerInLead}";
         }
 
-        private string GetSinglePlayerScore(int score)
+        private string GetMatchScore()
         {
-            switch (score)
+            var score = String.Empty;
+            for (var i = 1; i < 3; i++)
             {
-                case 0:
-                    return "Love";
-                case 1:
-                    return "Fifteen";
-                case 2:
-                    return "Thirty";
-                case 3:
-                    return "Forty";
-                default:
-                    return string.Empty;
+                var tempScore = player1Score;
+
+                if (i != 1)
+                {
+                    score += "-";
+                    tempScore = player2Score;
+                }
+
+                score += GetSinglePlayerScore(tempScore);
             }
+
+            return score;
         }
     }
 }
