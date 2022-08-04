@@ -2,18 +2,18 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 {
     public class TennisGame1 : ITennisGame
     {
-        private int m_score1 = 0;
-        private int m_score2 = 0;
+        private int player1Score = 0;
+        private int player2Score = 0;
 
         public void WonPoint(string playerName)
         {
             if (playerName == "player1")
             {
-                m_score1 += 1;
+                player1Score += 1;
             }
             else
             {
-                m_score2 += 1;
+                player2Score += 1;
             }
         }
 
@@ -24,19 +24,19 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             {
                 return GetTiedScore();
             }
-            else if (m_score1 >= 4 || m_score2 >= 4)
+            else if (EitherScoreIsAboveThree())
             {
-                var minusResult = m_score1 - m_score2;
+                var scoreDifference = player1Score - player2Score;
 
-                if (minusResult == 1)
+                if (scoreDifference == 1)
                 {
                     score = "Advantage player1";
                 }
-                else if (minusResult == -1)
+                else if (scoreDifference == -1)
                 {
                     score = "Advantage player2";
                 }
-                else if (minusResult >= 2)
+                else if (scoreDifference >= 2)
                 {
                     score = "Win for player1";
                 }
@@ -50,12 +50,12 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             {
                 for (var i = 1; i < 3; i++)
                 {
-                    var tempScore = m_score1;
+                    var tempScore = player1Score;
 
                     if (i != 1)
                     {
                         score += "-";
-                        tempScore = m_score2;
+                        tempScore = player2Score;
                     }
 
                     switch (tempScore)
@@ -78,14 +78,19 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             return score;
         }
 
+        private bool EitherScoreIsAboveThree()
+        {
+            return player1Score >= 4 || player2Score >= 4;
+        }
+
         private bool IsScoreTied()
         {
-            return m_score1 == m_score2;
+            return player1Score == player2Score;
         }
 
         private string GetTiedScore()
         {
-            switch (m_score1)
+            switch (player1Score)
             {
                 case 0:
                     return "Love-All";
