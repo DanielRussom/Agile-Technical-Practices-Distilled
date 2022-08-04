@@ -19,45 +19,55 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
         public string GetScore()
         {
-            string score = String.Empty;
             if (IsScoreTied())
             {
                 return GetTiedScore();
             }
-            else if (EitherScoreIsAboveThree())
+            
+            if (EitherScoreIsAboveThree())
             {
                 return GetAdvantageScore();
             }
-            else
+
+            var score = String.Empty;
+            for (var i = 1; i < 3; i++)
             {
-                for (var i = 1; i < 3; i++)
+                var tempScore = player1Score;
+
+                if (i != 1)
                 {
-                    var tempScore = player1Score;
-
-                    if (i != 1)
-                    {
-                        score += "-";
-                        tempScore = player2Score;
-                    }
-
-                    switch (tempScore)
-                    {
-                        case 0:
-                            score += "Love";
-                            break;
-                        case 1:
-                            score += "Fifteen";
-                            break;
-                        case 2:
-                            score += "Thirty";
-                            break;
-                        case 3:
-                            score += "Forty";
-                            break;
-                    }
+                    score += "-";
+                    tempScore = player2Score;
                 }
+
+                score += GetSinglePlayerScore(tempScore);
             }
             return score;
+        }
+
+        private bool IsScoreTied()
+        {
+            return player1Score == player2Score;
+        }
+
+        private string GetTiedScore()
+        {
+            switch (player1Score)
+            {
+                case 0:
+                    return "Love-All";
+                case 1:
+                    return "Fifteen-All";
+                case 2:
+                    return "Thirty-All";
+                default:
+                    return "Deuce";
+            }
+        }
+
+        private bool EitherScoreIsAboveThree()
+        {
+            return player1Score >= 4 || player2Score >= 4;
         }
 
         private string GetAdvantageScore()
@@ -78,28 +88,20 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             return $"Win for {playerInLead}";
         }
 
-        private bool EitherScoreIsAboveThree()
+        private string GetSinglePlayerScore(int score)
         {
-            return player1Score >= 4 || player2Score >= 4;
-        }
-
-        private bool IsScoreTied()
-        {
-            return player1Score == player2Score;
-        }
-
-        private string GetTiedScore()
-        {
-            switch (player1Score)
+            switch (score)
             {
                 case 0:
-                    return "Love-All";
+                    return "Love";
                 case 1:
-                    return "Fifteen-All";
+                    return "Fifteen";
                 case 2:
-                    return "Thirty-All";
+                    return "Thirty";
+                case 3:
+                    return "Forty";
                 default:
-                    return "Deuce";
+                    return string.Empty;
             }
         }
     }
