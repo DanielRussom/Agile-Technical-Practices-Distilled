@@ -19,25 +19,10 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
         public string GetScore()
         {
-            string score = "";
-            if (m_score1 == m_score2)
+            string score = String.Empty;
+            if (IsScoreTied())
             {
-                switch (m_score1)
-                {
-                    case 0:
-                        score = "Love-All";
-                        break;
-                    case 1:
-                        score = "Fifteen-All";
-                        break;
-                    case 2:
-                        score = "Thirty-All";
-                        break;
-                    default:
-                        score = "Deuce";
-                        break;
-
-                }
+                return GetTiedScore();
             }
             else if (m_score1 >= 4 || m_score2 >= 4)
             {
@@ -59,7 +44,7 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
                 {
                     score = "Win for player2";
                 }
-                
+
             }
             else
             {
@@ -91,6 +76,26 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
                 }
             }
             return score;
+        }
+
+        private bool IsScoreTied()
+        {
+            return m_score1 == m_score2;
+        }
+
+        private string GetTiedScore()
+        {
+            switch (m_score1)
+            {
+                case 0:
+                    return "Love-All";
+                case 1:
+                    return "Fifteen-All";
+                case 2:
+                    return "Thirty-All";
+                default:
+                    return "Deuce";
+            }
         }
     }
 }
