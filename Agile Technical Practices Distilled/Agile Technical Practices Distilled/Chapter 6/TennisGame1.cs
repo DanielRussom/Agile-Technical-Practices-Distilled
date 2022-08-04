@@ -26,20 +26,7 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             }
             else if (EitherScoreIsAboveThree())
             {
-                var scoreDifference = Math.Abs(player1Score - player2Score);
-                var playerInLead = "player1";
-
-                if(player1Score < player2Score)
-                {
-                    playerInLead = "player2";
-                }
-
-                if (scoreDifference == 1)
-                {
-                    return $"Advantage {playerInLead}";
-                }
-
-                return $"Win for {playerInLead}";
+                return GetAdvantageScore();
             }
             else
             {
@@ -71,6 +58,24 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
                 }
             }
             return score;
+        }
+
+        private string GetAdvantageScore()
+        {
+            var scoreDifference = Math.Abs(player1Score - player2Score);
+            var playerInLead = "player1";
+
+            if (player1Score < player2Score)
+            {
+                playerInLead = "player2";
+            }
+
+            if (scoreDifference == 1)
+            {
+                return $"Advantage {playerInLead}";
+            }
+
+            return $"Win for {playerInLead}";
         }
 
         private bool EitherScoreIsAboveThree()
