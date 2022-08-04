@@ -52,17 +52,14 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
         private string GetTiedScore()
         {
-            switch (player1Score)
+            if (player1Score > 2)
             {
-                case 0:
-                    return "Love-All";
-                case 1:
-                    return "Fifteen-All";
-                case 2:
-                    return "Thirty-All";
-                default:
-                    return "Deuce";
+                return "Deuce";
             }
+
+            var score = GetSinglePlayerScore(player1Score);
+
+            return $"{score}-All";
         }
 
         private bool EitherScoreIsAboveThree()
