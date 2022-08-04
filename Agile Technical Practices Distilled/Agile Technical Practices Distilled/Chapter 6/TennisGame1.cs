@@ -91,21 +91,10 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
         private string GetMatchScore()
         {
-            var score = String.Empty;
-            for (var i = 1; i < 3; i++)
-            {
-                var tempScore = player1Score;
+            var player1ScoreMessage = GetSinglePlayerScore(player1Score);
+            var player2ScoreMessage = GetSinglePlayerScore(player2Score);
 
-                if (i != 1)
-                {
-                    score += "-";
-                    tempScore = player2Score;
-                }
-
-                score += GetSinglePlayerScore(tempScore);
-            }
-
-            return score;
+            return $"{player1ScoreMessage}-{player2ScoreMessage}";
         }
     }
 }
