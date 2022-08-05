@@ -10,29 +10,27 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
         public string GetScore()
         {
-            var score = string.Empty;
-
             if (playerOnePoints == playerTwoPoints && playerOnePoints < 3)
             {
-                score = GetScoreText(playerOnePoints);
+                var playerScoreText = GetScoreText(playerOnePoints);
 
-                score += "-All";
-                return score;
+                return $"{playerScoreText}-All";
             }
 
             if (playerOnePoints == playerTwoPoints && playerOnePoints > 2)
             {
-                score = "Deuce";
+                return "Deuce";
             }
 
-            if (playerOnePoints == 0 || playerTwoPoints == 0)
+            if (playerOnePoints < 4 && playerTwoPoints < 4)
             {
                 playerOneScoreText = GetScoreText(playerOnePoints);
                 playerTwoScoreText = GetScoreText(playerTwoPoints);
 
-                score = playerOneScoreText + "-" + playerTwoScoreText;
+                return $"{playerOneScoreText}-{playerTwoScoreText}";
             }
 
+            var score = string.Empty;
             if (playerOnePoints > playerTwoPoints && playerOnePoints < 4)
             {
                 if (playerOnePoints == 2)
