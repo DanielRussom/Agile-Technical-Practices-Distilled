@@ -31,54 +31,6 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             }
 
             var score = string.Empty;
-            if (playerOnePoints > playerTwoPoints && playerOnePoints < 4)
-            {
-                if (playerOnePoints == 2)
-                {
-                    playerOneScoreText = "Thirty";
-                }
-
-                if (playerOnePoints == 3)
-                {
-                    playerOneScoreText = "Forty";
-                }
-
-                if (playerTwoPoints == 1)
-                {
-                    playerTwoScoreText = "Fifteen";
-                }
-
-                if (playerTwoPoints == 2)
-                {
-                    playerTwoScoreText = "Thirty";
-                }
-
-                score = playerOneScoreText + "-" + playerTwoScoreText;
-            }
-
-            if (playerTwoPoints > playerOnePoints && playerTwoPoints < 4)
-            {
-                if (playerTwoPoints == 2)
-                {
-                    playerTwoScoreText = "Thirty";
-                }
-
-                if (playerTwoPoints == 3)
-                {
-                    playerTwoScoreText = "Forty";
-                }
-
-                if (playerOnePoints == 1)
-                {
-                    playerOneScoreText = "Fifteen";
-                }
-                if (playerOnePoints == 2)
-                {
-                    playerOneScoreText = "Thirty";
-                }
-
-                score = playerOneScoreText + "-" + playerTwoScoreText;
-            }
 
             if (playerOnePoints > playerTwoPoints && playerTwoPoints >= 3)
             {
