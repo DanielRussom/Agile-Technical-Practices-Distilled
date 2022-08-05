@@ -5,9 +5,12 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
         private int player1Score = 0;
         private int player2Score = 0;
 
+        private const string PlayerOneName = "player1";
+        private const string PlayerTwoName = "player2";
+
         public void WonPoint(string playerName)
         {
-            if (playerName == "player1")
+            if (playerName == PlayerOneName)
             {
                 player1Score += 1;
             }
@@ -79,11 +82,11 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
         private string GetAdvantageScore()
         {
             var scoreDifference = Math.Abs(player1Score - player2Score);
-            var playerInLead = "player1";
+            var playerInLead = PlayerOneName;
 
             if (player1Score < player2Score)
             {
-                playerInLead = "player2";
+                playerInLead = PlayerTwoName;
             }
 
             if (scoreDifference == 1)
