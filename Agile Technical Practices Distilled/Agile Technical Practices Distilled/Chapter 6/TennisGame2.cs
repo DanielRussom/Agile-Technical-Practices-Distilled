@@ -2,123 +2,123 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 {
     public class TennisGame2 : ITennisGame
     {
-        private int p1point = 0;
-        private int p2point = 0;
+        private int playerOnePoints = 0;
+        private int playerTwoPoints = 0;
 
-        private string p1res = string.Empty;
-        private string p2res = string.Empty;
+        private string playerOneScoreText = string.Empty;
+        private string playerTwoScoreText = string.Empty;
 
         public string GetScore()
         {
             var score = string.Empty;
 
-            if (p1point == p2point && p1point < 3)
+            if (playerOnePoints == playerTwoPoints && playerOnePoints < 3)
             {
-                score = GetScoreText(p1point);
+                score = GetScoreText(playerOnePoints);
 
                 score += "-All";
                 return score;
             }
 
-            if (p1point == p2point && p1point > 2)
+            if (playerOnePoints == playerTwoPoints && playerOnePoints > 2)
             {
                 score = "Deuce";
             }
 
-            if (p1point > 0 && p2point == 0)
+            if (playerOnePoints > 0 && playerTwoPoints == 0)
             {
-                p1res = GetScoreText(p1point);
+                playerOneScoreText = GetScoreText(playerOnePoints);
+                playerTwoScoreText = GetScoreText(playerTwoPoints);
 
-                p2res = "Love";
-                score = p1res + "-" + p2res;
+                score = playerOneScoreText + "-" + playerTwoScoreText;
             }
 
-            if (p2point > 0 && p1point == 0)
+            if (playerTwoPoints > 0 && playerOnePoints == 0)
             {
-                if (p2point == 1)
+                if (playerTwoPoints == 1)
                 {
-                    p2res = "Fifteen";
+                    playerTwoScoreText = "Fifteen";
                 }
 
-                if (p2point == 2)
+                if (playerTwoPoints == 2)
                 {
-                    p2res = "Thirty";
+                    playerTwoScoreText = "Thirty";
                 }
 
-                if (p2point == 3)
+                if (playerTwoPoints == 3)
                 {
-                    p2res = "Forty";
+                    playerTwoScoreText = "Forty";
                 }
 
-                p1res = "Love";
-                score = p1res + "-" + p2res;
+                playerOneScoreText = "Love";
+                score = playerOneScoreText + "-" + playerTwoScoreText;
             }
 
-            if (p1point > p2point && p1point < 4)
+            if (playerOnePoints > playerTwoPoints && playerOnePoints < 4)
             {
-                if (p1point == 2)
+                if (playerOnePoints == 2)
                 {
-                    p1res = "Thirty";
+                    playerOneScoreText = "Thirty";
                 }
 
-                if (p1point == 3)
+                if (playerOnePoints == 3)
                 {
-                    p1res = "Forty";
+                    playerOneScoreText = "Forty";
                 }
 
-                if (p2point == 1)
+                if (playerTwoPoints == 1)
                 {
-                    p2res = "Fifteen";
+                    playerTwoScoreText = "Fifteen";
                 }
 
-                if (p2point == 2)
+                if (playerTwoPoints == 2)
                 {
-                    p2res = "Thirty";
+                    playerTwoScoreText = "Thirty";
                 }
 
-                score = p1res + "-" + p2res;
+                score = playerOneScoreText + "-" + playerTwoScoreText;
             }
 
-            if (p2point > p1point && p2point < 4)
+            if (playerTwoPoints > playerOnePoints && playerTwoPoints < 4)
             {
-                if (p2point == 2)
+                if (playerTwoPoints == 2)
                 {
-                    p2res = "Thirty";
+                    playerTwoScoreText = "Thirty";
                 }
 
-                if (p2point == 3)
+                if (playerTwoPoints == 3)
                 {
-                    p2res = "Forty";
+                    playerTwoScoreText = "Forty";
                 }
 
-                if (p1point == 1)
+                if (playerOnePoints == 1)
                 {
-                    p1res = "Fifteen";
+                    playerOneScoreText = "Fifteen";
                 }
-                if (p1point == 2)
+                if (playerOnePoints == 2)
                 {
-                    p1res = "Thirty";
+                    playerOneScoreText = "Thirty";
                 }
 
-                score = p1res + "-" + p2res;
+                score = playerOneScoreText + "-" + playerTwoScoreText;
             }
 
-            if (p1point > p2point && p2point >= 3)
+            if (playerOnePoints > playerTwoPoints && playerTwoPoints >= 3)
             {
                 score = "Advantage player1";
             }
 
-            if (p2point > p1point && p1point >= 3)
+            if (playerTwoPoints > playerOnePoints && playerOnePoints >= 3)
             {
                 score = "Advantage player2";
             }
 
-            if (p1point >= 4 && p2point >= 0 && (p1point - p2point) >= 2)
+            if (playerOnePoints >= 4 && playerTwoPoints >= 0 && (playerOnePoints - playerTwoPoints) >= 2)
             {
                 score = "Win for player1";
             }
 
-            if (p2point >= 4 && p1point >= 0 && (p2point - p1point) >= 2)
+            if (playerTwoPoints >= 4 && playerOnePoints >= 0 && (playerTwoPoints - playerOnePoints) >= 2)
             {
                 score = "Win for player2";
             }
@@ -169,12 +169,12 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
         private void P1Score()
         {
-            p1point++;
+            playerOnePoints++;
         }
 
         private void P2Score()
         {
-            p2point++;
+            playerTwoPoints++;
         }
 
         public void WonPoint(string player)
