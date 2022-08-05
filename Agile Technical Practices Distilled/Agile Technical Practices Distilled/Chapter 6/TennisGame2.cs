@@ -14,22 +14,10 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
             if (p1point == p2point && p1point < 3)
             {
-                if (p1point == 0)
-                {
-                    score = "Love";
-                }
-
-                if (p1point == 1)
-                {
-                    score = "Fifteen";
-                }
-
-                if (p1point == 2)
-                {
-                    score = "Thirty";
-                }
+                score = GetScoreText(score);
 
                 score += "-All";
+                return score;
             }
 
             if (p1point == p2point && p1point > 2)
@@ -146,6 +134,26 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             if (p2point >= 4 && p1point >= 0 && (p2point - p1point) >= 2)
             {
                 score = "Win for player2";
+            }
+
+            return score;
+        }
+
+        private string GetScoreText(string score)
+        {
+            if (p1point == 0)
+            {
+                score = "Love";
+            }
+
+            if (p1point == 1)
+            {
+                score = "Fifteen";
+            }
+
+            if (p1point == 2)
+            {
+                score = "Thirty";
             }
 
             return score;
