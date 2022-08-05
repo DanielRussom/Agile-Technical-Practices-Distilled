@@ -30,19 +30,7 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
                 return $"{playerOneScoreText}-{playerTwoScoreText}";
             }
 
-            var score = string.Empty;
-
-            if (playerOnePoints > playerTwoPoints && playerTwoPoints >= 3)
-            {
-                score = "Advantage player1";
-            }
-
-            if (playerTwoPoints > playerOnePoints && playerOnePoints >= 3)
-            {
-                score = "Advantage player2";
-            }
-
-            var playerScoreDifference = Math.Abs(playerOnePoints - playerTwoPoints);
+            int playerScoreDifference = GetDifferenceInPlayerScores();
 
             if (playerOnePoints > playerTwoPoints && playerScoreDifference >= 2)
             {
@@ -51,10 +39,25 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
             if (playerTwoPoints > playerOnePoints && playerScoreDifference >= 2)
             {
-                 return "Win for player2";
+                return "Win for player2";
             }
 
-            return score;
+            if (playerOnePoints > playerTwoPoints && playerTwoPoints >= 3)
+            {
+                return "Advantage player1";
+            }
+
+            if (playerTwoPoints > playerOnePoints && playerOnePoints >= 3)
+            {
+                return "Advantage player2";
+            }
+
+            return string.Empty;
+        }
+
+        private int GetDifferenceInPlayerScores()
+        {
+            return Math.Abs(playerOnePoints - playerTwoPoints);
         }
 
         private string GetScoreText(int score)
