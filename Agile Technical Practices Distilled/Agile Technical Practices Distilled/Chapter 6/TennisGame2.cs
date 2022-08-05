@@ -2,20 +2,11 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 {
     public class TennisGame2 : ITennisGame
     {
-        private int p1point;
-        private int p2point;
+        private int p1point = 0;
+        private int p2point = 0;
 
         private string p1res = "";
         private string p2res = "";
-        private string player1Name;
-        private string player2Name;
-
-        public TennisGame2(string player1Name, string player2Name)
-        {
-            this.player1Name = player1Name;
-            p1point = 0;
-            this.player2Name = player2Name;
-        }
 
         public string GetScore()
         {
