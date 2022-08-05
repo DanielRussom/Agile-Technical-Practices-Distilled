@@ -14,7 +14,7 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
             if (p1point == p2point && p1point < 3)
             {
-                score = GetScoreText(score);
+                score = GetScoreText();
 
                 score += "-All";
                 return score;
@@ -139,24 +139,24 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             return score;
         }
 
-        private string GetScoreText(string score)
+        private string GetScoreText()
         {
             if (p1point == 0)
             {
-                score = "Love";
+                return "Love";
             }
 
             if (p1point == 1)
             {
-                score = "Fifteen";
+                return "Fifteen";
             }
 
             if (p1point == 2)
             {
-                score = "Thirty";
+                return "Thirty";
             }
 
-            return score;
+            return string.Empty;
         }
 
         public void SetP1Score(int number)
