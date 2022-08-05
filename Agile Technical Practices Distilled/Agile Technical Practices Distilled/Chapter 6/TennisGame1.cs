@@ -44,12 +44,17 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
                 return "Deuce";
             }
 
-            var score = GetSinglePlayerScore(player1Score);
+            var score = GetPlayerOneScoreMessage();
 
             return $"{score}-All";
         }
 
-        private string GetSinglePlayerScore(int score)
+        private string GetPlayerOneScoreMessage()
+        {
+            return GetScoreMessage(player1Score);
+        }
+
+        private string GetScoreMessage(int score)
         {
             switch (score)
             {
@@ -68,7 +73,7 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
         private bool EitherScoreIsAboveThree()
         {
-            return player1Score >= 4 || player2Score >= 4;
+            return player1Score > 3 || player2Score > 3;
         }
 
         private string GetAdvantageScore()
@@ -91,11 +96,15 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
         private string GetMatchScore()
         {
-            var player1ScoreMessage = GetSinglePlayerScore(player1Score);
-            var player2ScoreMessage = GetSinglePlayerScore(player2Score);
+            var player1ScoreMessage = GetPlayerOneScoreMessage();
+            var player2ScoreMessage = GetPlayerTwoScoreMessage();
 
             return $"{player1ScoreMessage}-{player2ScoreMessage}";
         }
+
+        private string GetPlayerTwoScoreMessage()
+        {
+            return GetScoreMessage(player2Score);
+        }
     }
 }
-
