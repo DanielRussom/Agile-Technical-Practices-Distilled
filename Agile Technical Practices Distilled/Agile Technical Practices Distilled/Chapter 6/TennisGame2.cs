@@ -25,32 +25,11 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
                 score = "Deuce";
             }
 
-            if (playerOnePoints > 0 && playerTwoPoints == 0)
+            if (playerOnePoints == 0 || playerTwoPoints == 0)
             {
                 playerOneScoreText = GetScoreText(playerOnePoints);
                 playerTwoScoreText = GetScoreText(playerTwoPoints);
 
-                score = playerOneScoreText + "-" + playerTwoScoreText;
-            }
-
-            if (playerTwoPoints > 0 && playerOnePoints == 0)
-            {
-                if (playerTwoPoints == 1)
-                {
-                    playerTwoScoreText = "Fifteen";
-                }
-
-                if (playerTwoPoints == 2)
-                {
-                    playerTwoScoreText = "Thirty";
-                }
-
-                if (playerTwoPoints == 3)
-                {
-                    playerTwoScoreText = "Forty";
-                }
-
-                playerOneScoreText = "Love";
                 score = playerOneScoreText + "-" + playerTwoScoreText;
             }
 
