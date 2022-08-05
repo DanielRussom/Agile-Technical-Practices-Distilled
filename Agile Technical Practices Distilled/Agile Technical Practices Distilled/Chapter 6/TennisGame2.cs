@@ -42,14 +42,16 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
                 score = "Advantage player2";
             }
 
-            if (playerOnePoints >= 4 && playerTwoPoints >= 0 && (playerOnePoints - playerTwoPoints) >= 2)
+            var playerScoreDifference = Math.Abs(playerOnePoints - playerTwoPoints);
+
+            if (playerOnePoints > playerTwoPoints && playerScoreDifference >= 2)
             {
-                score = "Win for player1";
+                return "Win for player1";
             }
 
-            if (playerTwoPoints >= 4 && playerOnePoints >= 0 && (playerTwoPoints - playerOnePoints) >= 2)
+            if (playerTwoPoints > playerOnePoints && playerScoreDifference >= 2)
             {
-                score = "Win for player2";
+                 return "Win for player2";
             }
 
             return score;
