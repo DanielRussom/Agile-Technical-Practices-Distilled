@@ -10,14 +10,14 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
         public string GetScore()
         {
-            if (playerOnePoints == playerTwoPoints && playerOnePoints < 3)
+            if (PlayerScoresMatch() && PlayerOneScoreIsUnderThree())
             {
                 var playerScoreText = GetScoreText(playerOnePoints);
 
                 return $"{playerScoreText}-All";
             }
 
-            if (playerOnePoints == playerTwoPoints && playerOnePoints > 2)
+            if (PlayerScoresMatch())
             {
                 return "Deuce";
             }
@@ -53,6 +53,16 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             }
 
             return string.Empty;
+        }
+
+        private bool PlayerOneScoreIsUnderThree()
+        {
+            return playerOnePoints < 3;
+        }
+
+        private bool PlayerScoresMatch()
+        {
+            return playerOnePoints == playerTwoPoints;
         }
 
         private int GetDifferenceInPlayerScores()
