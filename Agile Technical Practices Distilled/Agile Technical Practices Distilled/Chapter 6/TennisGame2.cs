@@ -5,9 +5,6 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
         private int playerOnePoints = 0;
         private int playerTwoPoints = 0;
 
-        private string playerOneScoreText = string.Empty;
-        private string playerTwoScoreText = string.Empty;
-
         public string GetScore()
         {
             if (PlayerScoresMatch())
@@ -17,8 +14,8 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
             if (playerOnePoints < 4 && playerTwoPoints < 4)
             {
-                playerOneScoreText = GetScoreText(playerOnePoints);
-                playerTwoScoreText = GetScoreText(playerTwoPoints);
+                var playerOneScoreText = GetScoreText(playerOnePoints);
+                var playerTwoScoreText = GetScoreText(playerTwoPoints);
 
                 return $"{playerOneScoreText}-{playerTwoScoreText}";
             }
@@ -100,16 +97,6 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             return Math.Abs(playerOnePoints - playerTwoPoints);
         }
 
-        private void IncrementPlayerOneScore()
-        {
-            playerOnePoints++;
-        }
-
-        private void IncrementPlayerTwoScore()
-        {
-            playerTwoPoints++;
-        }
-
         public void WonPoint(string player)
         {
             if (player == "player1")
@@ -122,6 +109,15 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             }
         }
 
+        private void IncrementPlayerOneScore()
+        {
+            playerOnePoints++;
+        }
+
+        private void IncrementPlayerTwoScore()
+        {
+            playerTwoPoints++;
+        }
     }
 }
 
