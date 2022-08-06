@@ -100,28 +100,12 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             return Math.Abs(playerOnePoints - playerTwoPoints);
         }
 
-        public void SetP1Score(int number)
-        {
-            for (int i = 0; i < number; i++)
-            {
-                P1Score();
-            }
-        }
-
-        public void SetP2Score(int number)
-        {
-            for (var i = 0; i < number; i++)
-            {
-                P2Score();
-            }
-        }
-
-        private void P1Score()
+        private void IncrementPlayerOneScore()
         {
             playerOnePoints++;
         }
 
-        private void P2Score()
+        private void IncrementPlayerTwoScore()
         {
             playerTwoPoints++;
         }
@@ -130,11 +114,11 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
         {
             if (player == "player1")
             {
-                P1Score();
+                IncrementPlayerOneScore();
             }
             else
             {
-                P2Score();
+                IncrementPlayerTwoScore();
             }
         }
 
