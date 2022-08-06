@@ -5,6 +5,9 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
         private int playerOnePoints = 0;
         private int playerTwoPoints = 0;
 
+        private const string PlayerOne = "player1";
+        private const string PlayerTwo = "player2";
+
         public string GetScore()
         {
             if (PlayerScoresMatch())
@@ -94,21 +97,19 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
         private string GetAdvantageScoreText()
         {
-            if (playerOnePoints > playerTwoPoints)
-            {
-                return "Advantage player1";
-            }
+            var player = PlayerOne;
 
             if (playerTwoPoints > playerOnePoints)
             {
-                return "Advantage player2";
+                player = PlayerTwo;
             }
-            return string.Empty;
+
+            return $"Advantage {player}";
         }
 
         public void WonPoint(string player)
         {
-            if (player == "player1")
+            if (player == PlayerOne)
             {
                 IncrementPlayerOneScore();
             }
