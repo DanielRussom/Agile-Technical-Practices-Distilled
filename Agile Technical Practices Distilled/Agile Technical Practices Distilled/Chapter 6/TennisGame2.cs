@@ -30,17 +30,7 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
                 return GetAdvantageScoreText();
             }
 
-            if (playerOnePoints > playerTwoPoints && playerScoreDifference >= 2)
-            {
-                return "Win for player1";
-            }
-
-            if (playerTwoPoints > playerOnePoints && playerScoreDifference >= 2)
-            {
-                return "Win for player2";
-            }
-
-            return string.Empty;
+            return GetWinScoreText();
         }
 
         private bool PlayerScoresMatch()
@@ -105,6 +95,18 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             }
 
             return $"Advantage {player}";
+        }
+
+        private string GetWinScoreText()
+        {
+            var player = PlayerOne;
+
+            if (playerTwoPoints > playerOnePoints)
+            {
+                player = PlayerTwo;
+            }
+
+            return $"Win for {player}";
         }
 
         public void WonPoint(string player)
