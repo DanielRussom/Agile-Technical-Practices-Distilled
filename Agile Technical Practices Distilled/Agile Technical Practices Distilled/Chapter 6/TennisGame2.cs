@@ -15,7 +15,7 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
                 return GetMatchingScoreText();
             }
 
-            if (playerOnePoints < 4 && playerTwoPoints < 4)
+            if (BothPlayerScoresAreUnderFour())
             {
                 var playerOneScoreText = GetScoreText(playerOnePoints);
                 var playerTwoScoreText = GetScoreText(playerTwoPoints);
@@ -23,14 +23,17 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
                 return $"{playerOneScoreText}-{playerTwoScoreText}";
             }
 
-            int playerScoreDifference = GetDifferenceInPlayerScores();
-
-            if(playerScoreDifference == 1)
+            if (PlayerScoresAreOnePointApart())
             {
                 return GetAdvantageScoreText();
             }
 
             return GetWinScoreText();
+        }
+
+        private bool BothPlayerScoresAreUnderFour()
+        {
+            return playerOnePoints < 4 && playerTwoPoints < 4;
         }
 
         private bool PlayerScoresMatch()
@@ -80,31 +83,32 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             return string.Empty;
         }
 
-        private int GetDifferenceInPlayerScores()
+        private bool PlayerScoresAreOnePointApart()
         {
-            return Math.Abs(playerOnePoints - playerTwoPoints);
+            var scoreDifference = Math.Abs(playerOnePoints - playerTwoPoints);
+            return scoreDifference == 1;
         }
 
         private string GetAdvantageScoreText()
         {
-            var player = PlayerOne;
-
-            if (playerTwoPoints > playerOnePoints)
-            {
-                player = PlayerTwo;
-            }
+            var player = GetLeadingPlayerName();
 
             return $"Advantage {player}";
         }
 
+        private string GetLeadingPlayerName()
+        {
+            if (playerOnePoints > playerTwoPoints)
+            {
+                return PlayerOne;
+            }
+
+            return PlayerTwo;
+        }
+
         private string GetWinScoreText()
         {
-            var player = PlayerOne;
-
-            if (playerTwoPoints > playerOnePoints)
-            {
-                player = PlayerTwo;
-            }
+            var player = GetLeadingPlayerName();
 
             return $"Win for {player}";
         }
