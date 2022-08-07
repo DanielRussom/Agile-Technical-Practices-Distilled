@@ -15,34 +15,46 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
         public string GetScore()
         {
-            var scoreMessage = string.Empty;
             if ((playerOneScore < 4 && playerTwoScore < 4) && (playerOneScore + playerTwoScore < 6))
             {
                 string[] scoreValues = { "Love", "Fifteen", "Thirty", "Forty" };
-                scoreMessage = scoreValues[playerOneScore];
+                
+                var playerOneScoreMessage = scoreValues[playerOneScore];
 
                 if (playerOneScore == playerTwoScore)
                 {
-                    return scoreMessage + "-All";
+                    return playerOneScoreMessage + "-All";
                 }
 
-                return scoreMessage + "-" + scoreValues[playerTwoScore];
+                return playerOneScoreMessage + "-" + scoreValues[playerTwoScore];
             }
          
             if (playerOneScore == playerTwoScore)
+            {
                 return "Deuce";
-            scoreMessage = playerOneScore > playerTwoScore ? playerOneName : playerTwoName;
-            return ((playerOneScore - playerTwoScore) * (playerOneScore - playerTwoScore) == 1) ? "Advantage " + scoreMessage : "Win for " + scoreMessage;
+            }
+
+            var scoreMessage = playerOneScore > playerTwoScore ? playerOneName : playerTwoName;
+
+            if ((playerOneScore - playerTwoScore) * (playerOneScore - playerTwoScore) == 1)
+            {
+                return "Advantage " + scoreMessage;
+            }
+
+            return "Win for " + scoreMessage;
         }
 
         public void WonPoint(string playerName)
         {
             if (playerName == "player1")
+            {
                 playerOneScore += 1;
+            }
             else
+            { 
                 playerTwoScore += 1;
+            }
         }
-
     }
 }
 
