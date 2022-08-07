@@ -8,6 +8,7 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
         private const string PlayerOne = "player1";
         private const string PlayerTwo = "player2";
 
+
         public string GetScore()
         {
             if (PlayerScoresMatch())
@@ -45,6 +46,19 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             return $"{playerScoreText}-All";
         }
 
+        private bool PlayerOneScoreIsOverTwo()
+        {
+            return playerOnePoints > 2;
+        }
+
+        private string GetScoreText(int score)
+        {
+            string[] allScoreNames = { "Love", "Fifteen", "Thirty", "Forty" };
+            var scoreName = allScoreNames[score];
+
+            return scoreName;
+        }
+
         private bool BothPlayerScoresAreUnderFour()
         {
             return playerOnePoints < 4 && playerTwoPoints < 4;
@@ -56,36 +70,6 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             var playerTwoScoreText = GetScoreText(playerTwoPoints);
 
             return $"{playerOneScoreText}-{playerTwoScoreText}";
-        }
-
-        private bool PlayerOneScoreIsOverTwo()
-        {
-            return playerOnePoints > 2;
-        }
-
-        private string GetScoreText(int score)
-        {
-            if (score == 0)
-            {
-                return "Love";
-            }
-
-            if (score == 1)
-            {
-                return "Fifteen";
-            }
-
-            if (score == 2)
-            {
-                return "Thirty";
-            }
-
-            if (score == 3)
-            {
-                return "Forty";
-            }
-
-            return string.Empty;
         }
 
         private bool PlayerScoresAreOnePointApart()
