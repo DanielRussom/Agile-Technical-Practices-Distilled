@@ -18,9 +18,15 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             var scoreMessage = string.Empty;
             if ((playerOneScore < 4 && playerTwoScore < 4) && (playerOneScore + playerTwoScore < 6))
             {
-                string[] p = { "Love", "Fifteen", "Thirty", "Forty" };
-                scoreMessage = p[playerOneScore];
-                return (playerOneScore == playerTwoScore) ? scoreMessage + "-All" : scoreMessage + "-" + p[playerTwoScore];
+                string[] scoreValues = { "Love", "Fifteen", "Thirty", "Forty" };
+                scoreMessage = scoreValues[playerOneScore];
+
+                if (playerOneScore == playerTwoScore)
+                {
+                    return scoreMessage + "-All";
+                }
+
+                return scoreMessage + "-" + scoreValues[playerTwoScore];
             }
          
             if (playerOneScore == playerTwoScore)
