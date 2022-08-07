@@ -15,7 +15,7 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
         public string GetScore()
         {
-            if ((playerOneScore < 4 && playerTwoScore < 4) && (playerOneScore + playerTwoScore < 6))
+            if (playerOneScore < 4 && playerTwoScore < 4 && (playerOneScore + playerTwoScore < 6))
             {
                 string[] scoreValues = { "Love", "Fifteen", "Thirty", "Forty" };
                 
@@ -36,7 +36,7 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
             var scoreMessage = playerOneScore > playerTwoScore ? playerOneName : playerTwoName;
 
-            if ((playerOneScore - playerTwoScore) * (playerOneScore - playerTwoScore) == 1)
+            if (Math.Abs(playerOneScore - playerTwoScore) == 1)
             {
                 return "Advantage " + scoreMessage;
             }
