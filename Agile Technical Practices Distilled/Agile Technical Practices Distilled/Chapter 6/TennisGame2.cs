@@ -17,10 +17,7 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
             if (BothPlayerScoresAreUnderFour())
             {
-                var playerOneScoreText = GetScoreText(playerOnePoints);
-                var playerTwoScoreText = GetScoreText(playerTwoPoints);
-
-                return $"{playerOneScoreText}-{playerTwoScoreText}";
+                return GetUnderFourScoreText();
             }
 
             if (PlayerScoresAreOnePointApart())
@@ -29,11 +26,6 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             }
 
             return GetWinScoreText();
-        }
-
-        private bool BothPlayerScoresAreUnderFour()
-        {
-            return playerOnePoints < 4 && playerTwoPoints < 4;
         }
 
         private bool PlayerScoresMatch()
@@ -51,6 +43,19 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             var playerScoreText = GetScoreText(playerOnePoints);
 
             return $"{playerScoreText}-All";
+        }
+
+        private bool BothPlayerScoresAreUnderFour()
+        {
+            return playerOnePoints < 4 && playerTwoPoints < 4;
+        }
+
+        private string GetUnderFourScoreText()
+        {
+            var playerOneScoreText = GetScoreText(playerOnePoints);
+            var playerTwoScoreText = GetScoreText(playerTwoPoints);
+
+            return $"{playerOneScoreText}-{playerTwoScoreText}";
         }
 
         private bool PlayerOneScoreIsOverTwo()
