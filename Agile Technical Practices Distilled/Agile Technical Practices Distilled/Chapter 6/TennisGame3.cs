@@ -2,41 +2,41 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 {
     public class TennisGame3 : ITennisGame
     {
-        private int p2;
-        private int p1;
-        private string p1N;
-        private string p2N;
+        private int playerOneScore;
+        private int playerTwoScore;
+        private string playerOneName;
+        private string playerTwoName;
 
         public TennisGame3(string player1Name, string player2Name)
         {
-            this.p1N = player1Name;
-            this.p2N = player2Name;
+            playerOneName = player1Name;
+            playerTwoName = player2Name;
         }
 
         public string GetScore()
         {
             string s;
-            if ((p1 < 4 && p2 < 4) && (p1 + p2 < 6))
+            if ((playerOneScore < 4 && playerTwoScore < 4) && (playerOneScore + playerTwoScore < 6))
             {
                 string[] p = { "Love", "Fifteen", "Thirty", "Forty" };
-                s = p[p1];
-                return (p1 == p2) ? s + "-All" : s + "-" + p[p2];
+                s = p[playerOneScore];
+                return (playerOneScore == playerTwoScore) ? s + "-All" : s + "-" + p[playerTwoScore];
             }
             else
             {
-                if (p1 == p2)
+                if (playerOneScore == playerTwoScore)
                     return "Deuce";
-                s = p1 > p2 ? p1N : p2N;
-                return ((p1 - p2) * (p1 - p2) == 1) ? "Advantage " + s : "Win for " + s;
+                s = playerOneScore > playerTwoScore ? playerOneName : playerTwoName;
+                return ((playerOneScore - playerTwoScore) * (playerOneScore - playerTwoScore) == 1) ? "Advantage " + s : "Win for " + s;
             }
         }
 
         public void WonPoint(string playerName)
         {
             if (playerName == "player1")
-                this.p1 += 1;
+                playerOneScore += 1;
             else
-                this.p2 += 1;
+                playerTwoScore += 1;
         }
 
     }
