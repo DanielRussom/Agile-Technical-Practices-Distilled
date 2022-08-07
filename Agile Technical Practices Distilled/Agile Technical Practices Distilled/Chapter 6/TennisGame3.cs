@@ -15,20 +15,11 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
         public string GetScore()
         {
-            if (playerOneScore < 4 && playerTwoScore < 4 && (playerOneScore + playerTwoScore < 6))
+            if (PlayersAreNotInAdvantageOrWinStates())
             {
-                string[] scoreValues = { "Love", "Fifteen", "Thirty", "Forty" };
-                
-                var playerOneScoreMessage = scoreValues[playerOneScore];
-
-                if (playerOneScore == playerTwoScore)
-                {
-                    return playerOneScoreMessage + "-All";
-                }
-
-                return playerOneScoreMessage + "-" + scoreValues[playerTwoScore];
+                return GetNormalGameScore();
             }
-         
+
             if (playerOneScore == playerTwoScore)
             {
                 return "Deuce";
@@ -42,6 +33,25 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             }
 
             return "Win for " + scoreMessage;
+        }
+
+        private bool PlayersAreNotInAdvantageOrWinStates()
+        {
+            return playerOneScore < 4 && playerTwoScore < 4 && (playerOneScore + playerTwoScore < 6);
+        }
+
+        private string GetNormalGameScore()
+        {
+            string[] scoreValues = { "Love", "Fifteen", "Thirty", "Forty" };
+
+            var playerOneScoreMessage = scoreValues[playerOneScore];
+
+            if (playerOneScore == playerTwoScore)
+            {
+                return playerOneScoreMessage + "-All";
+            }
+
+            return playerOneScoreMessage + "-" + scoreValues[playerTwoScore];
         }
 
         public void WonPoint(string playerName)
