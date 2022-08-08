@@ -20,19 +20,7 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
                 return GetNormalGameScore();
             }
 
-            if (playerOneScore == playerTwoScore)
-            {
-                return "Deuce";
-            }
-
-            var scoreMessage = playerOneScore > playerTwoScore ? playerOneName : playerTwoName;
-
-            if (Math.Abs(playerOneScore - playerTwoScore) == 1)
-            {
-                return "Advantage " + scoreMessage;
-            }
-
-            return "Win for " + scoreMessage;
+            return GetLateGameScore();
         }
 
         private bool PlayersAreNotInAdvantageOrWinStates()
@@ -52,6 +40,23 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             }
 
             return playerOneScoreMessage + "-" + scoreValues[playerTwoScore];
+        }
+
+        private string GetLateGameScore()
+        {
+            if (playerOneScore == playerTwoScore)
+            {
+                return "Deuce";
+            }
+
+            var leadingPlayer = playerOneScore > playerTwoScore ? playerOneName : playerTwoName;
+
+            if (Math.Abs(playerOneScore - playerTwoScore) == 1)
+            {
+                return "Advantage " + leadingPlayer;
+            }
+
+            return "Win for " + leadingPlayer;
         }
 
         public void WonPoint(string playerName)
