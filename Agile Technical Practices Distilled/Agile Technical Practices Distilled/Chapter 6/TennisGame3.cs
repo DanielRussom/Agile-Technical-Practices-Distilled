@@ -32,7 +32,7 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
         {
             var playerOneScoreValue = GetScoreValue(playerOneScore);
 
-            if (playerOneScore == playerTwoScore)
+            if (PlayerScoresAreEqual())
             {
                 return $"{playerOneScoreValue}-All";
             }
@@ -49,21 +49,40 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             return scoreValues[score];
         }
 
+        private bool PlayerScoresAreEqual()
+        {
+            return playerOneScore == playerTwoScore;
+        }
+
         private string GetLateGameScore()
         {
-            if (playerOneScore == playerTwoScore)
+            if (PlayerScoresAreEqual())
             {
                 return "Deuce";
             }
+            string leadingPlayer = GetPlayerInTheLead();
 
-            var leadingPlayer = playerOneScore > playerTwoScore ? playerOneName : playerTwoName;
-
-            if (Math.Abs(playerOneScore - playerTwoScore) == 1)
+            if (PlayerScoresAreOnePointApart())
             {
-                return "Advantage " + leadingPlayer;
+                return $"Advantage {leadingPlayer}";
             }
 
-            return "Win for " + leadingPlayer;
+            return $"Win for {leadingPlayer}";
+        }
+
+        private bool PlayerScoresAreOnePointApart()
+        {
+            return Math.Abs(playerOneScore - playerTwoScore) == 1;
+        }
+
+        private string GetPlayerInTheLead()
+        {
+            if (playerOneScore > playerTwoScore)
+            {
+                return playerOneName;
+            }
+
+            return playerTwoName;
         }
 
         public void WonPoint(string playerName)
