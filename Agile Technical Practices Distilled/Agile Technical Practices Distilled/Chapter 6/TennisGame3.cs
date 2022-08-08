@@ -30,16 +30,23 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
         private string GetNormalGameScore()
         {
-            string[] scoreValues = { "Love", "Fifteen", "Thirty", "Forty" };
-
-            var playerOneScoreMessage = scoreValues[playerOneScore];
+            var playerOneScoreValue = GetScoreValue(playerOneScore);
 
             if (playerOneScore == playerTwoScore)
             {
-                return playerOneScoreMessage + "-All";
+                return $"{playerOneScoreValue}-All";
             }
 
-            return playerOneScoreMessage + "-" + scoreValues[playerTwoScore];
+            var playerTwoScoreValue = GetScoreValue(playerTwoScore);
+
+            return $"{playerOneScoreValue}-{playerTwoScoreValue}";
+        }
+
+        private string GetScoreValue(int score)
+        {
+            string[] scoreValues = { "Love", "Fifteen", "Thirty", "Forty" };
+
+            return scoreValues[score];
         }
 
         private string GetLateGameScore()
@@ -61,7 +68,7 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
 
         public void WonPoint(string playerName)
         {
-            if (playerName == "player1")
+            if (playerName == playerOneName)
             {
                 playerOneScore += 1;
             }
