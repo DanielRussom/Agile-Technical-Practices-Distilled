@@ -17,10 +17,10 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
         {
             if (PlayersAreNotInAdvantageOrWinStates())
             {
-                return GetNormalGameScore();
+                return BuildNormalGameScore();
             }
 
-            return GetLateGameScore();
+            return BuildLateGameScore();
         }
 
         private bool PlayersAreNotInAdvantageOrWinStates()
@@ -28,7 +28,7 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             return playerOneScore < 4 && playerTwoScore < 4 && (playerOneScore + playerTwoScore < 6);
         }
 
-        private string GetNormalGameScore()
+        private string BuildNormalGameScore()
         {
             var playerOneScoreValue = GetScoreValue(playerOneScore);
 
@@ -54,13 +54,14 @@ namespace Agile_Technical_Practices_Distilled.Chapter_6
             return playerOneScore == playerTwoScore;
         }
 
-        private string GetLateGameScore()
+        private string BuildLateGameScore()
         {
             if (PlayerScoresAreEqual())
             {
                 return "Deuce";
             }
-            string leadingPlayer = GetPlayerInTheLead();
+
+            var leadingPlayer = GetPlayerInTheLead();
 
             if (PlayerScoresAreOnePointApart())
             {
