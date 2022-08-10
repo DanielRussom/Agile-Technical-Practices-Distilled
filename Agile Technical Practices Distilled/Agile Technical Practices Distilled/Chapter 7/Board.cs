@@ -15,14 +15,15 @@
             }       
         }
 
-       public Tile TileAt(int x, int y)
+       public Tile TileAt(int xCoord, int yCoord)
        {
-           return boardTiles.Single(tile => tile.XPosition == x && tile.YPosition == y);
+           return boardTiles.Single(tile => tile.XPosition == xCoord && tile.YPosition == yCoord);
        }
 
-       public void AddTileAt(char symbol, int x, int y)
+       public void ChangeSymbolAtTileLocation(char symbol, int xCoord, int yCoord)
        {
-           boardTiles.Single(tile => tile.XPosition == x && tile.YPosition == y).Symbol = symbol;
+            var tile = TileAt(xCoord, yCoord);
+            tile.Symbol = symbol;
        }
     }
 }
