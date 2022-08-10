@@ -7,26 +7,33 @@
         
         public void Play(char symbol, int x, int y)
         {
-            if(lastPlayedSymbol == ' ')
+            ValidateMove(symbol, x, y);
+
+            lastPlayedSymbol = symbol;
+            _board.ChangeSymbolAtTileLocation(symbol, x, y);
+        }
+
+        private void ValidateMove(char symbol, int x, int y)
+        {
+            if (FirstMovePlayedIsNotX(symbol))
             {
-                if(symbol == 'O')
-                {
-                    throw new Exception("Invalid first player");
-                }
-            } 
+                throw new Exception("Invalid first player");
+            }
 
             if (symbol == lastPlayedSymbol)
             {
                 throw new Exception("Invalid next player");
             }
-            
+
             if (_board.TileAt(x, y).Symbol != ' ')
             {
                 throw new Exception("Invalid position");
             }
+        }
 
-            lastPlayedSymbol = symbol;
-            _board.ChangeSymbolAtTileLocation(symbol, x, y);
+        private bool FirstMovePlayedIsNotX(char symbol)
+        {
+            return lastPlayedSymbol == ' ' && symbol == 'O';
         }
 
         public char Winner()
