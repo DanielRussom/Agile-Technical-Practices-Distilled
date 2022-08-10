@@ -13,11 +13,11 @@
        
         public Board()
         {
-            for (int i = 0; i < 3; i++)
+            for (int xCoord = 0; xCoord < 3; xCoord++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int yCoord = 0; yCoord < 3; yCoord++)
                 {
-                    _plays.Add(new Tile{ XPosition = i, YPosition = j, Symbol = ' '});
+                    _plays.Add(new Tile{ XPosition = xCoord, YPosition = yCoord, Symbol = ' '});
                 }  
             }       
         }
@@ -43,7 +43,7 @@
     public class Game
     {
         private char _lastSymbol = ' ';
-        private Board _board = new Board();
+        private Board _board = new();
         
         public void Play(char symbol, int x, int y)
         {
