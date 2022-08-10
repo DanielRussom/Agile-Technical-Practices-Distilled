@@ -25,7 +25,7 @@
                 throw new Exception("Invalid next player");
             }
 
-            if (_board.TileAt(x, y).Symbol != ' ')
+            if (_board.SymbolAt(x, y) != ' ')
             {
                 throw new Exception("Invalid position");
             }
