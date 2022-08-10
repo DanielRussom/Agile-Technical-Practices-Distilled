@@ -7,25 +7,27 @@
         
         public void Play(char symbol, int x, int y)
         {
-            ValidateMove(symbol, x, y);
+            var newMove = new Tile { XPosition= x, YPosition = y, Symbol = symbol };
+
+            ValidateMove(newMove);
 
             lastPlayedSymbol = symbol;
             _board.ChangeSymbolAtTileLocation(symbol, x, y);
         }
 
-        private void ValidateMove(char symbol, int x, int y)
-        {
-            if (FirstMovePlayedIsNotX(symbol))
+        private void ValidateMove(Tile newMove)
+    {
+            if (FirstMovePlayedIsNotX(newMove.Symbol))
             {
                 throw new Exception("Invalid first player");
             }
 
-            if (symbol == lastPlayedSymbol)
+            if (newMove.Symbol == lastPlayedSymbol)
             {
                 throw new Exception("Invalid next player");
             }
 
-            if (_board.SymbolAt(x, y) != ' ')
+            if (_board.SymbolAt(newMove.XPosition, newMove.YPosition) != ' ')
             {
                 throw new Exception("Invalid position");
             }
