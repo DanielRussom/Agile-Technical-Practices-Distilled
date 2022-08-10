@@ -2,8 +2,8 @@
 {
     public class Tile
     {
-        public int X {get; set;}
-        public int Y {get; set;}
+        public int XPosition {get; set;}
+        public int YPosition {get; set;}
         public char Symbol {get; set;}
     }
 
@@ -17,25 +17,26 @@
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    _plays.Add(new Tile{ X = i, Y = j, Symbol = ' '});
+                    _plays.Add(new Tile{ XPosition = i, YPosition = j, Symbol = ' '});
                 }  
             }       
         }
+
        public Tile TileAt(int x, int y)
        {
-           return _plays.Single(tile => tile.X == x && tile.Y == y);
+           return _plays.Single(tile => tile.XPosition == x && tile.YPosition == y);
        }
 
        public void AddTileAt(char symbol, int x, int y)
        {
            var newTile = new Tile
            {
-               X = x,
-               Y = y,
+               XPosition = x,
+               YPosition = y,
                Symbol = symbol
            };
 
-           _plays.Single(tile => tile.X == x && tile.Y == y).Symbol = symbol;
+           _plays.Single(tile => tile.XPosition == x && tile.YPosition == y).Symbol = symbol;
        }
     }
 
