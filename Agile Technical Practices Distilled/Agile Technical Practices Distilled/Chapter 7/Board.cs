@@ -15,15 +15,15 @@
             }       
         }
 
-       public Tile TileAt(int xCoord, int yCoord)
-       {
-           return boardTiles.Single(tile => tile.XPosition == xCoord && tile.YPosition == yCoord);
-        }
-
         public char SymbolAt(int xCoord, int yCoord)
         {
             var tile = TileAt(xCoord, yCoord);
             return tile.Symbol;
+        }
+
+        private Tile TileAt(int xCoord, int yCoord)
+        {
+            return boardTiles.Single(tile => tile.XPosition == xCoord && tile.YPosition == yCoord);
         }
 
         public void ChangeSymbolAtTileLocation(char symbol, int xCoord, int yCoord)

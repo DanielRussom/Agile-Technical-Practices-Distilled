@@ -44,7 +44,7 @@
             {
                 if (RowSymbolsAreSetAndMatch(row))
                 {
-                    return _board.TileAt(row, 0).Symbol;
+                    return _board.SymbolAt(row, 0);
                 }
             }
 
