@@ -42,15 +42,20 @@
         {
             for (int row = 0; row < 3; row++)
             {
-                if (_board.TileAt(row, 0).Symbol == _board.TileAt(row, 1).Symbol &&
-                    _board.TileAt(row, 2).Symbol == _board.TileAt(row, 1).Symbol &&
-                    _board.TileAt(row, 2).Symbol != ' ')
+                if (RowSymbolsAreSetAndMatch(row))
                 {
                     return _board.TileAt(row, 0).Symbol;
                 }
             }
 
             return ' ';
+        }
+
+        private bool RowSymbolsAreSetAndMatch(int row)
+        {
+            return _board.TileAt(row, 0).Symbol == _board.TileAt(row, 1).Symbol &&
+                                _board.TileAt(row, 2).Symbol == _board.TileAt(row, 1).Symbol &&
+                                _board.TileAt(row, 2).Symbol != ' ';
         }
     }
 }
