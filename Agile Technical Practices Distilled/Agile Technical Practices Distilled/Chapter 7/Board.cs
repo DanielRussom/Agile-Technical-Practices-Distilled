@@ -30,6 +30,15 @@
        {
             var tile = TileAt(xCoord, yCoord);
             tile.Symbol = symbol;
-       }
+        }
+
+        public bool SymbolsMatchInRow(int rowId)
+        {
+            var rowTiles = boardTiles.Where(x => x.XPosition == rowId );
+
+            var firstSymbol = rowTiles.First().Symbol;
+
+            return rowTiles.All(x => x.Symbol == firstSymbol);
+        }
     }
 }

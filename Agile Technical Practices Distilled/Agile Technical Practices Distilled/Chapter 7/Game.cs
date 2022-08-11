@@ -53,9 +53,8 @@
 
         private bool RowSymbolsAreSetAndMatch(int row)
         {
-            return _board.TileAt(row, 0).Symbol == _board.TileAt(row, 1).Symbol &&
-                                _board.TileAt(row, 2).Symbol == _board.TileAt(row, 1).Symbol &&
-                                _board.TileAt(row, 2).Symbol != ' ';
+            return _board.SymbolsMatchInRow(row) 
+                && _board.TileAt(row, 0).Symbol != ' ';
         }
     }
 }
