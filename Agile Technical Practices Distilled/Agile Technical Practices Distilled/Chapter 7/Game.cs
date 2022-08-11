@@ -54,7 +54,7 @@
         private bool RowSymbolsAreSetAndMatch(int row)
         {
             return _board.SymbolsMatchInRow(row) 
-                && _board.TileAt(row, 0).Symbol != ' ';
+                && _board.SymbolsIsNotEmptyAt(row, 0);
         }
     }
 }

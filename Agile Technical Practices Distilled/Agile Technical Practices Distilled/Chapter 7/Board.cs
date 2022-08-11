@@ -40,5 +40,10 @@
 
             return rowTiles.All(x => x.Symbol == firstSymbol);
         }
+
+        public bool SymbolsIsNotEmptyAt(int xCoord, int yCoord)
+        {
+            return SymbolAt(xCoord, yCoord) != ' ';
+        }
     }
 }
