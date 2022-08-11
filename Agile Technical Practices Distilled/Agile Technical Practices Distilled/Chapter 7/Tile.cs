@@ -7,5 +7,10 @@
         public int YPosition {get; set;}
 
         public char Symbol {get; set;}
+
+        internal bool HasBeenSet()
+        {
+            return Symbol != ' ';
+        }
     }
 }

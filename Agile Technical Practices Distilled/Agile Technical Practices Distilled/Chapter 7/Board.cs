@@ -43,7 +43,8 @@
 
         public bool SymbolsIsNotEmptyAt(int xCoord, int yCoord)
         {
-            return SymbolAt(xCoord, yCoord) != ' ';
+            var tile = TileAt(xCoord, yCoord);
+            return tile.HasBeenSet();
         }
     }
 }
