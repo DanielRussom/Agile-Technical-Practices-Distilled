@@ -7,7 +7,7 @@
         
         public void Play(char symbol, int x, int y)
         {
-            var newMove = new Tile { XPosition= x, YPosition = y, Symbol = symbol };
+            var newMove = new Tile { XPosition = x, YPosition = y, Symbol = symbol };
 
             ValidateMove(newMove);
 
@@ -27,7 +27,7 @@
                 throw new Exception("Invalid next player");
             }
 
-            if (_board.SymbolAt(newMove.XPosition, newMove.YPosition) != ' ')
+            if (_board.SymbolsIsNotEmptyAt(newMove.XPosition, newMove.YPosition))
             {
                 throw new Exception("Invalid position");
             }
