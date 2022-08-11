@@ -42,18 +42,11 @@
         {
             for (int row = 0; row < 3; row++)
             {
-                if (_board.TileAt(row, 0).Symbol != ' ' &&
-               _board.TileAt(row, 1).Symbol != ' ' &&
-               _board.TileAt(row, 2).Symbol != ' ')
+                if (_board.TileAt(row, 0).Symbol == _board.TileAt(row, 1).Symbol &&
+                    _board.TileAt(row, 2).Symbol == _board.TileAt(row, 1).Symbol &&
+                    _board.TileAt(row, 2).Symbol != ' ')
                 {
-                    //if first row is full with same symbol
-                    if (_board.TileAt(row, 0).Symbol ==
-                        _board.TileAt(row, 1).Symbol &&
-                        _board.TileAt(row, 2).Symbol ==
-                        _board.TileAt(row, 1).Symbol)
-                    {
-                        return _board.TileAt(row, 0).Symbol;
-                    }
+                    return _board.TileAt(row, 0).Symbol;
                 }
             }
 
