@@ -17,7 +17,7 @@
 
         private void ValidateMove(Tile newMove)
     {
-            if (FirstMovePlayedIsNotX(newMove.Symbol))
+            if (FirstSymbolPlayedIsNotValid(newMove.Symbol))
             {
                 throw new Exception("Invalid first player");
             }
@@ -33,7 +33,7 @@
             }
         }
 
-        private bool FirstMovePlayedIsNotX(char symbol)
+        private bool FirstSymbolPlayedIsNotValid(char symbol)
         {
             return lastPlayedSymbol == ' ' && symbol == 'O';
         }
