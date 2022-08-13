@@ -16,13 +16,13 @@
         }
 
         private void ValidateMove(Tile newMove)
-    {
+        {
             if (FirstSymbolPlayedIsNotValid(newMove.Symbol))
             {
                 throw new Exception("Invalid first player");
             }
 
-            if (newMove.Symbol == lastPlayedSymbol)
+            if (SymbolMatchesLastPlayed(newMove.Symbol))
             {
                 throw new Exception("Invalid next player");
             }
@@ -36,6 +36,11 @@
         private bool FirstSymbolPlayedIsNotValid(char symbol)
         {
             return lastPlayedSymbol == ' ' && symbol == 'O';
+        }
+
+        private bool SymbolMatchesLastPlayed(char symbol)
+        {
+            return symbol == lastPlayedSymbol;
         }
 
         public char Winner()
