@@ -2,6 +2,6 @@
 {
     public interface IDestination
     {
-        void SetChar(char character);
+        public void SetChar(char character);
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface ISource
     {
-        char GetChar();
+        public char GetChar();
     }
 }
