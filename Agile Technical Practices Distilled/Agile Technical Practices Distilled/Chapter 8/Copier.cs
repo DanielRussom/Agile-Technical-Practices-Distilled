@@ -13,8 +13,8 @@
 
         public void Copy()
         {
-            source.GetChar();
-            destination.SetChar('a');
+            var sourceChar = source.GetChar();
+            destination.SetChar(sourceChar);
 
         }
     }
