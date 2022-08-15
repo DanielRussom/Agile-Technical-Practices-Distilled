@@ -15,13 +15,18 @@
         {
             var sourceChar = source.GetChar();
 
-            if(sourceChar == '\n')
+            if (CharacterIsNewline(sourceChar))
             {
                 return;
             }
 
             destination.SetChar(sourceChar);
 
+        }
+
+        private static bool CharacterIsNewline(char sourceChar)
+        {
+            return sourceChar == '\n';
         }
     }
 }
