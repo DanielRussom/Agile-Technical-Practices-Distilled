@@ -14,6 +14,12 @@
         public void Copy()
         {
             var sourceChar = source.GetChar();
+
+            if(sourceChar == '\n')
+            {
+                return;
+            }
+
             destination.SetChar(sourceChar);
 
         }
