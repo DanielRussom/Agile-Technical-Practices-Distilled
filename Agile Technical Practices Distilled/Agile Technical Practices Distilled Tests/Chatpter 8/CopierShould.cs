@@ -11,7 +11,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chatpter_8
         [TestMethod]
         [DataRow ('a')]
         [DataRow('b')]
-        public void Copy_expected_characters(char input)
+        public void Copy_expected_character(char input)
         {
             using (var mock = AutoMock.GetLoose())
             {
@@ -23,6 +23,25 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chatpter_8
 
                 mock.Mock<ISource>().Verify(x => x.GetChar(), Times.Exactly(1));
                 mock.Mock<IDestination>().Verify(x => x.SetChar(input), Times.Exactly(1));
+            }
+        }
+
+        [TestMethod]
+        public void Copy_all_expected_characters()
+        {
+            using (var mock = AutoMock.GetLoose())
+            {
+                var ToTest = mock.Create<Copier>();
+
+                mock.Mock<ISource>().Setup(x => x.GetChar()).Returns('a');
+                ToTest.Copy();
+
+                mock.Mock<ISource>().Setup(x => x.GetChar()).Returns('b');
+                ToTest.Copy();
+
+                mock.Mock<ISource>().Verify(x => x.GetChar(), Times.Exactly(2));
+                mock.Mock<IDestination>().Verify(x => x.SetChar('a'), Times.Exactly(1));
+                mock.Mock<IDestination>().Verify(x => x.SetChar('b'), Times.Exactly(1));
             }
         }
     }
