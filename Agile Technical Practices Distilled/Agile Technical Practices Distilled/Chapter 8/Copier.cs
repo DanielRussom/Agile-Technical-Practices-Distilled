@@ -4,6 +4,7 @@
     {
         private readonly ISource source;
         private readonly IDestination destination;
+        private bool IsCopierDisabled = false;
 
         public Copier(ISource source, IDestination destination)
         {
@@ -13,10 +14,16 @@
 
         public void Copy()
         {
+            if (IsCopierDisabled)
+            {
+                return; 
+            }
+
             var sourceChar = source.GetChar();
 
             if (CharacterIsNewline(sourceChar))
             {
+                IsCopierDisabled = true;
                 return;
             }
 

@@ -59,5 +59,24 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chatpter_8
                 mock.Mock<IDestination>().Verify(x => x.SetChar(It.IsAny<char>()), Times.Exactly(0));
             }
         }
+
+        [TestMethod]
+        public void Not_copy_characters_after_newline()
+        {
+            using (var mock = AutoMock.GetLoose())
+            {
+                var ToTest = mock.Create<Copier>();
+
+                mock.Mock<ISource>().Setup(x => x.GetChar()).Returns('a');
+                ToTest.Copy();
+                mock.Mock<ISource>().Setup(x => x.GetChar()).Returns('\n');
+                ToTest.Copy();
+                mock.Mock<ISource>().Setup(x => x.GetChar()).Returns('b');
+                ToTest.Copy();
+
+                mock.Mock<ISource>().Verify(x => x.GetChar(), Times.Exactly(2));
+                mock.Mock<IDestination>().Verify(x => x.SetChar(It.IsAny<char>()), Times.Exactly(1));
+            }
+        }
     }
 }
