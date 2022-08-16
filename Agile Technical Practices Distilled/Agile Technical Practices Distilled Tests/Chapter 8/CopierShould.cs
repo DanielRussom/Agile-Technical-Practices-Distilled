@@ -3,7 +3,7 @@ using Autofac.Extras.Moq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace Agile_Technical_Practices_Distilled.Tests.Chatpter_8
+namespace Agile_Technical_Practices_Distilled.Tests.Chapter_8
 {
     [TestClass]
     public class CopierShould
