@@ -2,7 +2,7 @@
 {
     public class RoseProgram
     {
-        public static void Main(string[] args)
+        public static void RoseMain(string[] args)
         {
             Console.WriteLine("OMGHAI!");
 
