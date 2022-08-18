@@ -30,7 +30,6 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_9
             UnderTest.UpdateQuality();
 
             var resultItem = testItems[0];
-            Assert.AreEqual("foo", resultItem.Name);
             Assert.AreEqual(-1, resultItem.SellIn);
             Assert.AreEqual(8, resultItem.Quality);
         }
@@ -75,6 +74,20 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_9
             Assert.AreEqual("Aged Brie", resultItem.Name);
             Assert.AreEqual(4, resultItem.SellIn);
             Assert.AreEqual(50, resultItem.Quality);
+        }
+
+        [TestMethod]
+        public void Not_decrease_values_of_sulfuras()
+        {
+            var testItems = new List<Item> { new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 5, Quality = 10 } };
+            var UnderTest = new GildedRose(testItems);
+
+            UnderTest.UpdateQuality();
+
+            var resultItem = testItems[0];
+            Assert.AreEqual("Sulfuras, Hand of Ragnaros", resultItem.Name);
+            Assert.AreEqual(5, resultItem.SellIn);
+            Assert.AreEqual(10, resultItem.Quality);
         }
 
         //Unique cases: Aged Brie, Backstage passes to a TAFKAL80ETC concert, Sulfuras, Hand of Ragnaros
