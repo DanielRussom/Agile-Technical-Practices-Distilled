@@ -90,6 +90,62 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_9
             Assert.AreEqual(10, resultItem.Quality);
         }
 
+        [TestMethod]
+        public void Set_value_of_tickets_with_negative_sell_to_0()
+        {
+            var testItems = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 0, Quality = 25 } };
+            var UnderTest = new GildedRose(testItems);
+
+            UnderTest.UpdateQuality();
+
+            var resultItem = testItems[0];
+            Assert.AreEqual("Backstage passes to a TAFKAL80ETC concert", resultItem.Name);
+            Assert.AreEqual(-1, resultItem.SellIn);
+            Assert.AreEqual(0, resultItem.Quality);
+        }
+
+        [TestMethod]
+        public void Increase_value_of_tickets_by_one()
+        {
+            var testItems = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 15, Quality = 25 } };
+            var UnderTest = new GildedRose(testItems);
+
+            UnderTest.UpdateQuality();
+
+            var resultItem = testItems[0];
+            Assert.AreEqual("Backstage passes to a TAFKAL80ETC concert", resultItem.Name);
+            Assert.AreEqual(14, resultItem.SellIn);
+            Assert.AreEqual(26, resultItem.Quality);
+        }
+
+        [TestMethod]
+        public void Increase_value_of_tickets_by_two()
+        {
+            var testItems = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 10, Quality = 25 } };
+            var UnderTest = new GildedRose(testItems);
+
+            UnderTest.UpdateQuality();
+
+            var resultItem = testItems[0];
+            Assert.AreEqual("Backstage passes to a TAFKAL80ETC concert", resultItem.Name);
+            Assert.AreEqual(9, resultItem.SellIn);
+            Assert.AreEqual(27, resultItem.Quality);
+        }
+
+        [TestMethod]
+        public void Increase_value_of_tickets_by_three()
+        {
+            var testItems = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 5, Quality = 25 } };
+            var UnderTest = new GildedRose(testItems);
+
+            UnderTest.UpdateQuality();
+
+            var resultItem = testItems[0];
+            Assert.AreEqual("Backstage passes to a TAFKAL80ETC concert", resultItem.Name);
+            Assert.AreEqual(4, resultItem.SellIn);
+            Assert.AreEqual(28, resultItem.Quality);
+        }
+
         //Unique cases: Aged Brie, Backstage passes to a TAFKAL80ETC concert, Sulfuras, Hand of Ragnaros
     }
 }
