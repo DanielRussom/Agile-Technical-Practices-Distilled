@@ -133,6 +133,20 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_9
         }
 
         [TestMethod]
+        public void Increase_value_of_tickets_by_two_due_to_50_limit()
+        {
+            var testItems = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 5, Quality = 48 } };
+            var UnderTest = new GildedRose(testItems);
+
+            UnderTest.UpdateQuality();
+
+            var resultItem = testItems[0];
+            Assert.AreEqual("Backstage passes to a TAFKAL80ETC concert", resultItem.Name);
+            Assert.AreEqual(4, resultItem.SellIn);
+            Assert.AreEqual(50, resultItem.Quality);
+        }
+
+        [TestMethod]
         public void Increase_value_of_tickets_by_three()
         {
             var testItems = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 5, Quality = 25 } };
@@ -145,7 +159,5 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_9
             Assert.AreEqual(4, resultItem.SellIn);
             Assert.AreEqual(28, resultItem.Quality);
         }
-
-        //Unique cases: Aged Brie, Backstage passes to a TAFKAL80ETC concert, Sulfuras, Hand of Ragnaros
     }
 }
