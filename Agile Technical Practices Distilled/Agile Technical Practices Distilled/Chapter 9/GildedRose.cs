@@ -24,7 +24,7 @@
                 {
                     if (item.Name != "Sulfuras, Hand of Ragnaros")
                     {
-                        item.Quality = item.Quality - 1;
+                        item.Quality--;
                     }
                 }
             }
@@ -32,7 +32,7 @@
             {
                 if (item.Quality < 50)
                 {
-                    item.Quality = item.Quality + 1;
+                    item.Quality++;
 
                     if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
                     {
@@ -40,7 +40,7 @@
                         {
                             if (item.Quality < 50)
                             {
-                                item.Quality = item.Quality + 1;
+                                item.Quality++;
                             }
                         }
 
@@ -48,7 +48,7 @@
                         {
                             if (item.Quality < 50)
                             {
-                                item.Quality = item.Quality + 1;
+                                item.Quality++;
                             }
                         }
                     }
@@ -57,7 +57,7 @@
 
             if (item.Name != "Sulfuras, Hand of Ragnaros")
             {
-                item.SellIn = item.SellIn - 1;
+                item.SellIn--;
             }
 
             if (item.SellIn < 0)
@@ -70,20 +70,20 @@
                         {
                             if (item.Name != "Sulfuras, Hand of Ragnaros")
                             {
-                                item.Quality = item.Quality - 1;
+                                item.Quality--;
                             }
                         }
                     }
                     else
                     {
-                        item.Quality = item.Quality - item.Quality;
+                        item.Quality = 0;
                     }
                 }
                 else
                 {
                     if (item.Quality < 50)
                     {
-                        item.Quality = item.Quality + 1;
+                        item.Quality++;
                     }
                 }
             }
