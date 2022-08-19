@@ -159,5 +159,28 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_9
             Assert.AreEqual(4, resultItem.SellIn);
             Assert.AreEqual(28, resultItem.Quality);
         }
+
+        [TestMethod]
+        public void Process_multiple_items()
+        {
+            var testItems = new List<Item> { 
+                new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 15, Quality = 25 },
+                new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 5, Quality = 10 }
+            };
+
+            var UnderTest = new GildedRose(testItems);
+
+            UnderTest.UpdateQuality();
+
+            var passItem = testItems[0];
+            var sulfurasItem = testItems[1];
+            Assert.AreEqual("Backstage passes to a TAFKAL80ETC concert", passItem.Name);
+            Assert.AreEqual(14, passItem.SellIn);
+            Assert.AreEqual(26, passItem.Quality);
+
+            Assert.AreEqual("Sulfuras, Hand of Ragnaros", sulfurasItem.Name);
+            Assert.AreEqual(5, sulfurasItem.SellIn);
+            Assert.AreEqual(10, sulfurasItem.Quality);
+        }
     }
 }

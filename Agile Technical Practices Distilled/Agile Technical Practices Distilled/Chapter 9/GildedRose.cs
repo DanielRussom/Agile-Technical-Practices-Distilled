@@ -10,9 +10,9 @@
 
         public void UpdateQuality()
         {
-            for (var i = 0; i < Items.Count; i++)
+            foreach(var item in Items)
             {
-                ProcessItem(Items[i]);
+                ProcessItem(item);
             }
         }
 
