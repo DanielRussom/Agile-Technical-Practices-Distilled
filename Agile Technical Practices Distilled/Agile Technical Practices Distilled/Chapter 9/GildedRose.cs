@@ -18,14 +18,17 @@
 
         private void ProcessItem(Item item)
         {
+            if (item.Name == "Sulfuras, Hand of Ragnaros")
+            {
+                return;
+            }
+
             if (item.Name != "Aged Brie" && item.Name != "Backstage passes to a TAFKAL80ETC concert")
             {
                 if (item.Quality > 0)
                 {
-                    if (item.Name != "Sulfuras, Hand of Ragnaros")
-                    {
-                        item.Quality--;
-                    }
+
+                    item.Quality--;
                 }
             }
             else
@@ -55,10 +58,7 @@
                 }
             }
 
-            if (item.Name != "Sulfuras, Hand of Ragnaros")
-            {
-                item.SellIn--;
-            }
+            item.SellIn--;
 
             if (item.SellIn < 0)
             {
@@ -68,10 +68,7 @@
                     {
                         if (item.Quality > 0)
                         {
-                            if (item.Name != "Sulfuras, Hand of Ragnaros")
-                            {
-                                item.Quality--;
-                            }
+                            item.Quality--;
                         }
                     }
                     else
