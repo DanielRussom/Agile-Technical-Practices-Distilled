@@ -3,6 +3,7 @@
     public class GildedRose
     {
         IList<Item> Items;
+
         public GildedRose(IList<Item> Items)
         {
             this.Items = Items;
@@ -27,44 +28,59 @@
 
             if (item.Name == "Aged Brie")
             {
-                if (item.Quality < 50)
-                {
-                    item.Quality++;
-                }
-
-                if (item.SellIn < 0 && item.Quality < 50)
-                {
-                    item.Quality++;
-                }
+                ProcessBrie(item);
 
                 return;
             }
 
             if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
             {
-                if(item.SellIn < 0)
-                {
-                    item.Quality = 0;
-                    return;
-                }
-
-                if (item.Quality < 50)
-                {
-                    item.Quality++;
-
-                    if (item.SellIn < 11 && item.Quality < 50)
-                    {
-                        item.Quality++;
-                    }
-
-                    if (item.SellIn < 6 && item.Quality < 50)
-                    {
-                        item.Quality++;
-                    }
-                }
+                ProcessBackstagePasses(item);
                 return;
             }
 
+            DegradeQuality(item);
+        }
+
+        private void ProcessBrie(Item item)
+        {
+            if (item.Quality < 50)
+            {
+                item.Quality++;
+            }
+
+            if (item.SellIn < 0 && item.Quality < 50)
+            {
+                item.Quality++;
+            }
+        }
+
+        private void ProcessBackstagePasses(Item item)
+        {
+            if (item.SellIn < 0)
+            {
+                item.Quality = 0;
+                return;
+            }
+
+            if (item.Quality < 50)
+            {
+                item.Quality++;
+
+                if (item.SellIn < 11 && item.Quality < 50)
+                {
+                    item.Quality++;
+                }
+
+                if (item.SellIn < 6 && item.Quality < 50)
+                {
+                    item.Quality++;
+                }
+            }
+        }
+
+        private void DegradeQuality(Item item)
+        {
             if (item.Quality > 0)
             {
                 item.Quality--;
