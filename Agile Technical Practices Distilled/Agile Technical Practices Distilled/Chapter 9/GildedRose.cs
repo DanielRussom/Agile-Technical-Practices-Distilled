@@ -29,7 +29,6 @@
             if (item.Name == "Aged Brie")
             {
                 ProcessBrie(item);
-
                 return;
             }
 
@@ -63,19 +62,21 @@
                 return;
             }
 
-            if (item.Quality < 50)
+            if (item.Quality >= 50)
+            {
+                return;
+            }
+
+            item.Quality++;
+
+            if (item.SellIn < 11 && item.Quality < 50)
             {
                 item.Quality++;
+            }
 
-                if (item.SellIn < 11 && item.Quality < 50)
-                {
-                    item.Quality++;
-                }
-
-                if (item.SellIn < 6 && item.Quality < 50)
-                {
-                    item.Quality++;
-                }
+            if (item.SellIn < 6 && item.Quality < 50)
+            {
+                item.Quality++;
             }
         }
 
