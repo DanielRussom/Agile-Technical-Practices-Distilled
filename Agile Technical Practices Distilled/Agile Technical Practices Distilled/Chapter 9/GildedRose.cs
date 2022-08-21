@@ -43,15 +43,25 @@
 
         private void ProcessBrie(Item item)
         {
-            if (item.Quality < 50)
+            if (QualityIsBelowLimit(item))
             {
-                item.Quality++;
+                IncrementQuality(item);
             }
 
-            if (item.SellIn < 0 && item.Quality < 50)
+            if (item.SellIn < 0 && QualityIsBelowLimit(item))
             {
-                item.Quality++;
+                IncrementQuality(item);
             }
+        }
+
+        private static int IncrementQuality(Item item)
+        {
+            return item.Quality++;
+        }
+
+        private static bool QualityIsBelowLimit(Item item)
+        {
+            return item.Quality < 50;
         }
 
         private void ProcessBackstagePasses(Item item)
@@ -62,21 +72,21 @@
                 return;
             }
 
-            if (item.Quality >= 50)
+            if (!QualityIsBelowLimit(item))
             {
                 return;
             }
 
-            item.Quality++;
+            IncrementQuality(item);
 
-            if (item.SellIn < 11 && item.Quality < 50)
+            if (item.SellIn < 11 && QualityIsBelowLimit(item))
             {
-                item.Quality++;
+                IncrementQuality(item);
             }
 
-            if (item.SellIn < 6 && item.Quality < 50)
+            if (item.SellIn < 6 && QualityIsBelowLimit(item))
             {
-                item.Quality++;
+                IncrementQuality(item);
             }
         }
 
@@ -84,13 +94,18 @@
         {
             if (item.Quality > 0)
             {
-                item.Quality--;
+                DecrementQuality(item);
             }
 
             if (item.SellIn < 0 && item.Quality > 0)
             {
-                item.Quality--;
+                DecrementQuality(item);
             }
+        }
+
+        private static int DecrementQuality(Item item)
+        {
+            return item.Quality--;
         }
     }
 }
