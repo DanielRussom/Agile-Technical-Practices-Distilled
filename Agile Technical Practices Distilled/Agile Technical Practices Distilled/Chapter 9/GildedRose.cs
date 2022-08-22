@@ -40,7 +40,7 @@
 
             DegradeQuality(item);
 
-            if(item.Name == "Conjured Mana Cake")
+            if(item.Name.StartsWith("Conjured "))
             {
                 DegradeQuality(item);
             }
