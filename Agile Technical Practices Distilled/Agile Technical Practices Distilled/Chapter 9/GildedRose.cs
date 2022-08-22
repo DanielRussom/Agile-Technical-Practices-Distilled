@@ -43,15 +43,20 @@
 
         private void ProcessBrie(Item item)
         {
-            if (QualityIsBelowLimit(item))
+            if (QualityIsBelowUpperLimit(item))
             {
                 IncrementQuality(item);
             }
 
-            if (item.SellIn < 0 && QualityIsBelowLimit(item))
+            if (SellInIsNegative(item) && QualityIsBelowUpperLimit(item))
             {
                 IncrementQuality(item);
             }
+        }
+
+        private static bool SellInIsNegative(Item item)
+        {
+            return item.SellIn < 0;
         }
 
         private static int IncrementQuality(Item item)
@@ -59,32 +64,32 @@
             return item.Quality++;
         }
 
-        private static bool QualityIsBelowLimit(Item item)
+        private static bool QualityIsBelowUpperLimit(Item item)
         {
             return item.Quality < 50;
         }
 
         private void ProcessBackstagePasses(Item item)
         {
-            if (item.SellIn < 0)
+            if (SellInIsNegative(item))
             {
                 item.Quality = 0;
                 return;
             }
 
-            if (!QualityIsBelowLimit(item))
+            if (!QualityIsBelowUpperLimit(item))
             {
                 return;
             }
 
             IncrementQuality(item);
 
-            if (item.SellIn < 11 && QualityIsBelowLimit(item))
+            if (item.SellIn < 11 && QualityIsBelowUpperLimit(item))
             {
                 IncrementQuality(item);
             }
 
-            if (item.SellIn < 6 && QualityIsBelowLimit(item))
+            if (item.SellIn < 6 && QualityIsBelowUpperLimit(item))
             {
                 IncrementQuality(item);
             }
@@ -97,7 +102,7 @@
                 DecrementQuality(item);
             }
 
-            if (item.SellIn < 0 && item.Quality > 0)
+            if (SellInIsNegative(item) && item.Quality > 0)
             {
                 DecrementQuality(item);
             }
