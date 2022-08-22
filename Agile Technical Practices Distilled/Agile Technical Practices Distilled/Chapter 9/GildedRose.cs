@@ -43,14 +43,16 @@
 
         private void ProcessBrie(Item item)
         {
-            if (QualityIsBelowUpperLimit(item))
+            IncrementQuality(item);
+
+            if (SellInIsNegative(item))
             {
                 IncrementQuality(item);
             }
 
-            if (SellInIsNegative(item) && QualityIsBelowUpperLimit(item))
+            if (QualityIsAboveUpperLimit(item))
             {
-                IncrementQuality(item);
+                item.Quality = 50;
             }
         }
 
@@ -64,6 +66,11 @@
             return item.Quality++;
         }
 
+        private static bool QualityIsAboveUpperLimit(Item item)
+        {
+            return item.Quality > 50;
+        }
+
         private static bool QualityIsBelowUpperLimit(Item item)
         {
             return item.Quality < 50;
@@ -75,6 +82,13 @@
             {
                 item.Quality = 0;
                 return;
+            }
+
+
+
+            if (QualityIsAboveUpperLimit(item))
+            {
+                item.Quality = 50;
             }
 
             if (!QualityIsBelowUpperLimit(item))
@@ -97,6 +111,12 @@
 
         private void DegradeQuality(Item item)
         {
+            if (QualityIsAboveUpperLimit(item))
+            {
+                item.Quality = 50;
+                return;
+            }
+
             if (item.Quality > 0)
             {
                 DecrementQuality(item);
