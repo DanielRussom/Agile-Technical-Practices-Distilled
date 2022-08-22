@@ -40,7 +40,7 @@
 
             DegradeQuality(item);
 
-            if(item.Name.StartsWith("Conjured "))
+            if (ItemIsConjured(item.Name))
             {
                 DegradeQuality(item);
             }
@@ -131,6 +131,11 @@
         private static bool QualityIsNegative(Item item)
         {
             return item.Quality < 0;
+        }
+
+        private static bool ItemIsConjured(string itemName)
+        {
+            return itemName.StartsWith("Conjured ");
         }
     }
 }
