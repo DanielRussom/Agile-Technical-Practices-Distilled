@@ -50,15 +50,10 @@
                 IncrementQuality(item);
             }
 
-            if (QualityIsAboveUpperLimit(item))
+            if (QualityHasHitUpperLimit(item))
             {
                 item.Quality = 50;
             }
-        }
-
-        private static bool SellInIsNegative(Item item)
-        {
-            return item.SellIn < 0;
         }
 
         private static int IncrementQuality(Item item)
@@ -66,14 +61,14 @@
             return item.Quality++;
         }
 
-        private static bool QualityIsAboveUpperLimit(Item item)
+        private static bool SellInIsNegative(Item item)
         {
-            return item.Quality > 50;
+            return item.SellIn < 0;
         }
 
-        private static bool QualityIsBelowUpperLimit(Item item)
+        private static bool QualityHasHitUpperLimit(Item item)
         {
-            return item.Quality < 50;
+            return item.Quality >= 50;
         }
 
         private void ProcessBackstagePasses(Item item)
@@ -84,53 +79,53 @@
                 return;
             }
 
-
-
-            if (QualityIsAboveUpperLimit(item))
-            {
-                item.Quality = 50;
-            }
-
-            if (!QualityIsBelowUpperLimit(item))
-            {
-                return;
-            }
-
             IncrementQuality(item);
 
-            if (item.SellIn < 11 && QualityIsBelowUpperLimit(item))
+            if (item.SellIn < 11)
             {
                 IncrementQuality(item);
             }
 
-            if (item.SellIn < 6 && QualityIsBelowUpperLimit(item))
+            if (item.SellIn < 6)
             {
                 IncrementQuality(item);
+            }
+
+            if (QualityHasHitUpperLimit(item))
+            {
+                item.Quality = 50;
             }
         }
 
         private void DegradeQuality(Item item)
         {
-            if (QualityIsAboveUpperLimit(item))
+            if (QualityHasHitUpperLimit(item))
             {
                 item.Quality = 50;
                 return;
             }
 
-            if (item.Quality > 0)
+            DecrementQuality(item);
+
+            if (SellInIsNegative(item))
             {
                 DecrementQuality(item);
             }
 
-            if (SellInIsNegative(item) && item.Quality > 0)
+            if (QualityIsNegative(item))
             {
-                DecrementQuality(item);
+                item.Quality = 0;
             }
         }
 
         private static int DecrementQuality(Item item)
         {
             return item.Quality--;
+        }
+
+        private static bool QualityIsNegative(Item item)
+        {
+            return item.Quality < 0;
         }
     }
 }
