@@ -20,6 +20,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_9
         [DataRow("Backstage passes to a TAFKAL80ETC concert", 5, 48, 4, 50)]
         [DataRow("Backstage passes to a TAFKAL80ETC concert", 5, 25, 4, 28)]
         [DataRow("Conjured Mana Cake", 5, 25, 4, 23)]
+        [DataRow("Conjured Mana Cake", 0, 25, -1, 21)]
         public void Update_sellIn_and_quality_as_expected
             (string name, int initialSellIn, int initialQuality, int expectedSellIn, int expectedQuality)
         {
