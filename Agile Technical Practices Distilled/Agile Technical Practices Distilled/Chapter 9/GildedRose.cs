@@ -39,6 +39,11 @@
             }
 
             DegradeQuality(item);
+
+            if(item.Name == "Conjured Mana Cake")
+            {
+                DegradeQuality(item);
+            }
         }
 
         private void ProcessBrie(Item item)
