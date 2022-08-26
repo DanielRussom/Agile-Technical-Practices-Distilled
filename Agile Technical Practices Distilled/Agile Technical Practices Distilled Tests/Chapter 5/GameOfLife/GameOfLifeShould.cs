@@ -9,12 +9,12 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
         [TestMethod]
         public void Start_with_only_dead_cells()
         {
-            var expected = new CellState[5, 5]{ 
-                {CellState.DEAD, CellState.DEAD,CellState.DEAD,CellState.DEAD,CellState.DEAD },
-                {CellState.DEAD, CellState.DEAD,CellState.DEAD,CellState.DEAD,CellState.DEAD },
-                {CellState.DEAD, CellState.DEAD,CellState.DEAD,CellState.DEAD,CellState.DEAD },
-                {CellState.DEAD, CellState.DEAD,CellState.DEAD,CellState.DEAD,CellState.DEAD },
-                {CellState.DEAD, CellState.DEAD,CellState.DEAD,CellState.DEAD,CellState.DEAD }
+            var expected = new int[5, 5]{
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0 }
             };
 
             var underTest = new LifeBoard();

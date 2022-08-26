@@ -2,7 +2,7 @@
 {
     public class LifeBoard
     {
-        public bool Equals(CellState[,] toCompare)
+        public bool Equals(int[,] toCompare)
         {
             return true;
         }
