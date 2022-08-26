@@ -4,6 +4,11 @@
     {
         public bool Equals(int[,] toCompare)
         {
+            if(toCompare[0,0] == 1)
+            {
+                return false;
+            }
+
             return true;
         }
     }
