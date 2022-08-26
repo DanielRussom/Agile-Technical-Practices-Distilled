@@ -2,9 +2,9 @@
 {
     public class LifeBoard
     {
-        public CellState GetCellState(Coordinates coordinates)
+        public bool Equals(CellState[,] toCompare)
         {
-            return CellState.DEAD;
+            return true;
         }
     }
 }

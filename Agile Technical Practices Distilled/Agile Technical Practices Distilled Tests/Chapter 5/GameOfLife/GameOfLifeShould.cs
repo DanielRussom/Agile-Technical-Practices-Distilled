@@ -7,15 +7,18 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
     public class GameOfLifeShould
     {
         [TestMethod]
-        public void Set_cells_as_dead_by_default()
+        public void Start_with_only_dead_cells()
         {
-            var UnderTest = new LifeBoard();
+            var expected = new CellState[5, 5]{ 
+                {CellState.DEAD, CellState.DEAD,CellState.DEAD,CellState.DEAD,CellState.DEAD },
+                {CellState.DEAD, CellState.DEAD,CellState.DEAD,CellState.DEAD,CellState.DEAD },
+                {CellState.DEAD, CellState.DEAD,CellState.DEAD,CellState.DEAD,CellState.DEAD },
+                {CellState.DEAD, CellState.DEAD,CellState.DEAD,CellState.DEAD,CellState.DEAD },
+                {CellState.DEAD, CellState.DEAD,CellState.DEAD,CellState.DEAD,CellState.DEAD }
+            };
 
-            var input = new Coordinates();
-
-            CellState cellState = UnderTest.GetCellState(input);
-
-            Assert.AreEqual(CellState.DEAD, cellState);
+            var underTest = new LifeBoard();
+            Assert.IsTrue(underTest.Equals(expected));
         }
     }
 }
