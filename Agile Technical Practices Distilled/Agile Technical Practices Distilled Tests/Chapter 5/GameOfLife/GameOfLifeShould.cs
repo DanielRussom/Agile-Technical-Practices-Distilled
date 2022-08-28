@@ -19,36 +19,15 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
         }
 
         [TestMethod]
-        public void Detect_when_0_0_positions_are_not_equal()
+        [DataRow(0, 0)]
+        [DataRow(0, 1)]
+        [DataRow(1, 0)]
+        [DataRow(1, 1)]
+        public void Detect_when_0_0_positions_are_not_equal(int xPosition, int yPosition)
         {
-            var expected = new int[2, 2]{
-                { 1, 0 },
-                { 0, 0 },
-            };
-            var underTest = new LifeBoard();
+            var expected = new int[2, 2];
+            expected[xPosition, yPosition] = 1;
 
-            Assert.IsFalse(underTest.Equals(expected));
-        }
-
-        [TestMethod]
-        public void Detect_when_1_0_positions_are_not_equal()
-        {
-            var expected = new int[2, 2]{
-                { 0, 1 },
-                { 0, 0 },
-            };
-            var underTest = new LifeBoard();
-
-            Assert.IsFalse(underTest.Equals(expected));
-        }
-
-        [TestMethod]
-        public void Detect_when_0_1_positions_are_not_equal()
-        {
-            var expected = new int[2, 2]{
-                { 0, 0 },
-                { 1, 0 },
-            };
             var underTest = new LifeBoard();
 
             Assert.IsFalse(underTest.Equals(expected));
