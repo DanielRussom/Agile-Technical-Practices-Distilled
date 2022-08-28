@@ -4,17 +4,15 @@
     {
         public bool Equals(int[,] toCompare)
         {
-            if(toCompare[0,0] == 1)
+            for (int x = 0; x < toCompare.GetLength(0); x++)
             {
-                return false;
-            }
-            if (toCompare[0, 1] == 1)
-            {
-                return false;
-            }
-            if (toCompare[1, 0] == 1)
-            {
-                return false;
+                for (int y = 0; y < toCompare.GetLength(1); y++)
+                {
+                    if (toCompare[x, y] == 1)
+                    {
+                        return false;
+                    }
+                }
             }
 
             return true;
