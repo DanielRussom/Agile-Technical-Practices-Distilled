@@ -39,8 +39,25 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
         {
             var expected = new int[3, 3];
             expected[xCoord, yCoord] = 1;
+            var position = new Position { xCoordinate = xCoord, yCoordinate = yCoord };
+            
+            UnderTest.ToggleCell(position);
+            UnderTest.DisplayBoard();
 
-            UnderTest.ToggleCell(xCoord, yCoord);
+            CollectionAssert.AreEqual(expected, DisplayResult);
+        }
+
+        [TestMethod]
+        public void Set_multiple_positions_to_alive()
+        {
+            var expected = new int[3, 3];
+            expected[0, 0] = 1;
+            expected[0, 1] = 1;
+            expected[2, 2] = 1;
+
+            UnderTest.ToggleCell(new Position { xCoordinate = 0, yCoordinate = 0});
+            UnderTest.ToggleCell(new Position { xCoordinate = 0, yCoordinate = 1});
+            UnderTest.ToggleCell(new Position { xCoordinate = 2, yCoordinate = 2});
             UnderTest.DisplayBoard();
 
             CollectionAssert.AreEqual(expected, DisplayResult);

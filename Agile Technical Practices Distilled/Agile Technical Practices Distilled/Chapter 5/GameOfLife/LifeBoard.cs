@@ -16,9 +16,9 @@
             displayer.DisplayBoard(gameBoard);
         }
 
-        public void ToggleCell(int xCoord, int yCoord)
+        public void ToggleCell(Position cellPosition)
         {
-            gameBoard[xCoord, yCoord] = 1;
+            gameBoard[cellPosition.xCoordinate, cellPosition.yCoordinate] = 1;
         }
     }
 }
