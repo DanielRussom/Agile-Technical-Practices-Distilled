@@ -1,6 +1,4 @@
-﻿using Agile_Technical_Practices_Distilled.Chapter_8;
-
-namespace Agile_Technical_Practices_Distilled.Chapter_5.GameOfLife
+﻿namespace Agile_Technical_Practices_Distilled.Chapter_5.GameOfLife
 {
     public class LifeBoard
     {

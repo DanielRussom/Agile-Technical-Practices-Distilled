@@ -1,5 +1,4 @@
 ﻿using Agile_Technical_Practices_Distilled.Chapter_5.GameOfLife;
-using Agile_Technical_Practices_Distilled.Chapter_8;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -9,7 +8,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
     public class GameOfLifeShould
     {
         [TestMethod]
-        public void Start_with_only_dead_cells()
+        public void Display_starting_board()
         {
             var expected = new int[,]{
                 { 0, 0, 0 },
