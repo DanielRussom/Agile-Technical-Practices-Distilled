@@ -32,46 +32,15 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
         }
 
         [TestMethod]
-        public void Set_position_1_1_to_alive()
+        [DataRow (1,1, DisplayName = "1,1")]
+        [DataRow (0,1, DisplayName = "0,1")]
+        [DataRow (2,2, DisplayName = "2,2")]
+        public void Set_position_to_alive(int xCoord, int yCoord)
         {
-            var expected = new int[,]{
-                { 0, 0, 0 },
-                { 0, 1, 0 },
-                { 0, 0, 0 }
-            };
+            var expected = new int[3, 3];
+            expected[xCoord, yCoord] = 1;
 
-
-            UnderTest.ToggleCell(1, 1);
-            UnderTest.DisplayBoard();
-
-            CollectionAssert.AreEqual(expected, DisplayResult);
-        }
-
-        [TestMethod]
-        public void Set_position_0_1_to_alive()
-        {
-            var expected = new int[,]{
-                { 0, 0, 0 },
-                { 1, 0, 0 },
-                { 0, 0, 0 }
-            };
-
-            UnderTest.ToggleCell(1, 0);
-            UnderTest.DisplayBoard();
-
-            CollectionAssert.AreEqual(expected, DisplayResult);
-        }
-
-        [TestMethod]
-        public void Set_position_2_2_to_alive()
-        {
-            var expected = new int[,]{
-                { 0, 0, 0 },
-                { 0, 0, 0 },
-                { 0, 0, 1 }
-            };
-
-            UnderTest.ToggleCell(2, 2);
+            UnderTest.ToggleCell(xCoord, yCoord);
             UnderTest.DisplayBoard();
 
             CollectionAssert.AreEqual(expected, DisplayResult);
