@@ -3,12 +3,12 @@
     public class LifeBoard
     {
         private readonly ILifeBoardDisplayer displayer;
-        private int[,] gameBoard;
+        private readonly bool[,] gameBoard;
 
         public LifeBoard(ILifeBoardDisplayer displayer)
         {
             this.displayer = displayer;
-            gameBoard = new int[3, 3];
+            gameBoard = new bool[3, 3];
         }
 
         public void DisplayBoard()
@@ -18,7 +18,8 @@
 
         public void ToggleCell(Position cellPosition)
         {
-            gameBoard[cellPosition.xCoordinate, cellPosition.yCoordinate] = 1;
+            var newCellValue = !gameBoard[cellPosition.xCoordinate, cellPosition.yCoordinate];
+            gameBoard[cellPosition.xCoordinate, cellPosition.yCoordinate] = newCellValue;
         }
     }
 }

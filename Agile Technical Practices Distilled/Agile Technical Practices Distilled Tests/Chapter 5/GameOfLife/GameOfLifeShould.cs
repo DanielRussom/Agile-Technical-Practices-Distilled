@@ -8,23 +8,19 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
     public class GameOfLifeShould
     {
         LifeBoard UnderTest;
-        int[,]? DisplayResult;
+        bool[,]? DisplayResult;
 
         public GameOfLifeShould()
         {
             var displayer = new Mock<ILifeBoardDisplayer>();
-            displayer.Setup(x => x.DisplayBoard(It.IsAny<int[,]>())).Callback<int[,]>(r => DisplayResult = r);
+            displayer.Setup(x => x.DisplayBoard(It.IsAny<bool[,]>())).Callback<bool[,]>(r => DisplayResult = r);
             UnderTest = new LifeBoard(displayer.Object);
         }
 
         [TestMethod]
         public void Display_starting_board()
         {
-            var expected = new int[,]{
-                { 0, 0, 0 },
-                { 0, 0, 0 },
-                { 0, 0, 0 }
-            };
+            var expected = new bool[3,3];
 
             UnderTest.DisplayBoard();
 
@@ -37,8 +33,8 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
         [DataRow (2,2, DisplayName = "2,2")]
         public void Set_position_to_alive(int xCoord, int yCoord)
         {
-            var expected = new int[3, 3];
-            expected[xCoord, yCoord] = 1;
+            var expected = new bool[3, 3];
+            expected[xCoord, yCoord] = true;
             var position = new Position { xCoordinate = xCoord, yCoordinate = yCoord };
             
             UnderTest.ToggleCell(position);
@@ -50,17 +46,32 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
         [TestMethod]
         public void Set_multiple_positions_to_alive()
         {
-            var expected = new int[3, 3];
-            expected[0, 0] = 1;
-            expected[0, 1] = 1;
-            expected[2, 2] = 1;
+            var expected = new bool[3, 3];
+            expected[0, 0] = true;
+            expected[0, 1] = true;
+            expected[2, 2] = true;
 
-            UnderTest.ToggleCell(new Position { xCoordinate = 0, yCoordinate = 0});
-            UnderTest.ToggleCell(new Position { xCoordinate = 0, yCoordinate = 1});
-            UnderTest.ToggleCell(new Position { xCoordinate = 2, yCoordinate = 2});
+            UnderTest.ToggleCell(new Position { xCoordinate = 0, yCoordinate = 0 });
+            UnderTest.ToggleCell(new Position { xCoordinate = 0, yCoordinate = 1 });
+            UnderTest.ToggleCell(new Position { xCoordinate = 2, yCoordinate = 2 });
             UnderTest.DisplayBoard();
 
             CollectionAssert.AreEqual(expected, DisplayResult);
+        }
+
+        [TestMethod]
+        public void Set_alive_cell_to_dead()
+        {
+            var expected = new bool[3, 3];
+
+            var position = new Position { xCoordinate = 0, yCoordinate = 0 };
+
+            UnderTest.ToggleCell(position);
+            UnderTest.ToggleCell(position);
+            UnderTest.DisplayBoard();
+
+            CollectionAssert.AreEqual(expected, DisplayResult);
+
         }
     }
 }

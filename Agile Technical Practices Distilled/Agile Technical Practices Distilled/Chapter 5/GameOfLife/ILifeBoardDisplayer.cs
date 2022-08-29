@@ -2,6 +2,6 @@
 {
     public interface ILifeBoardDisplayer
     {
-        void DisplayBoard(int[,] board);
+        void DisplayBoard(bool[,] board);
     }
 }
