@@ -2,7 +2,7 @@
 {
     public struct Position
     {
-        public int xCoordinate { get; set; }
-        public int yCoordinate { get; set; }
+        public int xPosition { get; set; }
+        public int yPosition { get; set; }
     }
 }

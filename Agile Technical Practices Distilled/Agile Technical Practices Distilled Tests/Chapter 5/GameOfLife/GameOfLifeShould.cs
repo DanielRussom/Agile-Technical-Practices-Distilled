@@ -35,7 +35,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
         {
             var expected = new bool[3, 3];
             expected[xCoord, yCoord] = true;
-            var position = new Position { xCoordinate = xCoord, yCoordinate = yCoord };
+            var position = new Position { xPosition = xCoord, yPosition = yCoord };
             
             UnderTest.ToggleCell(position);
             UnderTest.DisplayBoard();
@@ -51,9 +51,9 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
             expected[0, 1] = true;
             expected[2, 2] = true;
 
-            UnderTest.ToggleCell(new Position { xCoordinate = 0, yCoordinate = 0 });
-            UnderTest.ToggleCell(new Position { xCoordinate = 0, yCoordinate = 1 });
-            UnderTest.ToggleCell(new Position { xCoordinate = 2, yCoordinate = 2 });
+            UnderTest.ToggleCell(new Position { xPosition = 0, yPosition = 0 });
+            UnderTest.ToggleCell(new Position { xPosition = 0, yPosition = 1 });
+            UnderTest.ToggleCell(new Position { xPosition = 2, yPosition = 2 });
             UnderTest.DisplayBoard();
 
             CollectionAssert.AreEqual(expected, DisplayResult);
@@ -64,7 +64,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
         {
             var expected = new bool[3, 3];
 
-            var position = new Position { xCoordinate = 0, yCoordinate = 0 };
+            var position = new Position { xPosition = 0, yPosition = 0 };
 
             UnderTest.ToggleCell(position);
             UnderTest.ToggleCell(position);

@@ -18,8 +18,8 @@
 
         public void ToggleCell(Position cellPosition)
         {
-            var newCellValue = !gameBoard[cellPosition.xCoordinate, cellPosition.yCoordinate];
-            gameBoard[cellPosition.xCoordinate, cellPosition.yCoordinate] = newCellValue;
+            var newCellValue = !gameBoard[cellPosition.xPosition, cellPosition.yPosition];
+            gameBoard[cellPosition.xPosition, cellPosition.yPosition] = newCellValue;
         }
     }
 }
