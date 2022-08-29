@@ -7,6 +7,16 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
     [TestClass]
     public class GameOfLifeShould
     {
+        LifeBoard UnderTest;
+        int[,]? DisplayResult;
+
+        public GameOfLifeShould()
+        {
+            var displayer = new Mock<ILifeBoardDisplayer>();
+            displayer.Setup(x => x.DisplayBoard(It.IsAny<int[,]>())).Callback<int[,]>(r => DisplayResult = r);
+            UnderTest = new LifeBoard(displayer.Object);
+        }
+
         [TestMethod]
         public void Display_starting_board()
         {
@@ -15,14 +25,10 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
                 { 0, 0, 0 },
                 { 0, 0, 0 }
             };
-            int[,]? result = null;
-            var displayer = new Mock<ILifeBoardDisplayer>();
-            displayer.Setup(x => x.DisplayBoard(It.IsAny<int[,]>())).Callback<int[,]>(r => result = r);
-            var underTest = new LifeBoard(displayer.Object);
 
-            underTest.DisplayBoard();
+            UnderTest.DisplayBoard();
 
-            CollectionAssert.AreEqual(expected, result);
+            CollectionAssert.AreEqual(expected, DisplayResult);
         }
 
         [TestMethod]
@@ -33,15 +39,12 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
                 { 0, 1, 0 },
                 { 0, 0, 0 }
             };
-            int[,]? result = null;
-            var displayer = new Mock<ILifeBoardDisplayer>();
-            displayer.Setup(x => x.DisplayBoard(It.IsAny<int[,]>())).Callback<int[,]>(r => result = r);
-            var underTest = new LifeBoard(displayer.Object);
 
-            underTest.ToggleCell(1, 1);
-            underTest.DisplayBoard();
 
-            CollectionAssert.AreEqual(expected, result);
+            UnderTest.ToggleCell(1, 1);
+            UnderTest.DisplayBoard();
+
+            CollectionAssert.AreEqual(expected, DisplayResult);
         }
 
         [TestMethod]
@@ -52,15 +55,11 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
                 { 1, 0, 0 },
                 { 0, 0, 0 }
             };
-            int[,]? result = null;
-            var displayer = new Mock<ILifeBoardDisplayer>();
-            displayer.Setup(x => x.DisplayBoard(It.IsAny<int[,]>())).Callback<int[,]>(r => result = r);
-            var underTest = new LifeBoard(displayer.Object);
 
-            underTest.ToggleCell(1, 0);
-            underTest.DisplayBoard();
+            UnderTest.ToggleCell(1, 0);
+            UnderTest.DisplayBoard();
 
-            CollectionAssert.AreEqual(expected, result);
+            CollectionAssert.AreEqual(expected, DisplayResult);
         }
     }
 }
