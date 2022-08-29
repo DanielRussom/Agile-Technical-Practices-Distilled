@@ -1,5 +1,7 @@
 ﻿using Agile_Technical_Practices_Distilled.Chapter_5.GameOfLife;
+using Agile_Technical_Practices_Distilled.Chapter_8;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
 {
@@ -10,27 +12,18 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
         public void Start_with_only_dead_cells()
         {
             var expected = new int[,]{
-                { 0, 0 },
-                { 0, 0 }
+                { 0, 0, 0 },
+                { 0, 0, 0 },
+                { 0, 0, 0 }
             };
-            var underTest = new LifeBoard();
+            var displayer = new Mock<ILifeBoardDisplayer>();
+            int[,]? result = null;
+            displayer.Setup(x => x.DisplayBoard(It.IsAny<int[,]>())).Callback<int[,]>(r => result = r);
 
-            Assert.IsTrue(underTest.Equals(expected));
-        }
+            var underTest = new LifeBoard(displayer.Object);
+            underTest.DisplayBoard();
 
-        [TestMethod]
-        [DataRow(0, 0)]
-        [DataRow(0, 1)]
-        [DataRow(1, 0)]
-        [DataRow(1, 1)]
-        public void Detect_when_0_0_positions_are_not_equal(int xPosition, int yPosition)
-        {
-            var expected = new int[2, 2];
-            expected[xPosition, yPosition] = 1;
-
-            var underTest = new LifeBoard();
-
-            Assert.IsFalse(underTest.Equals(expected));
+            CollectionAssert.AreEqual(expected, result);
         }
     }
 }
