@@ -87,5 +87,18 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
 
             CollectionAssert.AreEqual(expected, DisplayResult);
         }
+
+        //[TestMethod]
+        //public void Keep_cell_with_two_x_coordinate_neighbours_alive()
+        //{
+        //    UnderTest.ToggleCell(new Position { xPosition = 0, yPosition = 1 });
+        //    UnderTest.ToggleCell(new Position { xPosition = 1, yPosition = 1 });
+        //    UnderTest.ToggleCell(new Position { xPosition = 2, yPosition = 1 });
+
+        //    UnderTest.TakeTurn();
+        //    UnderTest.DisplayBoard();
+
+        //    Assert.IsTrue(DisplayResult[1, 1]);
+        //}
     }
 }

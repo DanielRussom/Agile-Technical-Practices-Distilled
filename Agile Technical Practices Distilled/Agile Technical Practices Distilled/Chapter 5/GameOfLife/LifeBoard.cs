@@ -3,7 +3,7 @@
     public class LifeBoard
     {
         private readonly ILifeBoardDisplayer displayer;
-        private readonly bool[,] gameBoard;
+        private bool[,] gameBoard;
 
         public LifeBoard(ILifeBoardDisplayer displayer)
         {
@@ -24,18 +24,7 @@
 
         public void TakeTurn()
         {
-            for(int rowId = 0; rowId < 3; rowId++)
-            {
-                ProcessRowTurn(rowId);
-            }
-        }
-
-        private void ProcessRowTurn(int rowId)
-        {
-            for (int columnId = 0; columnId < 3; columnId++)
-            {
-                gameBoard[rowId, columnId] = false;
-            }
+            gameBoard = new bool[3, 3];
         }
     }
 }
