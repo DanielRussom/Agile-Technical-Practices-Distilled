@@ -24,9 +24,18 @@
 
         public void TakeTurn()
         {
-            gameBoard[0, 0] = false;
-            gameBoard[1, 1] = false;
-            gameBoard[2, 2] = false;
+            for(int rowId = 0; rowId < 3; rowId++)
+            {
+                ProcessRowTurn(rowId);
+            }
+        }
+
+        private void ProcessRowTurn(int rowId)
+        {
+            for (int columnId = 0; columnId < 3; columnId++)
+            {
+                gameBoard[rowId, columnId] = false;
+            }
         }
     }
 }
