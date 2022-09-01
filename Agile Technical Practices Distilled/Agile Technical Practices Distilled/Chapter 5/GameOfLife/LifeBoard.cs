@@ -24,7 +24,14 @@
 
         public void TakeTurn()
         {
-            gameBoard = new bool[3, 3];
+            var updatedGameBoard = new bool[3, 3];
+
+            if (gameBoard[0,1] && gameBoard[1, 1] && gameBoard[2, 1])
+            {
+                updatedGameBoard[1, 1] = true;  
+            }
+
+            gameBoard = updatedGameBoard;
         }
     }
 }
