@@ -74,40 +74,18 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
         }
 
         [TestMethod]
-        public void Set_single_cell_to_dead()
+        [DataRow(1, 1, DisplayName = "1,1")]
+        [DataRow(0, 0, DisplayName = "0,0")]
+        [DataRow(2, 2, DisplayName = "2,2")]
+        public void Set_single_cell_to_dead(int xPosition, int yPosition)
         {
             var expected = new bool[3, 3];
 
-            UnderTest.ToggleCell(new Position { xPosition = 1, yPosition = 1 });
+            UnderTest.ToggleCell(new Position { xPosition = xPosition, yPosition = yPosition });
             UnderTest.TakeTurn();
             UnderTest.DisplayBoard();
 
             CollectionAssert.AreEqual(expected, DisplayResult);
         }
-
-        [TestMethod]
-        public void Set_single_cell_0_0_to_dead()
-        {
-            var expected = new bool[3, 3];
-
-            UnderTest.ToggleCell(new Position { xPosition = 0, yPosition = 0 });
-            UnderTest.TakeTurn();
-            UnderTest.DisplayBoard();
-
-            CollectionAssert.AreEqual(expected, DisplayResult);
-        }
-
-        [TestMethod]
-        public void Set_single_cell_2_2_to_dead()
-        {
-            var expected = new bool[3, 3];
-
-            UnderTest.ToggleCell(new Position { xPosition = 2, yPosition = 2 });
-            UnderTest.TakeTurn();
-            UnderTest.DisplayBoard();
-
-            CollectionAssert.AreEqual(expected, DisplayResult);
-        }
-
     }
 }
