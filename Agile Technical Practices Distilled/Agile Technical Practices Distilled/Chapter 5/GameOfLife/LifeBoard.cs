@@ -21,5 +21,10 @@
             var newCellValue = !gameBoard[cellPosition.xPosition, cellPosition.yPosition];
             gameBoard[cellPosition.xPosition, cellPosition.yPosition] = newCellValue;
         }
+
+        public void TakeTurn()
+        {
+            gameBoard[1, 1] = false;
+        }
     }
 }
