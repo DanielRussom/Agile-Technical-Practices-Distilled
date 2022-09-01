@@ -26,6 +26,7 @@
         {
             gameBoard[0, 0] = false;
             gameBoard[1, 1] = false;
+            gameBoard[2, 2] = false;
         }
     }
 }
