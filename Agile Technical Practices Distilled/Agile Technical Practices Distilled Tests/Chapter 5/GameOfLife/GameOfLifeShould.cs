@@ -84,5 +84,18 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
 
             CollectionAssert.AreEqual(expected, DisplayResult);
         }
+
+        [TestMethod]
+        public void Set_single_cell_0_0_to_dead()
+        {
+            var expected = new bool[3, 3];
+
+            UnderTest.ToggleCell(new Position { xPosition = 0, yPosition = 0 });
+            UnderTest.TakeTurn();
+            UnderTest.DisplayBoard();
+
+            CollectionAssert.AreEqual(expected, DisplayResult);
+        }
+
     }
 }

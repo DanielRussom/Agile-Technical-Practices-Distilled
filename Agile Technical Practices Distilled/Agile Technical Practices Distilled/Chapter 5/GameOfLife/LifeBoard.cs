@@ -24,6 +24,7 @@
 
         public void TakeTurn()
         {
+            gameBoard[0, 0] = false;
             gameBoard[1, 1] = false;
         }
     }
