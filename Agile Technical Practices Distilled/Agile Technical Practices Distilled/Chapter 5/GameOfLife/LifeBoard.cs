@@ -26,21 +26,13 @@
         {
             var updatedGameBoard = new bool[3, 3];
 
-            if (gameBoard[0, 0] && gameBoard[1, 0] && gameBoard[2, 0])
+            for(int i = 0; i < 3; i++)
             {
-                updatedGameBoard[1, 0] = true;
+                if (gameBoard[0, i] && gameBoard[1, i] && gameBoard[2, i])
+                {
+                    updatedGameBoard[1, i] = true;
+                }
             }
-
-            if (gameBoard[0,1] && gameBoard[1, 1] && gameBoard[2, 1])
-            {
-                updatedGameBoard[1, 1] = true;
-            }
-
-            if (gameBoard[0, 2] && gameBoard[1, 2] && gameBoard[2, 2])
-            {
-                updatedGameBoard[1, 2] = true;
-            }
-
 
             gameBoard = updatedGameBoard;
         }
