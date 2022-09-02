@@ -89,7 +89,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
         }
 
         [TestMethod]
-        public void Keep_cell_with_two_x_coordinate_neighbours_alive()
+        public void Keep_cell_1_1_with_two_x_coordinate_neighbours_alive()
         {
             UnderTest.ToggleCell(new Position { xPosition = 0, yPosition = 1 });
             UnderTest.ToggleCell(new Position { xPosition = 1, yPosition = 1 });
@@ -99,6 +99,19 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
             UnderTest.DisplayBoard();
 
             Assert.IsTrue(DisplayResult[1, 1]);
+        }
+
+        [TestMethod]
+        public void Keep_cell_1_0_with_two_x_coordinate_neighbours_alive()
+        {
+            UnderTest.ToggleCell(new Position { xPosition = 0, yPosition = 0 });
+            UnderTest.ToggleCell(new Position { xPosition = 1, yPosition = 0 });
+            UnderTest.ToggleCell(new Position { xPosition = 2, yPosition = 0 });
+
+            UnderTest.TakeTurn();
+            UnderTest.DisplayBoard();
+
+            Assert.IsTrue(DisplayResult[1, 0]);
         }
     }
 }
