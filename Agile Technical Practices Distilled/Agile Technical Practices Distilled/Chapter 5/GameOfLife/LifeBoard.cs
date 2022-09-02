@@ -33,8 +33,14 @@
 
             if (gameBoard[0,1] && gameBoard[1, 1] && gameBoard[2, 1])
             {
-                updatedGameBoard[1, 1] = true;  
+                updatedGameBoard[1, 1] = true;
             }
+
+            if (gameBoard[0, 2] && gameBoard[1, 2] && gameBoard[2, 2])
+            {
+                updatedGameBoard[1, 2] = true;
+            }
+
 
             gameBoard = updatedGameBoard;
         }

@@ -113,5 +113,18 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
 
             Assert.IsTrue(DisplayResult[1, 0]);
         }
+
+        [TestMethod]
+        public void Keep_cell_2_0_with_two_x_coordinate_neighbours_alive()
+        {
+            UnderTest.ToggleCell(new Position { xPosition = 0, yPosition = 2 });
+            UnderTest.ToggleCell(new Position { xPosition = 1, yPosition = 2 });
+            UnderTest.ToggleCell(new Position { xPosition = 2, yPosition = 2 });
+
+            UnderTest.TakeTurn();
+            UnderTest.DisplayBoard();
+
+            Assert.IsTrue(DisplayResult[1, 2]);
+        }
     }
 }
