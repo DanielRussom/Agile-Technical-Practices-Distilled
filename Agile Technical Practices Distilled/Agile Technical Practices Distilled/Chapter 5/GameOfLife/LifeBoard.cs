@@ -33,6 +33,10 @@
                     updatedGameBoard[1, i] = true;
                 }
             }
+            if (gameBoard[1, 0] && gameBoard[1, 1] && gameBoard[1, 2])
+            {
+                updatedGameBoard[1, 1] = true;
+            }
 
             gameBoard = updatedGameBoard;
         }
