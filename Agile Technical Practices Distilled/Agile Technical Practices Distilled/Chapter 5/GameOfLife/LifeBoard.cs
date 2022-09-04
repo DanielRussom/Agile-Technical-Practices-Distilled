@@ -44,6 +44,11 @@
                 updatedGameBoard[1, 1] = true;
             }
 
+            if (gameBoard[1, 0] && gameBoard[0, 2])
+            {
+                updatedGameBoard[1, 1] = true;
+            }
+
             gameBoard = updatedGameBoard;
         }
     }
