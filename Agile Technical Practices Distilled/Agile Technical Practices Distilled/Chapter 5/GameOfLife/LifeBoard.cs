@@ -33,7 +33,13 @@
                     updatedGameBoard[1, i] = true;
                 }
             }
+
             if (gameBoard[1, 0] && gameBoard[1, 1] && gameBoard[1, 2])
+            {
+                updatedGameBoard[1, 1] = true;
+            }
+
+            if (gameBoard[0, 0] && gameBoard[0, 1])
             {
                 updatedGameBoard[1, 1] = true;
             }

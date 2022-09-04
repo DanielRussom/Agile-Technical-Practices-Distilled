@@ -91,6 +91,7 @@ namespace Agile_Technical_Practices_Distilled.Tests.Chapter_5.GameOfLife
         [TestMethod]
         [DataRow(0,1,2,1)]
         [DataRow(1,0,1,2)]
+        [DataRow(0,0,0,1)]
         public void Keep_cell_1_1_with_two_neighbours_alive(int firstX, int firstY, int secondX, int secondY)
         {
             UnderTest.ToggleCell(new Position { xPosition = firstX, yPosition = firstY });
