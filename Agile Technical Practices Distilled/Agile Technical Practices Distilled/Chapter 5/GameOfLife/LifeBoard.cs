@@ -21,35 +21,5 @@
             var newCellValue = !gameBoard[cellPosition.xPosition, cellPosition.yPosition];
             gameBoard[cellPosition.xPosition, cellPosition.yPosition] = newCellValue;
         }
-
-        public void TakeTurn()
-        {
-            var updatedGameBoard = new bool[3, 3];
-
-            for(int i = 0; i < 3; i++)
-            {
-                if (gameBoard[0, i] && gameBoard[1, i] && gameBoard[2, i])
-                {
-                    updatedGameBoard[1, i] = true;
-                }
-            }
-
-            if (gameBoard[1, 0] && gameBoard[1, 1] && gameBoard[1, 2])
-            {
-                updatedGameBoard[1, 1] = true;
-            }
-
-            if (gameBoard[0, 0] && gameBoard[0, 1])
-            {
-                updatedGameBoard[1, 1] = true;
-            }
-
-            if (gameBoard[1, 0] && gameBoard[0, 2])
-            {
-                updatedGameBoard[1, 1] = true;
-            }
-
-            gameBoard = updatedGameBoard;
-        }
     }
 }
